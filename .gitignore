@@ -1,0 +1,22 @@
+# Never commit real PHIRE exports. Only synthetic data under data/synthetic/ is allowed.
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+!data/synthetic/**
+
+# Node / build
+node_modules/
+dist/
+build/
+.netlify/
+
+# Secrets
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
