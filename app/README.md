@@ -9,7 +9,7 @@ React (Vite) app that analyzes a PHIRE Excel export **entirely in the browser**.
 | `src/components/` | Pages: Start + column mapping, Dashboard, Tickets + detail drawer, Recurring issues, Resources |
 | `src/components/Chat.jsx` | "Ask the expert" tab in the ticket drawer |
 | `netlify/functions/chat.mjs` | Netlify Function behind `/api/chat`: builds the expert's prompt and streams Claude's answer; the key stays server-side |
-| `scripts/build-experts.mjs` | Bundles agent instructions + knowledge folders for the function at build time |
+| `scripts/build-experts.mjs` | Bundles agent instructions + knowledge folders into `netlify/lib/experts-data.mjs` at build time (kept outside `netlify/functions/`, where every file becomes a function) |
 | `src/worker.js` | Runs the analysis in a Web Worker so the page stays responsive |
 | `public/model/model.json` | Model exported by `nlp/train.py` |
 | `tests/` | Parity, unit and browser tests |

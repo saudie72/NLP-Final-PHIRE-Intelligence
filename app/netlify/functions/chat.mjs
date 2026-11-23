@@ -12,7 +12,7 @@
 // after the user starts a chat and confirms the notice in the app. See docs/data-handling.md.
 import { createHash, timingSafeEqual } from "node:crypto";
 import Anthropic from "@anthropic-ai/sdk";
-import EXPERTS from "./experts.generated.mjs";
+import EXPERTS from "../lib/experts-data.mjs";
 
 export const config = { path: "/api/chat" };
 

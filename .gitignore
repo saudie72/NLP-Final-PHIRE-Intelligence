@@ -26,4 +26,4 @@ app/dist/
 app/test-results*/
 
 # Generated at build time from .claude/agents and knowledge/
-app/netlify/functions/experts.generated.mjs
+app/netlify/lib/experts-data.mjs
