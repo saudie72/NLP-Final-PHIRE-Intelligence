@@ -24,8 +24,9 @@ dashboard, and exports an Excel report. It is built by a team of 16 Claude Code 
 | `.claude/skills/` | 26 shared skills, one folder each with `SKILL.md` |
 | `knowledge/<agent-id>/` | Each agent's own documents, read before every answer (synthetic or public material only) |
 | `docs/agent-brains.md` | Each agent's model, name and personality |
-| `data/synthetic/` | Synthetic PHIRE exports (train, test, demo) — added in a later step |
-| `scripts/`, `nlp/`, `app/` | Data generator, model training, React app — added in later steps |
+| `data/synthetic/` | Synthetic PHIRE exports: train (1,000), test (250), demo (250); see its README |
+| `scripts/make_synthetic.py` | Synthetic data generator (fixed seed) |
+| `nlp/`, `app/` | Model training and React app — added in later steps |
 
 ## The team
 

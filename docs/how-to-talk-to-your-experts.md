@@ -55,8 +55,8 @@ item. (Works once the synthetic data exists.)
 ```
 @agent-orchestrator Assess this synthetic ticket for the PY + TL + AM portfolio.
 Title: "Sick leave taken not reducing balance and overpaying employees"
-Description: "Business Unit = HS. For the last two pay periods, sick leave entered on timesheets by Health
-Services employees is paid as regular hours and is not reducing their sick balance. Payroll found the difference
+Description: "Business Unit = CE. For the last two pay periods, sick leave entered on timesheets by Code
+Enforcement employees is paid as regular hours and is not reducing their sick balance. Payroll found the difference
 during the payroll register review. Pay confirmation is Thursday. Similar issue was reported last year."
 ```
 
@@ -65,7 +65,7 @@ during the payroll register review. Pay confirmation is Thursday. Similar issue 
 | ERP Functional Analyst | Module `AM` vs. `TL` decision with reasons (absence entered on timesheet → TRC to absence take mapping); issue area Functional unless a code defect is found; setup to check |
 | ERP Developer *or* PeopleSoft Administrator | Hypotheses only: TRC/absence take mapping, Absence Conversion to payable time not run or failing, Time Admin results |
 | ERP Manager | Priority **H**: overpayment and pay confirmation deadline; escalation path across the portfolio |
-| ERP Business Analyst | Time-to-pay process map with the failing hand-off; stakeholders (Health Services, Payroll, Absence admin); "reported last year" → candidate for a business case |
+| ERP Business Analyst | Time-to-pay process map with the failing hand-off; stakeholders (Code Enforcement, Payroll, Absence admin); "reported last year" → candidate for a business case |
 | Orchestrator | One answer with Observations vs. Hypotheses, Module/Area/Priority, next steps, Sources |
 
 ### 2. Recurring-issue business case

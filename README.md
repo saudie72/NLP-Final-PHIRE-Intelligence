@@ -54,7 +54,7 @@ Ticket analysis is planned to run in the browser so ticket text does not leave t
 
 - [x] Create GitHub repository
 - [x] Research documentation (`docs/`)
-- [ ] Build all 16 agents, skills, and knowledge folders
+- [x] Build all 16 agents, skills, and knowledge folders
 - [ ] PHIRE Excel upload and column mapping
 - [ ] Classify tickets by module and issue type
 - [ ] Identify similar tickets and recurring issues
