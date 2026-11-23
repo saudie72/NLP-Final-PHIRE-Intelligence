@@ -31,6 +31,10 @@ ticket descriptions, and produces:
 - **A dashboard** of ticket trends, module analysis and recurring issues
 - **An Excel report**: the original rows plus the AI-generated columns
 
+## Research
+
+Background research for the agent team is in [`docs/`](docs/README.md): PHIRE, the export format, PeopleSoft modules, technical and security components, the ticket taxonomy, NLP methods, data handling and the synthetic dataset plan.
+
 ## Data handling
 
 Real PHIRE records can contain employee names, IDs, payroll and access details. This project is built,
@@ -49,7 +53,7 @@ Ticket analysis is planned to run in the browser so ticket text does not leave t
 ## Version 1 scope
 
 - [x] Create GitHub repository
-- [ ] Research documentation (`docs/`)
+- [x] Research documentation (`docs/`)
 - [ ] Build all 16 agents, skills, and knowledge folders
 - [ ] PHIRE Excel upload and column mapping
 - [ ] Classify tickets by module and issue type
