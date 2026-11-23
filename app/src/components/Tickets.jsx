@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { matchesQuery, searchText } from "../lib/search.js";
 import { AREAS, MODULE_NAMES, moduleOf, today } from "../lib/stats.js";
 import { ChatPanel, EXPERT_FOR_AREA } from "./Chat.jsx";
 import { Area, ConfidenceBar, Icon, Mod, Prio, areaColor } from "./ui.jsx";
@@ -10,12 +11,12 @@ export function Tickets({ tickets, filters, setFilters, openTicket }) {
   const f = { q: "", module: "", area: "", open: "", flag: "", ...filters };
   const set = (patch) => { setPage(0); setFilters({ ...f, ...patch }); };
   const mods = useMemo(() => [...new Set(tickets.map(moduleOf))].sort(), [tickets]);
+  useMemo(() => tickets.forEach((t) => { t._search ??= searchText(t); }), [tickets]);
   const t0 = today();
 
   const rows = useMemo(() => {
-    const q = f.q.trim().toLowerCase();
     return tickets.filter((t) =>
-      (!q || `${t.id} ${t.title} ${t.description} ${t.keywords.join(" ")}`.toLowerCase().includes(q)) &&
+      matchesQuery(t, f.q) &&
       (!f.module || moduleOf(t) === f.module) &&
       (!f.area || t.issueArea === f.area) &&
       (!f.open || (f.open === "open" ? t.open : f.open === "closed" ? !t.open : t.open && t.dueDate && t.dueDate < t0)) &&
@@ -29,7 +30,7 @@ export function Tickets({ tickets, filters, setFilters, openTicket }) {
     <div className="grid" style={{ gap: 14 }}>
       <div className="filters">
         <label className="field" style={{ flex: "1 1 220px" }}>Search
-          <input id="q" className="input" placeholder="ID, words in title or description…" value={f.q} onChange={(e) => set({ q: e.target.value })} />
+          <input id="q" className="input" placeholder="Words, ID, module, issue area, status… (all words must match)" value={f.q} onChange={(e) => set({ q: e.target.value })} />
         </label>
         <label className="field">Module
           <select id="f-module" className="input" value={f.module} onChange={(e) => set({ module: e.target.value })}>

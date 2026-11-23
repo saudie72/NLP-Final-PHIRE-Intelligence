@@ -49,6 +49,10 @@ async function run(viewport, scheme, tag, shots) {
   await page.fill("#q", "queued");
   const qrows = await page.locator("tbody tr").count();
   check(`${tag}: search filters the table`, qrows > 0 && qrows < 50, `${qrows} rows for "queued"`);
+  await page.fill("#q", "functional");
+  const frows = Number((await page.locator("p[aria-live]").textContent()).split(" ")[0]);
+  check(`${tag}: search matches issue-area labels`, frows > 50, `${frows} tickets for "functional"`);
+  await page.fill("#q", "queued");
   await page.locator("tbody tr").first().click();
   await page.waitForSelector(".drawer");
   await page.waitForTimeout(400); // let the slide-in finish before the screenshot

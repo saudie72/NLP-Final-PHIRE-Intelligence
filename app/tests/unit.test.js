@@ -62,3 +62,14 @@ describe("analysis on the synthetic test file", () => {
     expect(r.tickets[1].suggestedPriority).toBe("L");
   });
 });
+
+import { matchesQuery } from "../src/lib/search.js";
+describe("ticket search", () => {
+  const t = { id: "IN001013", title: "How to process pay period end", description: "Guidance needed", keywords: ["pay period"],
+    issueArea: "Functional", module: "TL", predictedModule: "TL", status: "10-Closed", priority: "M", suggestedPriority: "L",
+    open: false, similar: [], recurringIssue: null };
+  it.each([
+    ["functional", true], ["Functional", true], ["time and labor", true], ["tl", true], ["closed", true],
+    ["functional pay", true], ["functional security", false], ["in001013", true], ["low", true], ["", true], ["payroll", false],
+  ])("%s -> %s", (q, expected) => expect(matchesQuery(t, q)).toBe(expected));
+});
