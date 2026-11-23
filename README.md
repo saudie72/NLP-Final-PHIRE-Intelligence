@@ -46,6 +46,8 @@ Background research for the agent team is in [`docs/`](docs/README.md): PHIRE, t
 
 Full report: [`nlp/results.md`](nlp/results.md). ERP review of the errors: [`docs/erp-qa-review.md`](docs/erp-qa-review.md).
 Security sign-off: [`docs/security-review.md`](docs/security-review.md). App and tests: [`app/README.md`](app/README.md).
+Requirements: [`docs/requirements.md`](docs/requirements.md) · Architecture: [`docs/architecture.md`](docs/architecture.md) ·
+What's next: [`docs/version-2.md`](docs/version-2.md).
 
 ## Data handling
 

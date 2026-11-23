@@ -27,6 +27,9 @@ Conventions used in every file:
 | 13 | [agent-test-results.md](agent-test-results.md) | Knowledge-folder test of the ERP Functional Analyst: questions, rounds, answers | Project owner, QA |
 | 14 | [erp-qa-review.md](erp-qa-review.md) | ERP QA Developer's review of misclassified test tickets | NLP Specialist, Data Engineer |
 | 15 | [security-review.md](security-review.md) | Security Reviewer's checklist and sign-off for version 1 | Security Reviewer, project owner |
+| 16 | [requirements.md](requirements.md) | Version 1 scope, stakeholders, user stories with acceptance criteria mapped to tests | Product Manager, QA |
+| 17 | [architecture.md](architecture.md) | Stack, data flow, components and key decisions | Software Architect, developers |
+| 18 | [version-2.md](version-2.md) | What version 1 delivers, how it was built, and the version 2 backlog | Project owner, Orchestrator |
 
 ## Open questions for the project owner
 

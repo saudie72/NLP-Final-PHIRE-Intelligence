@@ -80,6 +80,10 @@ async function run(viewport, scheme, tag, shots) {
   await page.locator(".nav button", { hasText: "Resources" }).click();
   await page.waitForSelector(".team");
   check(`${tag}: Resources page shows team and metrics`, (await page.locator(".agent").count()) === 16);
+  const links = await page.locator('[data-testid="links"] a').count();
+  const guide = await page.locator('[data-testid="links"] a[href*="NTCut33EUofio3qY7ZNCXQ"]').count();
+  check(`${tag}: Resources lists every link the project relies on, including the guide`, links >= 30 && guide === 1, `${links} links`);
+  check(`${tag}: footer links to Resources`, (await page.locator(".footer a", { hasText: "Resources" }).count()) === 1);
   if (shots) await page.screenshot({ path: `${out}/${tag}-7-resources.png`, fullPage: true });
 
   const hScroll = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);

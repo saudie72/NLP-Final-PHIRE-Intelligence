@@ -10,6 +10,48 @@ const TEAM = [
   ["QA Tester", "Bea", "Development & NLP", "haiku"], ["Security Reviewer", "Nadia", "Development & NLP", "opus"],
 ];
 
+const GUIDE = "https://claude.ai/artifact/NTCut33EUofio3qY7ZNCXQ";
+const LINKS = [
+  ["Project", [
+    ["GitHub repository", REPO],
+    ["Step-by-step guide (Build a team of synthetic employees with Claude Code)", GUIDE],
+    ["Version 1 requirements", `${REPO}/blob/main/docs/requirements.md`],
+    ["Architecture", `${REPO}/blob/main/docs/architecture.md`],
+    ["Evaluation report", `${REPO}/blob/main/nlp/results.md`],
+    ["ERP QA review", `${REPO}/blob/main/docs/erp-qa-review.md`],
+    ["Security review", `${REPO}/blob/main/docs/security-review.md`],
+    ["Version 2 plan", `${REPO}/blob/main/docs/version-2.md`],
+    ["Research docs", `${REPO}/tree/main/docs`],
+    ["Agent roster", `${REPO}/blob/main/docs/expert-roster.md`],
+  ]],
+  ["Libraries and frameworks", [
+    ["React", "https://react.dev"],
+    ["Vite", "https://vite.dev/guide/"],
+    ["SheetJS (Excel in the browser)", "https://docs.sheetjs.com"],
+    ["scikit-learn (model training)", "https://scikit-learn.org/stable/"],
+    ["Anthropic TypeScript SDK", "https://github.com/anthropics/anthropic-sdk-typescript"],
+    ["Fontsource (self-hosted fonts)", "https://fontsource.org"],
+    ["IBM Plex typeface", "https://www.ibm.com/plex/"],
+    ["Vitest", "https://vitest.dev"],
+    ["Playwright", "https://playwright.dev"],
+  ]],
+  ["Platforms and web standards", [
+    ["Netlify Functions", "https://docs.netlify.com/functions/overview/"],
+    ["Netlify file-based configuration (netlify.toml)", "https://docs.netlify.com/configure-builds/file-based-configuration/"],
+    ["Claude API documentation", "https://platform.claude.com/docs"],
+    ["Claude Code subagents", "https://code.claude.com/docs/en/sub-agents"],
+    ["Claude Code skills", "https://code.claude.com/docs/en/skills"],
+    ["Claude Agent SDK (TypeScript)", "https://code.claude.com/docs/en/agent-sdk/typescript"],
+    ["Node.js 22 API", "https://nodejs.org/docs/latest-v22.x/api/"],
+    ["Web Workers (MDN)", "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API"],
+    ["Content Security Policy (MDN)", "https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP"],
+  ]],
+  ["PeopleSoft domain", [
+    ["Oracle PeopleSoft HCM 9.2 PeopleBooks", "https://docs.oracle.com/cd/F13810_02/hcm92pbr29/eng/hcm"],
+    ["Project research on PHIRE and PeopleSoft (sources cited in each file)", `${REPO}/blob/main/docs/README.md`],
+  ]],
+];
+
 export function Resources({ model }) {
   const m = model?.metrics;
   const pct = (x) => (x == null ? "—" : `${(x * 100).toFixed(1)}%`);
@@ -28,6 +70,7 @@ export function Resources({ model }) {
           <a className="btn" href={`${REPO}/blob/main/nlp/results.md`} target="_blank" rel="noopener noreferrer">Full evaluation report</a>
           <a className="btn" href={`${REPO}/tree/main/docs`} target="_blank" rel="noopener noreferrer">Research docs</a>
           <a className="btn" href={`${REPO}/blob/main/docs/expert-roster.md`} target="_blank" rel="noopener noreferrer">Agent roster</a>
+          <a className="btn" href={GUIDE} target="_blank" rel="noopener noreferrer">Step-by-step guide</a>
         </div>
       </section>
 
@@ -77,6 +120,18 @@ export function Resources({ model }) {
             and tickets generated from templates.</p>
         </section>
       </div>
+
+      <section className="panel" data-testid="links">
+        <div className="panel-head"><h2>Links this project relies on</h2><span className="faint" style={{ fontSize: ".8rem" }}>official documentation for every library and service</span></div>
+        <div className="linkgrid">
+          {LINKS.map(([group, items]) => (
+            <div key={group}>
+              <span className="eyebrow">{group}</span>
+              <ul>{items.map(([label, href]) => <li key={href}><a href={href} target="_blank" rel="noopener noreferrer">{label}</a></li>)}</ul>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="panel">
         <div className="panel-head"><h2>The agent team that built it</h2><span className="faint" style={{ fontSize: ".8rem" }}>Claude Code subagents · model in brackets</span></div>

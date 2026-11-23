@@ -250,3 +250,9 @@ td.title b { font-weight: 500; display: block; }
 .consent { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-size: .84rem; background: var(--accent-soft); color: var(--ink); padding: 10px 12px; border-radius: 8px; }
 .consent input { margin-top: 3px; }
 .chat-off { display: grid; gap: 8px; background: var(--panel-2); border: 1px dashed var(--line); border-radius: 10px; padding: 16px; font-size: .9rem; }
+
+/* ---------- resources links & footer ---------- */
+.linkgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.linkgrid ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 5px; font-size: .88rem; }
+.footer { order: 99; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .8rem; color: var(--ink-3); }
+.footer span { margin-right: auto; }

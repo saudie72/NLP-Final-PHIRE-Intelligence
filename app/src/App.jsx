@@ -182,6 +182,11 @@ export default function App() {
             {page === "recurring" && <Recurring recurring={viewRecurring} byId={byId} focus={focus} openTicket={setOpenId} />}
           </>
         )}
+        <footer className="footer">
+          <span>PHIRE Ticket Intelligence · NLP final project · synthetic demo data</span>
+          <a href="#resources" onClick={(e) => { e.preventDefault(); go("resources"); }}>Resources &amp; links</a>
+          <a href="https://github.com/saudie72/NLP-Final-PHIRE-Intelligence" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </footer>
         {page === "resources" && <Resources model={model ? { ...model, vocabSize: model.vocab.length.toLocaleString() } : null} />}
       </main>
       {open && <TicketDrawer ticket={open} byId={byId} onClose={() => setOpenId(null)} openTicket={setOpenId} go={go} />}
