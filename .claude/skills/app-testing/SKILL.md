@@ -7,7 +7,7 @@ description: "Functional, regression and browser tests of upload, column mapping
 
 **Purpose:** Make sure the application works for real users.
 
-**Used by:** Front-End Developer, Back-End Developer, QA Tester
+**Used by:** Front-End Developer, Back-End Developer, QA Tester, Pyodide Engineer
 
 **Inputs:** The app and the synthetic demo file.
 

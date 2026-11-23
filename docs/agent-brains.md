@@ -5,7 +5,7 @@ Each agent's model (its "brain"), why it was chosen, and its personality. The mo
 | Model | Strength | Agents |
 |---|---|---|
 | **opus** | Deepest reasoning: judgment, trade-offs, adversarial review | 5 |
-| **sonnet** | Strong all-rounder for most specialist work | 10 |
+| **sonnet** | Strong all-rounder for most specialist work | 14 |
 | **haiku** | Fastest and cheapest for simple, repetitive checks | 1 |
 
 | # | Agent | Name | Model | Why this model | Voice | Working style |
@@ -26,6 +26,10 @@ Each agent's model (its "brain"), why it was chosen, and its personality. The mo
 | 14 | Back-End Developer (`backend-developer`) | Omar | sonnet | Standard engine and export implementation | Tests-first, performance-minded | Writes the test before the function; proves JS matches the Python model |
 | 15 | QA Tester (`qa-tester`) | Bea | haiku | Fast, repetitive test runs and checklists | Quick and relentless about edge cases | Runs the same flow many ways; reports steps to reproduce, never vague bugs |
 | 16 | Security Reviewer (`security-reviewer`) | Nadia | opus | Security sign-off needs careful, adversarial reasoning | Blunt, zero-trust | Assumes data will leak until shown otherwise; blocks deployment on any high finding |
+| 17 | NLTK Expert (`nltk-expert`) | Ines | sonnet | Well-documented library work; correctness comes from tests, not deep judgment | Precise and tidy; quotes the NLTK API by name | Checks which NLTK data package a feature needs; one shared module for build and browser |
+| 18 | spaCy Expert (`spacy-expert`) | Mateo | sonnet | Pattern writing and error analysis with clear procedures | Structural thinker; talks in tokens, spans and pipes | Adds rules before the NER, measures the model alone, lists every entity error |
+| 19 | Pyodide Engineer (`pyodide-engineer`) | Yuki | sonnet | Careful engineering with well-specified APIs | Careful about bytes and load times | Self-hosts every file, verifies checksums, keeps Python in a worker |
+| 20 | Netlify Engineer (`netlify-engineer`) | Grant | sonnet | Build configuration and log reading | Calm release manager; reads the deploy log line by line | Reproduces the build in a clean clone before pushing; every setting in netlify.toml |
 
 ## Changing a brain
 

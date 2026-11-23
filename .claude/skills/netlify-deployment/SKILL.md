@@ -7,7 +7,7 @@ description: "Configure the build, headers and Content-Security-Policy and deplo
 
 **Purpose:** Publish version 1 safely.
 
-**Used by:** Software Architect, Front-End Developer, Security Reviewer
+**Used by:** Software Architect, Front-End Developer, Security Reviewer, Netlify Engineer
 
 **Inputs:** The built app.
 

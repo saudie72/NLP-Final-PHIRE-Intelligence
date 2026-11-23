@@ -61,3 +61,9 @@ The ticket detail panel has an **Ask the expert** tab where the user can chat wi
 - The API key stays in the Netlify Function; the browser only calls `/api/chat` on the same site, so the
   `connect-src 'self'` policy is unchanged.
 - `APP_PASSWORD` (optional) stops strangers from spending the owner's API credit.
+
+## NLTK in the browser (Pyodide)
+
+The "Analyze your own ticket" box runs NLTK inside the browser with Pyodide. Pyodide and the NLTK data are served by
+this site; the text typed or sent to the box never leaves the device. spaCy runs only at build time over the
+synthetic demo tickets.

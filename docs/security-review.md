@@ -9,7 +9,7 @@ Every item below was checked by running a command or a test, not by reading the 
 ## Verdict
 
 **Signed off for deployment** of version 1 to Netlify with synthetic data. No open high or critical findings.
-Re-reviewed after the "Ask the expert" chat was added (checks 15–21).
+Re-reviewed after the "Ask the expert" chat was added (checks 15–21) and after NLTK/spaCy and Pyodide were added (checks 22–24).
 
 ## Checks
 
@@ -35,6 +35,9 @@ Re-reviewed after the "Ask the expert" chat was added (checks 15–21).
 | 19 | Consent before sending ticket text | the first message is blocked until the notice is ticked; browser test | ✅ |
 | 20 | Chat stays same-origin | browser test with chat on: 0 requests to other origins; CSP unchanged | ✅ |
 | 21 | Chat answers rendered safely | plain-text rendering (paragraphs, bullets, bold) without HTML; no `innerHTML` | ✅ |
+| 22 | Pyodide is self-hosted | Pyodide core from the pinned npm package; NLTK wheels downloaded at build time and verified against SHA-256 in `pyodide-lock.json`; no CDN at runtime | ✅ |
+| 23 | CSP change for Pyodide | only `'wasm-unsafe-eval'` added to `script-src` (WebAssembly compilation, not JavaScript eval); browser tests run under it | ✅ 68/68 |
+| 24 | Live NLTK keeps data local | the worker fetches only same-origin files; browser test: 0 requests to other origins | ✅ |
 | 14 | Other headers | `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`, `X-Frame-Options: DENY`, `Permissions-Policy`, `Cross-Origin-Opener-Policy` | ✅ |
 
 ## Findings fixed during review

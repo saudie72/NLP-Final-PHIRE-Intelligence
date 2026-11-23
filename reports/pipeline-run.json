@@ -1,0 +1,14 @@
+{
+ "seconds": 2.2,
+ "tickets": 250,
+ "versions": {
+  "nltk": "3.9.1",
+  "spacy": "3.8.18",
+  "model": "en_core_web_sm 3.8.0"
+ },
+ "outputs": [
+  "app/public/nlp/language.json",
+  "reports/nlp-language-evaluation.md"
+ ],
+ "rulerPatterns": 132
+}

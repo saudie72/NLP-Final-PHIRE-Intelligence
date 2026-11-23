@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/copy-demo.mjs && node scripts/build-experts.mjs",
+    "predev": "node scripts/copy-demo.mjs && node scripts/build-experts.mjs && node scripts/copy-pyodide.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/copy-demo.mjs && node scripts/build-experts.mjs",
+    "prebuild": "node scripts/copy-demo.mjs && node scripts/build-experts.mjs && node scripts/copy-pyodide.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.5.2",
+    "pyodide": "^0.29.5",
     "vite": "^6.3.5",
     "vitest": "^5.1.1"
   }

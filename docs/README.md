@@ -1,7 +1,7 @@
 # Research index
 
 Background research for **PeopleSoft PHIRE Ticket Intelligence**. These files are shared context for the
-16-agent team (PeopleSoft ERP specialists plus software development and NLP specialists) built in later steps.
+20-agent team (PeopleSoft ERP specialists, software development and NLP specialists, NLTK and spaCy experts) built in later steps.
 
 Conventions used in every file:
 
@@ -21,7 +21,7 @@ Conventions used in every file:
 | 7 | [nlp-methods.md](nlp-methods.md) | Classification, keywords, similarity, clustering, priority, evaluation | NLP Specialist, QA Tester |
 | 8 | [data-handling.md](data-handling.md) | Confidentiality, synthetic-only rule, browser-local processing | Security Reviewer, all agents |
 | 9 | [synthetic-dataset-plan.md](synthetic-dataset-plan.md) | How the synthetic train/test/demo data will be generated | Data Engineer, NLP Specialist, ERP QA Developer |
-| 10 | [expert-roster.md](expert-roster.md) | The 16 agents, their jobs, deliverables and shared skills | Orchestrator, Meta Agent, all agents |
+| 10 | [expert-roster.md](expert-roster.md) | The 20 agents, their jobs, deliverables and shared skills | Orchestrator, Meta Agent, all agents |
 | 11 | [how-to-talk-to-your-experts.md](how-to-talk-to-your-experts.md) | Example prompts: one agent, the whole team, and four team workflows | Project owner, Orchestrator |
 | 12 | [agent-brains.md](agent-brains.md) | Each agent's model, the reason, and its name, voice and working style | Project owner, Meta Agent |
 | 13 | [agent-test-results.md](agent-test-results.md) | Knowledge-folder test of the ERP Functional Analyst: questions, rounds, answers | Project owner, QA |
@@ -30,6 +30,7 @@ Conventions used in every file:
 | 16 | [requirements.md](requirements.md) | Version 1 scope, stakeholders, user stories with acceptance criteria mapped to tests | Product Manager, QA |
 | 17 | [architecture.md](architecture.md) | Stack, data flow, components and key decisions | Software Architect, developers |
 | 18 | [version-2.md](version-2.md) | What version 1 delivers, how it was built, and the version 2 backlog | Project owner, Orchestrator |
+| 19 | [nltk-spacy-netlify.md](nltk-spacy-netlify.md) | NLTK vs spaCy strengths, what Netlify can run (Python at build time, Pyodide in the browser), the chosen architecture | NLTK Expert, spaCy Expert, Pyodide and Netlify Engineers |
 
 ## Open questions for the project owner
 

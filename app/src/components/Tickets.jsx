@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { matchesQuery, searchText } from "../lib/search.js";
 import { AREAS, MODULE_NAMES, moduleOf, today } from "../lib/stats.js";
 import { ChatPanel, EXPERT_FOR_AREA } from "./Chat.jsx";
+import { EntityText, Lib } from "./Language.jsx";
 import { Area, ConfidenceBar, Icon, Mod, Prio, areaColor } from "./ui.jsx";
 
 const PAGE = 50;
@@ -97,7 +98,7 @@ export function Tickets({ tickets, filters, setFilters, openTicket }) {
 
 const EXPERT_NAMES = { "erp-functional-analyst": "Ray", "erp-developer": "Kwame", "peoplesoft-admin": "Dana" };
 
-export function TicketDrawer({ ticket: t, byId, onClose, openTicket, go }) {
+export function TicketDrawer({ ticket: t, byId, lang, onClose, openTicket, go }) {
   const closeRef = useRef(null);
   const [tab, setTab] = useState("details");
   useEffect(() => {
@@ -148,6 +149,8 @@ export function TicketDrawer({ ticket: t, byId, onClose, openTicket, go }) {
           </div>
         </section>
 
+        <LanguageSection t={t} lang={lang} onClose={onClose} go={go} />
+
         <section style={{ display: "grid", gap: 8 }}>
           <span className="eyebrow">Keywords</span>
           <div className="row">{t.keywords.map((k) => <span key={k} className="kw">{k}</span>)}</div>
@@ -193,5 +196,42 @@ export function TicketDrawer({ ticket: t, byId, onClose, openTicket, go }) {
         </>}
       </aside>
     </>
+  );
+}
+
+/** Build-time NLTK + spaCy results for this ticket (demo dataset), or a link to run NLTK live on it. */
+function LanguageSection({ t, lang, onClose, go }) {
+  const r = lang?.perTicket?.[t.id];
+  const matches = r && r.title === t.title;
+  const runLive = () => { onClose(); go("language", { text: `${t.title}. ${t.description}` }); };
+  if (!matches) {
+    return (
+      <section className="lang-box" data-testid="ticket-lang">
+        <span className="eyebrow">Language analysis</span>
+        <p className="muted" style={{ fontSize: ".86rem" }}>spaCy runs at build time, so its entities cover the synthetic demo tickets. You can still run
+          <Lib name="NLTK" /> on this ticket live in your browser.</p>
+        <button className="btn" onClick={runLive}>Analyze this ticket with NLTK</button>
+      </section>
+    );
+  }
+  const c = r.nltk.compound;
+  return (
+    <section className="lang-box" data-testid="ticket-lang">
+      <div className="row" style={{ justifyContent: "space-between" }}>
+        <span className="eyebrow">Language analysis</span>
+        <button className="chip" onClick={runLive}>Re-run NLTK live</button>
+      </div>
+      <div className="row" style={{ fontSize: ".86rem" }}>
+        <Lib name="NLTK" /> VADER <b className="mono" style={{ color: c <= -0.05 ? "var(--bad)" : c >= 0.05 ? "var(--good)" : "var(--ink-3)" }}>{c >= 0 ? "+" : "−"}{Math.abs(c).toFixed(2)}</b>
+        <span className="kw">{r.nltk.label}</span>
+        {r.nltk.urgency.map((u) => <span key={u} className="flag">{u}</span>)}
+      </div>
+      <div style={{ display: "grid", gap: 4 }}>
+        <span className="row" style={{ fontSize: ".86rem" }}><Lib name="spaCy" /> entities
+          <span className="faint" style={{ fontSize: ".76rem" }}>amber = EntityRuler (PeopleSoft) · blue = en_core_web_sm</span></span>
+        <EntityText text={`${t.title}. ${t.description}`} entities={r.spacy.entities} />
+      </div>
+      {r.spacy.aspects.length > 0 && <div className="row" style={{ fontSize: ".84rem" }}><Lib name="spaCy" /> aspects {r.spacy.aspects.map((a) => <span key={a} className="kw">{a}</span>)}</div>}
+    </section>
   );
 }

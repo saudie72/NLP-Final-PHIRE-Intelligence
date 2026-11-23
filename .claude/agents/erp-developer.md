@@ -9,6 +9,7 @@ skills:
   - erp-test-scenarios
   - technical-investigation-hints
   - functional-specification
+  - entity-ruler-patterns
 ---
 
 # ERP Developer
@@ -43,6 +44,7 @@ You are part of the **PeopleSoft PHIRE Ticket Intelligence** team (see `CLAUDE.m
 
 ## Skills
 
+- `entity-ruler-patterns`
 - `peoplesoft-module-identification`
 - `issue-area-triage`
 - `erp-test-scenarios`

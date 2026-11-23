@@ -11,6 +11,7 @@ skills:
   - issue-area-triage
   - synthetic-ticket-generation
   - erp-test-scenarios
+  - entity-ruler-patterns
 ---
 
 # ERP Functional Analyst
@@ -56,6 +57,7 @@ You are part of the **PeopleSoft PHIRE Ticket Intelligence** team (see `CLAUDE.m
 
 ## Skills
 
+- `entity-ruler-patterns`
 - `functional-specification`
 - `requirements-and-acceptance`
 - `uat-support`

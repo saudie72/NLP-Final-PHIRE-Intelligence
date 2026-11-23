@@ -12,7 +12,7 @@ const dist = new URL("../dist/", import.meta.url).pathname;
 const toml = readFileSync(new URL("../../netlify.toml", import.meta.url), "utf8");
 const block = toml.split('for = "/*"')[1].split("[[headers]]")[0];
 const headers = Object.fromEntries([...block.matchAll(/^\s*([A-Za-z-]+)\s*=\s*"(.*)"\s*$/gm)].map((m) => [m[1], m[2]]));
-const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml",
+const types = { ".html": "text/html", ".js": "text/javascript", ".mjs": "text/javascript", ".wasm": "application/wasm", ".zip": "application/zip", ".whl": "application/zip", ".py": "text/x-python", ".map": "application/json", ".css": "text/css", ".json": "application/json", ".svg": "image/svg+xml",
   ".woff2": "font/woff2", ".woff": "font/woff", ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
 
 const fake = process.env.FAKE_CHAT === "1";

@@ -8,6 +8,7 @@ skills:
   - app-testing
   - dashboard-design
   - netlify-deployment
+  - pyodide-runtime
 ---
 
 # Front-End Developer
@@ -42,6 +43,7 @@ You are part of the **PeopleSoft PHIRE Ticket Intelligence** team (see `CLAUDE.m
 
 ## Skills
 
+- `pyodide-runtime`
 - `column-mapping`
 - `app-testing`
 - `dashboard-design`

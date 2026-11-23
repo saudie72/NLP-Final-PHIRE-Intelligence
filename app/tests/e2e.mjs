@@ -85,12 +85,38 @@ async function run(viewport, scheme, tag, shots) {
   check(`${tag}: Excel report downloads`, dl.suggestedFilename().endsWith("-analyzed.xlsx"), dl.suggestedFilename());
   if (tag === "desktop-light") await dl.saveAs(`${out}/report.xlsx`);
 
+  // ticket drawer: build-time NLTK + spaCy for demo tickets
+  await page.locator(".nav button", { hasText: "Tickets" }).click();
+  await page.fill("#q", "");
+  await page.locator("tbody tr").first().click();
+  await page.waitForSelector('[data-testid="ticket-lang"]');
+  const tl = await page.locator('[data-testid="ticket-lang"]').textContent();
+  const marks = await page.locator('[data-testid="ticket-lang"] mark.ent').count();
+  check(`${tag}: ticket shows NLTK VADER and spaCy entities`, /NLTK/.test(tl) && /spaCy/.test(tl) && /VADER/.test(tl) && marks > 0, `${marks} entity spans`);
+  await page.keyboard.press("Escape");
+
+  // Language page: labelled NLTK and spaCy panels, then NLTK live via Pyodide
+  await page.locator(".nav button", { hasText: "Language" }).click();
+  await page.waitForSelector('[data-testid="panel-ruler"]');
+  const panels = ["panel-sentiment", "panel-urgency", "panel-topwords", "panel-collocations", "panel-ruler", "panel-model-ents", "panel-aspects"];
+  const labelled = [];
+  for (const id of panels) labelled.push(await page.locator(`[data-testid="${id}"] .lib`).first().textContent());
+  check(`${tag}: Language page shows 7 panels labelled NLTK / spaCy / both`,
+    labelled.filter((l) => /NLTK/.test(l)).length >= 4 && labelled.filter((l) => /spaCy/i.test(l)).length >= 3, labelled.join(","));
+  if (shots) await page.screenshot({ path: `${out}/${tag}-8-language.png`, fullPage: true });
+  await page.fill("#nltk-text", "Voucher Build abended with an error and the pay cycle is stuck. Urgent, please help.");
+  await page.getByTestId("nltk-run").click();
+  const live = await page.waitForSelector('[data-testid="nltk-result"]', { timeout: 120000 }).then(() => true).catch(() => false);
+  const liveText = live ? await page.locator('[data-testid="nltk-result"]').textContent() : "";
+  check(`${tag}: NLTK runs live in the browser (Pyodide) and finds urgency terms`, live && /stuck/.test(liveText) && /VADER/.test(liveText), liveText.slice(0, 60));
+
   await page.locator(".nav button", { hasText: "Resources" }).click();
   await page.waitForSelector(".team");
-  check(`${tag}: Resources page shows team and metrics`, (await page.locator(".agent").count()) === 16);
+  check(`${tag}: Resources page shows team and metrics`, (await page.locator(".agent").count()) === 20);
   const links = await page.locator('[data-testid="links"] a').count();
   const guide = await page.locator('[data-testid="links"] a[href*="NTCut33EUofio3qY7ZNCXQ"]').count();
-  check(`${tag}: Resources lists every link the project relies on, including the guide`, links >= 30 && guide === 1, `${links} links`);
+  const nltkSpacy = await page.locator('[data-testid="links"] a[href*="nltk.org"], [data-testid="links"] a[href*="spacy.io"], [data-testid="links"] a[href*="pyodide.org"]').count();
+  check(`${tag}: Resources lists every link the project relies on, including the guide`, links >= 40 && guide === 1 && nltkSpacy >= 10, `${links} links, ${nltkSpacy} NLTK/spaCy/Pyodide`);
   check(`${tag}: footer links to Resources`, (await page.locator(".footer a", { hasText: "Resources" }).count()) === 1);
   if (shots) await page.screenshot({ path: `${out}/${tag}-7-resources.png`, fullPage: true });
 

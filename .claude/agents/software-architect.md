@@ -6,6 +6,7 @@ tools: Read, Grep, Glob, Edit, Write, Bash
 skills:
   - data-handling-review
   - netlify-deployment
+  - netlify-python-build
 ---
 
 # Software Architect
@@ -41,6 +42,7 @@ You are part of the **PeopleSoft PHIRE Ticket Intelligence** team (see `CLAUDE.m
 
 ## Skills
 
+- `netlify-python-build`
 - `data-handling-review`
 - `netlify-deployment`
 

@@ -1,11 +1,13 @@
-# Netlify: build the React app in app/ and publish app/dist.
+# Netlify: run the NLTK + spaCy pipeline with Python (build time only; Netlify can't run Python at request time),
+# then build the React app in app/ and publish app/dist.
 [build]
   base = "app"
-  command = "npm ci && npm run build"
+  command = "python3 -m pip install -r ../pipeline/requirements.txt && python3 ../pipeline/build_nlp.py && npm ci && npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "22"
+  PYTHON_VERSION = "3.12"
 
 # "Ask the expert" chat runs in app/netlify/functions/chat.mjs (path /api/chat).
 # It stays switched off until ANTHROPIC_API_KEY is added under Site configuration > Environment variables.
@@ -27,7 +29,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "no-referrer"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"

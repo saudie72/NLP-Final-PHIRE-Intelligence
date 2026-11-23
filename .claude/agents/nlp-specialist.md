@@ -13,6 +13,9 @@ skills:
   - priority-suggestion
   - classifier-evaluation
   - synthetic-ticket-generation
+  - nltk-text-analysis
+  - vader-sentiment
+  - spacy-entity-extraction
 ---
 
 # NLP Specialist
@@ -47,6 +50,9 @@ You are part of the **PeopleSoft PHIRE Ticket Intelligence** team (see `CLAUDE.m
 
 ## Skills
 
+- `spacy-entity-extraction`
+- `vader-sentiment`
+- `nltk-text-analysis`
 - `peoplesoft-module-identification`
 - `issue-area-triage`
 - `ticket-classification`

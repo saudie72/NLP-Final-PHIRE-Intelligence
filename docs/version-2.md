@@ -8,7 +8,10 @@
   an Excel report, a Resources page, and an optional "Ask the expert" chat with the assigned specialist.
 - Held-out test results (synthetic): module 87.2% accuracy, issue area 91.2%, similar-ticket precision@5 0.955,
   clustering ARI 0.898 (`nlp/results.md`).
-- Tests: parity 4/4, unit 34/34, chat function 6/6, chat UI 7/7, browser 45/45 on the live site.
+- NLTK (VADER, urgency keywords, FreqDist, collocations; live in the browser via Pyodide) and spaCy (EntityRuler for
+  PeopleSoft objects, entities, noun-chunk aspects, lemmas), computed at build time on Netlify
+  (`reports/nlp-language-evaluation.md`).
+- Tests: parity 4/4, unit 34/34, pipeline 14/14, chat function 6/6, chat UI 7/7, browser 68/68.
 - Requirements (`docs/requirements.md`), architecture (`docs/architecture.md`), ERP QA review
   (`docs/erp-qa-review.md`) and security review (`docs/security-review.md`).
 
@@ -38,6 +41,8 @@ Ordered by value. Owners are agent IDs from `docs/expert-roster.md`.
 | 1 | Label generic access and environment tickets `SEC` / `PT`, or add module wording to them, in the generator | 23 of 32 module errors come from tickets whose text never names their module (`docs/erp-qa-review.md`) | data-engineer |
 | 2 | More varied training phrasing for report requests, Integration Broker and performance tickets; retrain (never on test) | Main issue-area errors | data-engineer, nlp-specialist |
 | 3 | Add explicit cues ("report showing", "message queue", "timing out") to the taxonomy tie-break table | Makes labels and rules consistent | erp-functional-analyst |
+| 4a | Extend the EntityRuler with the confirmed PHIRE module and object lists, and add spaCy entity evaluation against hand-labelled tickets | Ruler coverage is 77% on synthetic tickets; no gold entity labels yet | spacy-expert |
+| 4b | A PeopleSoft-tuned sentiment/urgency lexicon (fix VADER's "pay" negative, "security" positive) | VADER alone has precision 0.37 for H | nltk-expert |
 | 4 | Sentence embeddings for similarity, kept in the browser (small ONNX model) | TF-IDF misses paraphrases; duplicate precision is only 0.39 | nlp-specialist, software-architect |
 | 5 | Confirm the real PHIRE value lists (modules, statuses, priorities, resolution codes) and update the generator | Several values are assumptions | erp-business-analyst |
 | 6 | Evaluate on a sanitized, approved sample of real tickets in an approved environment | Synthetic accuracy overstates real accuracy | nlp-specialist, security-reviewer |
@@ -56,7 +61,7 @@ Ordered by value. Owners are agent IDs from `docs/expert-roster.md`.
 
 | # | Item | Why | Owner |
 |---|---|---|---|
-| 12 | Add a **UX Designer** agent (wireframes, usability review) and a **DevOps** agent (Netlify, CI, monitoring) | The guide's example team has both; in v1 the Front-End Developer and the Software Architect / Security Reviewer covered them | meta-agent |
+| 12 | Add a **UX Designer** agent (wireframes, usability review) | The guide's example team has one; the Front-End Developer covered design in v1 (the DevOps role is now the Netlify Engineer) | meta-agent |
 | 13 | Run version 2 through `@agent-orchestrator` with experts in parallel, peer reviews in parallel, and feedback rounds | Matches the guide's process | orchestrator |
 | 14 | GitHub Actions running unit, parity and browser tests on every push | Catch regressions before Netlify deploys | devops (new), qa-tester |
 | 15 | Re-run the registered-agent knowledge test (Q1 in `docs/agent-test-results.md`) in a fresh session | Confirms the "read knowledge first" fix with the registered agent | erp-qa-developer |

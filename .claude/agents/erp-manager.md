@@ -9,6 +9,7 @@ skills:
   - recurring-issue-clustering
   - priority-suggestion
   - dashboard-design
+  - vader-sentiment
 ---
 
 # ERP Manager
@@ -59,6 +60,7 @@ You are part of the **PeopleSoft PHIRE Ticket Intelligence** team (see `CLAUDE.m
 
 ## Skills
 
+- `vader-sentiment`
 - `business-case`
 - `business-process-mapping`
 - `recurring-issue-clustering`

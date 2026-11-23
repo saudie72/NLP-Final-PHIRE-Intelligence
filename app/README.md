@@ -44,9 +44,10 @@ node tests/e2e.mjs http://localhost:4174 test-results
 |---|---|---|
 | `tests/parity.test.js` | JS engine vs scikit-learn: probabilities (within 0.001), top-5 neighbours, identical clusters | 4/4 |
 | `tests/unit.test.js` | column auto-mapping, renamed headers, required fields, dates, aging, analysis output, priority rules | 13/13 |
+| `../pipeline/tests/` (pytest) | NLTK tokenizer, stopwords, VADER labels, urgency terms, collocations; spaCy EntityRuler, model entities, noun chunks; pipeline outputs | 14/14 |
 | `tests/chat.test.js` | chat function with a fake client: not-configured, password, input limits, prompt contents, streaming, refusals | 6/6 |
 | `tests/e2e-chat.mjs` | chat UI against the real function with a fake client: assigned expert, consent, password, streamed answer, same-origin only | 7/7 |
-| `tests/e2e.mjs` | full flow in Chromium on desktop (light, dark) and phone, under the production CSP: demo load, 16/16 columns mapped, analysis, portfolio filter, search, drawer, recurring issues, Excel export, Resources, no horizontal scroll, no console errors, **no requests to other origins** | 42/42 |
+| `tests/e2e.mjs` | full flow in Chromium on desktop (light, dark) and phone, under the production CSP: demo load, 16/16 columns mapped, analysis, portfolio filter, search, drawer, recurring issues, Excel export, Resources, no horizontal scroll, no console errors, **no requests to other origins** | 68/68 |
 
 ## Turn on "Ask the expert" (optional, costs money)
 

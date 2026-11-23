@@ -41,7 +41,7 @@ the script prints the cost at the end.
 
 | Check | Result |
 |---|---|
-| `--check-agents`: SDK imports (`query` is a function) and all 16 agent files load through the script's loader with a valid model, title, name, knowledge-folder first step and data-handling rules | ✅ 16/16 |
+| `--check-agents`: SDK imports (`query` is a function) and all 20 agent files load through the script's loader with a valid model, title, name, knowledge-folder first step and data-handling rules | ✅ 20/20 |
 | `--dry-run` builds the prompt from the 5 highest-priority open synthetic tickets | ✅ |
 | File outside `data/synthetic/` | ✅ refused |
 | `data/synthetic/../../README.md` (path trick) | ✅ refused |

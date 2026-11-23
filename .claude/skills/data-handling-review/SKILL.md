@@ -7,7 +7,7 @@ description: "Check that no real ticket data is committed, sent or stored, and t
 
 **Purpose:** Enforce the project's confidentiality rules.
 
-**Used by:** Software Architect, Data Engineer, Security Reviewer
+**Used by:** Software Architect, Data Engineer, Security Reviewer, Pyodide Engineer, Netlify Engineer
 
 **Inputs:** The repository, the built app and its network behavior.
 

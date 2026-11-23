@@ -8,8 +8,9 @@ import { Resources } from "./components/Resources.jsx";
 import { Mapping, Start } from "./components/Start.jsx";
 import { TicketDrawer, Tickets } from "./components/Tickets.jsx";
 import { Icon } from "./components/ui.jsx";
+import { Language } from "./components/Language.jsx";
 
-const PAGES = ["start", "dashboard", "tickets", "recurring", "resources"];
+const PAGES = ["start", "dashboard", "tickets", "recurring", "language", "resources"];
 const pageFromHash = () => (PAGES.includes(location.hash.slice(1)) ? location.hash.slice(1) : "start");
 const store = {
   get: (k) => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
@@ -31,6 +32,8 @@ export default function App() {
   const [openId, setOpenId] = useState(null);
   const worker = useRef(null);
   const [modelError, setModelError] = useState(false);
+  const [lang, setLang] = useState(null);           // build-time NLTK + spaCy results
+  const [nltkText, setNltkText] = useState(null);
 
   const loadModel = useCallback(() => {
     setModelError(false);
@@ -41,6 +44,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    fetch("/nlp/language.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).then(setLang).catch(() => setLang(null));
     loadModel();
     const onHash = () => setPage(pageFromHash());
     addEventListener("hashchange", onHash);
@@ -54,6 +58,7 @@ export default function App() {
   const go = useCallback((p, opts = {}) => {
     if (p === "tickets") setFilters(opts);
     if (p === "recurring") setFocus(opts.focus || null);
+    if (p === "language") setNltkText(opts.text || null);
     location.hash = p;
     setPage(p);
     window.scrollTo(0, 0);
@@ -162,6 +167,7 @@ export default function App() {
     ["dashboard", "Dashboard", Icon.dash, null],
     ["tickets", "Tickets", Icon.list, result ? view.length : null],
     ["recurring", "Recurring issues", Icon.repeat, result ? viewRecurring.length : null],
+    ["language", "Language · NLTK + spaCy", Icon.text, null],
     ["resources", "Resources", Icon.book, null],
   ];
   const needsData = page === "dashboard" || page === "tickets" || page === "recurring";
@@ -256,9 +262,15 @@ export default function App() {
           <a href="#resources" onClick={(e) => { e.preventDefault(); go("resources"); }}>Resources &amp; links</a>
           <a href="https://github.com/saudie72/NLP-Final-PHIRE-Intelligence" target="_blank" rel="noopener noreferrer">GitHub</a>
         </footer>
+        {page === "language" && (
+          <>
+            <div className="topbar"><div className="file"><span className="eyebrow">Build-time pipeline + live NLTK</span><h1>Language analysis</h1></div></div>
+            <Language data={lang} initialText={nltkText} go={go} />
+          </>
+        )}
         {page === "resources" && <Resources model={model ? { ...model, vocabSize: model.vocab.length.toLocaleString() } : null} />}
       </main>
-      {open && <TicketDrawer ticket={open} byId={byId} onClose={() => setOpenId(null)} openTicket={setOpenId} go={go} />}
+      {open && <TicketDrawer ticket={open} byId={byId} lang={lang} onClose={() => setOpenId(null)} openTicket={setOpenId} go={go} />}
     </div>
   );
 }

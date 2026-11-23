@@ -12,10 +12,10 @@ application, deploy it to Netlify, and submit the GitHub repository and live app
 | Platform | PeopleSoft HCM 9.2 and FSCM 9.2 |
 | Source data | Excel export of PHIRE tickets (synthetic tickets for this project) |
 | Primary purpose | Analyze, classify, prioritize, and identify recurring support issues |
-| AI development platform | Claude Code with 16 specialized agents |
+| AI development platform | Claude Code with 20 specialized agents |
 | Application | React web application |
 | Deployment | GitHub and Netlify |
-| NLP capabilities | Text classification, keyword extraction, semantic similarity, issue clustering |
+| NLP capabilities | Text classification, keyword extraction, semantic similarity, issue clustering; **NLTK** (VADER sentiment, urgency keywords, FreqDist, collocations; also live in the browser via Pyodide) and **spaCy** (named entities, EntityRuler for PeopleSoft objects, noun-chunk aspects, lemmas) |
 
 ## What the application will do
 
@@ -34,6 +34,25 @@ ticket descriptions, and produces:
 ## Research
 
 Background research for the agent team is in [`docs/`](docs/README.md): PHIRE, the export format, PeopleSoft modules, technical and security components, the ticket taxonomy, NLP methods, data handling and the synthetic dataset plan.
+
+## NLTK and spaCy
+
+| Library | Where | What |
+|---|---|---|
+| **NLTK** 3.9.1 | Netlify build (`pipeline/build_nlp.py`) and **live in the browser** via self-hosted Pyodide | VADER sentiment, urgency keywords, top words (FreqDist), key phrases (bigram collocations) |
+| **spaCy** 3.8.18, `en_core_web_sm` | Netlify build | EntityRuler for PeopleSoft objects, named entities, noun-chunk aspects scored with VADER, lemmas |
+
+In the app: **Language · NLTK + spaCy** page (every panel labelled) and an NLTK + spaCy section in each demo ticket.
+Evaluation and errors: [`reports/nlp-language-evaluation.md`](reports/nlp-language-evaluation.md). Research:
+[`docs/nltk-spacy-netlify.md`](docs/nltk-spacy-netlify.md).
+
+```bash
+python3 -m pip install -r pipeline/requirements-dev.txt
+```
+
+```bash
+python3 pipeline/build_nlp.py && python3 -m pytest pipeline/tests -q
+```
 
 ## Results (held-out synthetic test set)
 
@@ -68,7 +87,7 @@ Ticket analysis is planned to run in the browser so ticket text does not leave t
 
 - [x] Create GitHub repository
 - [x] Research documentation (`docs/`)
-- [x] Build all 16 agents, skills, and knowledge folders
+- [x] Build all 20 agents, skills, and knowledge folders
 - [x] PHIRE Excel upload and column mapping
 - [x] Classify tickets by module and issue type
 - [x] Identify similar tickets and recurring issues

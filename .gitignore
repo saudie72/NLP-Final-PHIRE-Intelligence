@@ -27,3 +27,11 @@ app/test-results*/
 
 # Generated at build time from .claude/agents and knowledge/
 app/netlify/lib/experts-data.mjs
+
+# NLP pipeline: downloaded NLTK data and build outputs copied into the app
+pipeline/.nltk_data/
+app/public/nlp/
+app/public/pyodide-data/
+app/public/pyodide/
+__pycache__/
+.pytest_cache/

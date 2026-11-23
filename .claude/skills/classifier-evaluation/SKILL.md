@@ -7,7 +7,7 @@ description: "Evaluate classifiers on the held-out test set: accuracy, precision
 
 **Purpose:** Prove the NLP works and show where it fails.
 
-**Used by:** ERP QA Developer, NLP Specialist, QA Tester
+**Used by:** ERP QA Developer, NLP Specialist, QA Tester, NLTK Expert
 
 **Inputs:** Trained models and `data/synthetic/phire_test.csv`.
 

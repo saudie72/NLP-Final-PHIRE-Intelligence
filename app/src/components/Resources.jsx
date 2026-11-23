@@ -8,6 +8,8 @@ const TEAM = [
   ["NLP Specialist", "Amara", "Development & NLP", "opus"], ["Data Engineer", "Sam", "Development & NLP", "sonnet"],
   ["Front-End Developer", "Jules", "Development & NLP", "sonnet"], ["Back-End Developer", "Omar", "Development & NLP", "sonnet"],
   ["QA Tester", "Bea", "Development & NLP", "haiku"], ["Security Reviewer", "Nadia", "Development & NLP", "opus"],
+  ["NLTK Expert", "Ines", "NLP libraries & platform", "sonnet"], ["spaCy Expert", "Mateo", "NLP libraries & platform", "sonnet"],
+  ["Pyodide Engineer", "Yuki", "NLP libraries & platform", "sonnet"], ["Netlify Engineer", "Grant", "NLP libraries & platform", "sonnet"],
 ];
 
 const GUIDE = "https://claude.ai/artifact/NTCut33EUofio3qY7ZNCXQ";
@@ -15,6 +17,9 @@ const LINKS = [
   ["Project", [
     ["GitHub repository", REPO],
     ["Step-by-step guide (Build a team of synthetic employees with Claude Code)", GUIDE],
+    ["NLP Final Exam guide (NLTK + spaCy requirements)", "https://claude.ai/artifact/K55JqCeSxXULMmzki6yv73"],
+    ["NLTK and spaCy evaluation report", `${REPO}/blob/main/reports/nlp-language-evaluation.md`],
+    ["NLTK, spaCy and Netlify research", `${REPO}/blob/main/docs/nltk-spacy-netlify.md`],
     ["Version 1 requirements", `${REPO}/blob/main/docs/requirements.md`],
     ["Architecture", `${REPO}/blob/main/docs/architecture.md`],
     ["Evaluation report", `${REPO}/blob/main/nlp/results.md`],
@@ -23,6 +28,18 @@ const LINKS = [
     ["Version 2 plan", `${REPO}/blob/main/docs/version-2.md`],
     ["Research docs", `${REPO}/tree/main/docs`],
     ["Agent roster", `${REPO}/blob/main/docs/expert-roster.md`],
+  ]],
+  ["NLP libraries", [
+    ["NLTK", "https://www.nltk.org/"],
+    ["NLTK VADER sentiment", "https://www.nltk.org/howto/sentiment.html"],
+    ["NLTK collocations", "https://www.nltk.org/howto/collocations.html"],
+    ["NLTK data downloads", "https://www.nltk.org/data.html"],
+    ["spaCy linguistic features (entities, noun chunks, lemmas)", "https://spacy.io/usage/linguistic-features"],
+    ["spaCy EntityRuler", "https://spacy.io/api/entityruler"],
+    ["spaCy en_core_web_sm model", "https://spacy.io/models/en"],
+    ["spaCy displaCy visualizer", "https://spacy.io/usage/visualizers"],
+    ["Pyodide (Python in the browser)", "https://pyodide.org/en/stable/usage/quickstart.html"],
+    ["Pyodide packages (nltk available, spaCy not)", "https://pyodide.org/en/stable/usage/packages-in-pyodide.html"],
   ]],
   ["Libraries and frameworks", [
     ["React", "https://react.dev"],
@@ -37,6 +54,7 @@ const LINKS = [
   ]],
   ["Platforms and web standards", [
     ["Netlify Functions", "https://docs.netlify.com/functions/overview/"],
+    ["Netlify build dependencies and Python version", "https://docs.netlify.com/configure-builds/manage-dependencies/"],
     ["Netlify file-based configuration (netlify.toml)", "https://docs.netlify.com/configure-builds/file-based-configuration/"],
     ["Claude API documentation", "https://platform.claude.com/docs"],
     ["Claude Code subagents", "https://code.claude.com/docs/en/sub-agents"],
@@ -62,7 +80,7 @@ export function Resources({ model }) {
         <h1>PeopleSoft PHIRE Ticket Intelligence</h1>
         <p className="muted" style={{ maxWidth: "72ch" }}>
           An NLP application that analyzes PeopleSoft HCM 9.2 and FSCM 9.2 support tickets exported from PHIRE. It was
-          designed, built and tested by a team of 16 specialized Claude Code agents covering PeopleSoft ERP operations,
+          designed, built and tested by a team of 20 specialized Claude Code agents covering PeopleSoft ERP operations, NLTK and spaCy,
           software development and NLP.
         </p>
         <div className="row">

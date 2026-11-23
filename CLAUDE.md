@@ -3,7 +3,8 @@
 An NLP application that analyzes PeopleSoft HCM 9.2 / FSCM 9.2 support tickets exported from PHIRE to Excel:
 it classifies each ticket by **module** and **issue area** (Functional, Technical, Security, Administration),
 extracts keywords, finds similar and duplicate tickets, groups recurring issues, suggests priority, shows a
-dashboard, and exports an Excel report. It is built by a team of 16 Claude Code agents and deployed on Netlify.
+dashboard, and exports an Excel report. It also runs NLTK and spaCy over the tickets at build time (and NLTK live in the browser via Pyodide).
+It is built by a team of 20 Claude Code agents and deployed on Netlify.
 
 ## Data-handling rules (non-negotiable)
 
@@ -19,9 +20,9 @@ dashboard, and exports an Excel report. It is built by a team of 16 Claude Code 
 | Path | What it holds |
 |---|---|
 | `docs/` | Research the agents rely on; start at [`docs/README.md`](docs/README.md) |
-| `docs/expert-roster.md` | The 16 agents, their jobs, deliverables and skills |
+| `docs/expert-roster.md` | The 20 agents, their jobs, deliverables and skills |
 | `.claude/agents/` | One subagent file per agent |
-| `.claude/skills/` | 26 shared skills, one folder each with `SKILL.md` |
+| `.claude/skills/` | 33 shared skills, one folder each with `SKILL.md` |
 | `knowledge/<agent-id>/` | Each agent's own documents, read before every answer (synthetic or public material only) |
 | `docs/agent-brains.md` | Each agent's model, name and personality |
 | `data/synthetic/` | Synthetic PHIRE exports: train (1,000), test (250), demo (250); see its README |
@@ -29,6 +30,8 @@ dashboard, and exports an Excel report. It is built by a team of 16 Claude Code 
 | `exports/` | Claude skill zip for the app (`scripts/build_skill_zip.py`); see its README |
 | `sdk/` | Agent SDK demo script (synthetic data only, `--dry-run` needs no key); see its README |
 | `nlp/` | Model training and evaluation (`train.py`, `results.md`, parity fixture) |
+| `pipeline/` | Build-time NLTK + spaCy pipeline (`build_nlp.py`, `nltk_core.py`, `patterns.py`, tests) run on Netlify |
+| `reports/` | Generated evaluation (`nlp-language-evaluation.md`) and pipeline run metadata |
 | `app/` | React app (Vite); `src/engine/` is the in-browser NLP engine, `public/model/model.json` the exported model |
 
 ## The team
@@ -38,6 +41,7 @@ dashboard, and exports an Excel report. It is built by a team of 16 Claude Code 
 | Project management and coordination | `orchestrator`, `product-manager`, `erp-manager`, `meta-agent` |
 | PeopleSoft ERP specialists | `erp-business-analyst`, `erp-functional-analyst`, `erp-developer`, `peoplesoft-admin`, `erp-qa-developer` |
 | Application development and NLP | `software-architect`, `nlp-specialist`, `data-engineer`, `frontend-developer`, `backend-developer`, `qa-tester`, `security-reviewer` |
+| NLP libraries and platform | `nltk-expert`, `spacy-expert`, `pyodide-engineer`, `netlify-engineer` |
 
 Two analyst roles are separate on purpose: **erp-business-analyst** owns business cases, stakeholder
 requirements, process maps and scope; **erp-functional-analyst** owns functional specifications, user stories and
