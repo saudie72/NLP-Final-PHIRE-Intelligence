@@ -86,6 +86,16 @@ async function run(viewport, scheme, tag, shots) {
   check(`${tag}: footer links to Resources`, (await page.locator(".footer a", { hasText: "Resources" }).count()) === 1);
   if (shots) await page.screenshot({ path: `${out}/${tag}-7-resources.png`, fullPage: true });
 
+  await page.getByTestId("theme-dark").click();
+  const dark = await page.evaluate(() => [document.documentElement.dataset.theme, getComputedStyle(document.body).backgroundColor]);
+  await page.getByTestId("theme-light").click();
+  const light = await page.evaluate(() => [document.documentElement.dataset.theme, getComputedStyle(document.body).backgroundColor]);
+  await page.reload();
+  const kept = await page.evaluate(() => document.documentElement.dataset.theme);
+  await page.getByTestId("theme-system").click();
+  const sys = await page.evaluate(() => document.documentElement.dataset.theme ?? null);
+  check(`${tag}: theme switch sets dark and light, remembers the choice, and returns to system`,
+    dark[0] === "dark" && light[0] === "light" && dark[1] !== light[1] && kept === "light" && sys === null, `${dark[1]} vs ${light[1]}`);
   const hScroll = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
   check(`${tag}: no horizontal page scroll`, !hScroll);
   check(`${tag}: no console errors`, errors.length === 0, errors.slice(0, 3).map((e) => e.slice(0, 160)).join(" | "));

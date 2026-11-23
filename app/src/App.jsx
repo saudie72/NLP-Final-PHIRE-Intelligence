@@ -134,13 +134,20 @@ export default function App() {
         </div>
         <div className="rail-foot">
           <div className="privacy"><Icon.lock /><span>Analysis runs in this browser. Files are never uploaded.</span></div>
-          <button className="theme-toggle" onClick={() => setTheme(theme === "dark" ? "light" : theme === "light" ? null : "dark")}>
-            Theme: {theme || "system"}
-          </button>
         </div>
       </nav>
 
       <main className="workspace">
+        <div className="appbar">
+          <div className="theme-switch" role="radiogroup" aria-label="Color theme">
+            {[["light", "Light", Icon.sun], ["dark", "Dark", Icon.moon], [null, "System", Icon.monitor]].map(([value, label, I]) => (
+              <button key={label} role="radio" aria-checked={theme === value} data-testid={`theme-${label.toLowerCase()}`}
+                title={value ? `${label} theme` : "Follow the device setting"} onClick={() => setTheme(value)}>
+                <I /><span>{label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
         {page === "start" && progress != null && (
           <div className="panel" role="status" style={{ display: "grid", gap: 12 }}>
             <h2>Analyzing {file?.rows.length} tickets…</h2>
