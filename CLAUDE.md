@@ -27,6 +27,7 @@ dashboard, and exports an Excel report. It is built by a team of 16 Claude Code 
 | `data/synthetic/` | Synthetic PHIRE exports: train (1,000), test (250), demo (250); see its README |
 | `scripts/make_synthetic.py` | Synthetic data generator (fixed seed) |
 | `exports/` | Claude skill zip for the app (`scripts/build_skill_zip.py`); see its README |
+| `sdk/` | Agent SDK demo script (synthetic data only, `--dry-run` needs no key); see its README |
 | `nlp/`, `app/` | Model training and React app — added in later steps |
 
 ## The team
