@@ -28,7 +28,8 @@ dashboard, and exports an Excel report. It is built by a team of 16 Claude Code 
 | `scripts/make_synthetic.py` | Synthetic data generator (fixed seed) |
 | `exports/` | Claude skill zip for the app (`scripts/build_skill_zip.py`); see its README |
 | `sdk/` | Agent SDK demo script (synthetic data only, `--dry-run` needs no key); see its README |
-| `nlp/`, `app/` | Model training and React app — added in later steps |
+| `nlp/` | Model training and evaluation (`train.py`, `results.md`, parity fixture) |
+| `app/` | React app (Vite); `src/engine/` is the in-browser NLP engine, `public/model/model.json` the exported model |
 
 ## The team
 

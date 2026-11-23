@@ -6,7 +6,7 @@ two separate phrasing banks (A and B) so the test score is not inflated by memor
 templates.
 
 Outputs (data/synthetic/):
-  phire_train.xlsx / .csv   16 PHIRE columns + 2 label columns (Issue Area, Recurring Group)
+  phire_train.xlsx / .csv   16 PHIRE columns + 3 label columns (Issue Area, Recurring Group, Template)
   phire_test.xlsx  / .csv   same layout, written with phrasing bank B
   phire_demo_export.xlsx    the test tickets with only the 16 PHIRE columns (what a user uploads)
 
@@ -29,7 +29,7 @@ START_DATE = dt.date(2025, 1, 2)
 PHIRE_COLUMNS = ["Module", "Priority", "Issue Type", "Issue Num", "Title", "Description",
                  "Status", "Assigned To", "Opened By", "Open Date", "Closed Date", "Aging",
                  "Resolution Code", "CR", "Due Date", "Developer"]
-LABEL_COLUMNS = ["Issue Area", "Recurring Group"]
+LABEL_COLUMNS = ["Issue Area", "Recurring Group", "Template"]
 
 # ---------------------------------------------------------------- vocabulary
 M = {
@@ -364,7 +364,8 @@ class Gen:
         title, desc = title_t.format(**s), desc.format(**s)
         title = cap(title)
         prio = r.choices("HML", weights=priority_weights(title + " " + desc, area))[0]
-        return dict(mod=mod, area=area, itype=itype, title=title, desc=desc, prio=prio, group=group)
+        return dict(mod=mod, area=area, itype=itype, title=title, desc=desc, prio=prio, group=group,
+                    tmpl=f"{bank}-{area}-{tidx + 1}")
 
 
 def finish(tickets, rng, first_num):
@@ -403,7 +404,7 @@ def finish(tickets, rng, first_num):
                 "Duplicate" if status == "9-Cancelled" else None),
             "CR": cr, "Due Date": t["open"] + dt.timedelta(days=DUE_DAYS[t["prio"]]),
             "Developer": rng.choice(DEVELOPERS) if t["area"] == "Technical" or cr else None,
-            "Issue Area": t["area"], "Recurring Group": t["group"] or None,
+            "Issue Area": t["area"], "Recurring Group": t["group"] or None, "Template": t["tmpl"],
         }
         rows.append(row)
     return rows

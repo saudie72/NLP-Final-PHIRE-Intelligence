@@ -5,7 +5,7 @@ PHIRE tickets, people, ticket numbers or CR numbers. Names and departments are f
 
 | File | Rows | Columns | Use |
 |---|---|---|---|
-| `phire_train.xlsx` / `phire_train.csv` | 1,000 | 16 PHIRE columns + `Issue Area` + `Recurring Group` | Training and cross-validation (phrasing bank A) |
+| `phire_train.xlsx` / `phire_train.csv` | 1,000 | 16 PHIRE columns + `Issue Area` + `Recurring Group` + `Template` | Training and cross-validation (phrasing bank A) |
 | `phire_test.xlsx` / `phire_test.csv` | 250 | same | Final evaluation only (phrasing bank B) |
 | `phire_demo_export.xlsx` | 250 | the 16 PHIRE columns | Upload this in the app; same tickets as the test set |
 
@@ -28,6 +28,8 @@ Regenerate: `pip install -r scripts/requirements.txt && python3 scripts/make_syn
 - **Priority follows the ticket text** using the same signals as `docs/ticket-taxonomy.md` (high: "next pay period",
   "pay confirmation", "separated", "Queued", "timing out", year-end; low: "how to", "who has", cosmetic changes),
   with about 5–20% noise on purpose. See `priority_weights()`.
+- **`Template`** records which sentence template produced each ticket (for example `A-Technical-3`). It is used only
+  for template-grouped cross-validation in `nlp/train.py`; the app never sees it.
 - **User IDs are obvious placeholders** (`SYNUSERnnnn`), so no ID can be mistaken for a real login.
 - Issue numbers are unique across both sets; no test title appears in the training set.
 - Learnability sanity check (TF-IDF + logistic regression, not the final model): module accuracy 0.86,
