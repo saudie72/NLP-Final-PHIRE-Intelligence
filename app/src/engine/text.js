@@ -64,3 +64,9 @@ export function dot(a, b) {
 export function isMaskToken(term) {
   return term.split(" ").some((t) => MASK_TOKENS.has(t));
 }
+
+// Display-only stop words for keywords (the model itself uses every term).
+const STOP = new Set(("a an and are as at be been but by can could did do for from had has have hi how i in into is it its let " +
+  "me more my need needs no not of on or our please see should so team that the their them then there these this to up us was " +
+  "we were what when which who will with would you your know attached attachment let us any all also just").split(" "));
+export const showable = (t) => !isMaskToken(t) && !t.split(" ").some((w) => STOP.has(w)) && !/^\d+$/.test(t);

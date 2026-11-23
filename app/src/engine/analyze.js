@@ -1,6 +1,6 @@
 import { classify } from "./classify.js";
 import { cluster, neighbours, references, similarityMatrix } from "./similarity.js";
-import { isMaskToken, vectorize } from "./text.js";
+import { showable, vectorize } from "./text.js";
 
 const CLOSED = /^(9|10|11)-|closed|cancel|migrated to production/i;
 
@@ -14,10 +14,11 @@ export function suggestPriority(model, title, description) {
   return { level: "M", reason: null };
 }
 
+
 function keywordsFor(model, vec, k = 5) {
   return [...vec]
     .map(([i, w]) => [model.vocab[i], w])
-    .filter(([t]) => !isMaskToken(t))
+    .filter(([t]) => showable(t))
     .sort((a, b) => b[1] - a[1])
     .slice(0, k)
     .map(([t]) => t);
@@ -28,7 +29,7 @@ function groupKeywords(model, vecs, memberIdx, overall, k = 4) {
   for (const i of memberIdx) for (const [f, w] of vecs[i]) mean.set(f, (mean.get(f) || 0) + w / memberIdx.length);
   return [...mean]
     .map(([f, w]) => [model.vocab[f], w - (overall.get(f) || 0)])
-    .filter(([t]) => !isMaskToken(t))
+    .filter(([t]) => showable(t))
     .sort((a, b) => b[1] - a[1])
     .slice(0, k)
     .map(([t]) => t);

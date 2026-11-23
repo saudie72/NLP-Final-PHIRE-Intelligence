@@ -1,4 +1,4 @@
-import { isMaskToken } from "./text.js";
+import { showable } from "./text.js";
 
 // Linear classifiers exported by nlp/train.py. Both logistic regression and multinomial Naive Bayes are
 // scored as softmax(x . W + b); for Naive Bayes, W = feature_log_prob_ and b = class_log_prior_.
@@ -27,6 +27,6 @@ export function classify(clf, vec, model, topWords = 3) {
     label: clf.classes[best],
     confidence: probs[best],
     probabilities: Object.fromEntries(clf.classes.map((c, k) => [c, probs[k]])),
-    topWords: contributions.filter(([t, s]) => s > 0 && !isMaskToken(t)).slice(0, topWords).map(([t]) => t),
+    topWords: contributions.filter(([t, s]) => s > 0 && showable(t)).slice(0, topWords).map(([t]) => t),
   };
 }

@@ -25,6 +25,8 @@ Conventions used in every file:
 | 11 | [how-to-talk-to-your-experts.md](how-to-talk-to-your-experts.md) | Example prompts: one agent, the whole team, and four team workflows | Project owner, Orchestrator |
 | 12 | [agent-brains.md](agent-brains.md) | Each agent's model, the reason, and its name, voice and working style | Project owner, Meta Agent |
 | 13 | [agent-test-results.md](agent-test-results.md) | Knowledge-folder test of the ERP Functional Analyst: questions, rounds, answers | Project owner, QA |
+| 14 | [erp-qa-review.md](erp-qa-review.md) | ERP QA Developer's review of misclassified test tickets | NLP Specialist, Data Engineer |
+| 15 | [security-review.md](security-review.md) | Security Reviewer's checklist and sign-off for version 1 | Security Reviewer, project owner |
 
 ## Open questions for the project owner
 

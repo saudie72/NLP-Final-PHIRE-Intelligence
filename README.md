@@ -35,6 +35,18 @@ ticket descriptions, and produces:
 
 Background research for the agent team is in [`docs/`](docs/README.md): PHIRE, the export format, PeopleSoft modules, technical and security components, the ticket taxonomy, NLP methods, data handling and the synthetic dataset plan.
 
+## Results (held-out synthetic test set)
+
+| Measure | Result |
+|---|---|
+| Module classification (logistic regression) | 87.2% accuracy, 0.871 macro F1 |
+| Issue-area classification (Naive Bayes) | 91.2% accuracy, 0.918 macro F1 |
+| Similar-ticket precision@5 | 0.955 |
+| Recurring-issue clustering (adjusted Rand index) | 0.898 |
+
+Full report: [`nlp/results.md`](nlp/results.md). ERP review of the errors: [`docs/erp-qa-review.md`](docs/erp-qa-review.md).
+Security sign-off: [`docs/security-review.md`](docs/security-review.md). App and tests: [`app/README.md`](app/README.md).
+
 ## Data handling
 
 Real PHIRE records can contain employee names, IDs, payroll and access details. This project is built,
@@ -55,13 +67,13 @@ Ticket analysis is planned to run in the browser so ticket text does not leave t
 - [x] Create GitHub repository
 - [x] Research documentation (`docs/`)
 - [x] Build all 16 agents, skills, and knowledge folders
-- [ ] PHIRE Excel upload and column mapping
-- [ ] Classify tickets by module and issue type
-- [ ] Identify similar tickets and recurring issues
-- [ ] Dashboard and ticket details
-- [ ] Export analyzed results to Excel
-- [ ] Evaluate accuracy, precision, recall, and F1 on a held-out test set
-- [ ] QA and security testing
+- [x] PHIRE Excel upload and column mapping
+- [x] Classify tickets by module and issue type
+- [x] Identify similar tickets and recurring issues
+- [x] Dashboard and ticket details
+- [x] Export analyzed results to Excel
+- [x] Evaluate accuracy, precision, recall, and F1 on a held-out test set
+- [x] QA and security testing
 - [ ] Deploy to Netlify with a Resources page
 
 ## Links

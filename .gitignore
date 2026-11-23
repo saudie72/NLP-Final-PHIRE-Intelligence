@@ -23,4 +23,4 @@ Thumbs.db
 
 # Vite / test output
 app/dist/
-app/test-results/
+app/test-results*/
