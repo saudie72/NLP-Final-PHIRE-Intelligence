@@ -21,6 +21,7 @@ Conventions used in every file:
 | 7 | [nlp-methods.md](nlp-methods.md) | Classification, keywords, similarity, clustering, priority, evaluation | NLP Specialist, QA Tester |
 | 8 | [data-handling.md](data-handling.md) | Confidentiality, synthetic-only rule, browser-local processing | Security Reviewer, all agents |
 | 9 | [synthetic-dataset-plan.md](synthetic-dataset-plan.md) | How the synthetic train/test/demo data will be generated | Data Engineer, NLP Specialist, ERP QA Developer |
+| 10 | [expert-roster.md](expert-roster.md) | The 16 agents, their jobs, deliverables and shared skills | Orchestrator, Meta Agent, all agents |
 
 ## Open questions for the project owner
 
