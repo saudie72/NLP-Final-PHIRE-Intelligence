@@ -74,11 +74,11 @@ Ticket analysis is planned to run in the browser so ticket text does not leave t
 - [x] Export analyzed results to Excel
 - [x] Evaluate accuracy, precision, recall, and F1 on a held-out test set
 - [x] QA and security testing
-- [ ] Deploy to Netlify with a Resources page
+- [x] Deploy to Netlify with a Resources page
 
 ## Links
 
-- Live application: _added at deployment_
+- Live application: https://phire-intelligence.netlify.app
 
 ## Deploy on Netlify
 

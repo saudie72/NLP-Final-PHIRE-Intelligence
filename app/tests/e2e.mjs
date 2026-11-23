@@ -56,8 +56,10 @@ async function run(viewport, scheme, tag, shots) {
   check(`${tag}: ticket drawer shows classification and 5 similar tickets`, sims === 5, `${sims} similar`);
   if (shots) await page.screenshot({ path: `${out}/${tag}-5-ticket.png` });
   await page.getByTestId("chat-tab").click();
-  await page.getByTestId("chat-off").waitFor();
-  check(`${tag}: expert chat shows "not switched on" without an API key`, true);
+  await page.waitForSelector('[data-testid="chat-off"], #chat-expert');
+  const chatOn = (await page.locator("#chat-expert").count()) > 0;
+  check(`${tag}: expert chat tab renders (${chatOn ? "switched on, consent required, no message sent" : "not switched on"})`,
+    chatOn ? (await page.locator("#chat-consent").count()) === 1 : true);
   if (shots) await page.screenshot({ path: `${out}/${tag}-5b-chat-off.png` });
   await page.keyboard.press("Escape");
   check(`${tag}: Escape closes the drawer`, (await page.locator(".drawer").count()) === 0);
