@@ -9,6 +9,7 @@ Every item below was checked by running a command or a test, not by reading the 
 ## Verdict
 
 **Signed off for deployment** of version 1 to Netlify with synthetic data. No open high or critical findings.
+Re-reviewed after the "Ask the expert" chat was added (checks 15–21).
 
 ## Checks
 
@@ -27,6 +28,13 @@ Every item below was checked by running a command or a test, not by reading the 
 | 11 | Dependencies | `npm audit` (production and development) | ✅ 0 vulnerabilities after upgrading Vite to 6.4.6 and Vitest to 5.1.1 |
 | 12 | Excel parser | SheetJS 0.20.3 from the vendor's CDN (the npm registry copy is outdated and has known issues) | ✅ |
 | 13 | Excel export cannot create formulas from ticket text | SheetJS `json_to_sheet` writes text cells as strings, not formulas | ✅ |
+| 15 | API key never reaches the browser | key read only in `netlify/functions/chat.mjs` from the server environment; the browser bundle contains only the variable *name* in the "not switched on" help text (`grep` of `dist/`) | ✅ |
+| 16 | Chat off without a key | function returns 503 and the UI shows "not switched on"; browser test on desktop and phone | ✅ |
+| 17 | Optional password gate | constant-time comparison of SHA-256 hashes; unit test and browser test with a wrong password (401) | ✅ |
+| 18 | Input limits | known experts only, user/assistant roles only, alternating turns, 2,000 characters per message, last 16 turns, ticket fields clipped | ✅ unit tests |
+| 19 | Consent before sending ticket text | the first message is blocked until the notice is ticked; browser test | ✅ |
+| 20 | Chat stays same-origin | browser test with chat on: 0 requests to other origins; CSP unchanged | ✅ |
+| 21 | Chat answers rendered safely | plain-text rendering (paragraphs, bullets, bold) without HTML; no `innerHTML` | ✅ |
 | 14 | Other headers | `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer`, `X-Frame-Options: DENY`, `Permissions-Policy`, `Cross-Origin-Opener-Policy` | ✅ |
 
 ## Findings fixed during review
@@ -37,6 +45,9 @@ Every item below was checked by running a command or a test, not by reading the 
 | Build and test tools had known advisories (Vite ≤ 6.4.3, Vitest / tinypool) | High (build machine only, never shipped) | Upgraded to Vite 6.4.6 and Vitest 5.1.1 |
 
 ## Residual risks (accepted for version 1)
+
+- **Chat sends the discussed ticket to Anthropic's API** when the owner turns it on. Mitigated by the consent notice,
+  the synthetic-data rule, the optional password and sending one ticket at a time. Costs are billed to the owner's key.
 
 - **Users may upload real PHIRE exports to the public site.** Processing stays in their browser, but the start page and
   Resources page tell users to use synthetic or approved data only. Organizations should evaluate real data in an

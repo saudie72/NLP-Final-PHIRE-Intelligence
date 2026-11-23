@@ -1,0 +1,46 @@
+// Browser test of the expert chat UI against the real function with a FAKE client (no API spend).
+// Start: FAKE_CHAT=1 node tests/serve-with-headers.mjs 4175   then: node tests/e2e-chat.mjs http://localhost:4175 test-results
+import { createRequire } from "node:module";
+const { chromium } = createRequire(import.meta.url)("playwright");
+const base = process.argv[2] || "http://localhost:4175", out = process.argv[3] || "test-results";
+const origin = new URL(base).origin;
+const results = [];
+const check = (name, ok, detail = "") => { results.push(ok); console.log(`${ok ? "PASS" : "FAIL"}  ${name}${detail ? ` — ${detail}` : ""}`); };
+const browser = await chromium.launch();
+const page = await (await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 })).newPage();
+const errors = [], foreign = [];
+page.on("pageerror", (e) => errors.push(e.message));
+page.on("console", (m) => m.type() === "error" && !/status of 401/.test(m.text()) && errors.push(m.text())); // the 401 is the deliberate wrong-password check
+page.on("request", (r) => { const u = new URL(r.url()); if (/^https?:$/.test(u.protocol) && u.origin !== origin) foreign.push(r.url()); });
+await page.goto(base);
+await page.waitForFunction(() => !document.querySelector('[data-testid="demo"]').disabled);
+await page.getByTestId("demo").click();
+await page.getByTestId("analyze").click();
+await page.waitForSelector(".kpis", { timeout: 30000 });
+await page.locator(".nav button", { hasText: "Tickets" }).click();
+await page.locator("tbody tr").first().click();
+await page.getByTestId("chat-tab").click();
+await page.waitForSelector("#chat-expert");
+const assigned = await page.locator("#chat-expert option:checked").textContent();
+check("assigned expert is preselected from the issue area", /assigned/.test(assigned), assigned);
+await page.fill("#chat-input", "Is this configuration or development?");
+await page.click(".chat-input button");
+check("sending without consent is blocked", (await page.locator(".chat .warnmsg").textContent()).includes("confirm"));
+await page.click("#chat-consent");
+await page.fill("#chat-password", "wrong");
+await page.click(".chat-input button");
+await page.waitForSelector(".chat .warnmsg");
+check("wrong app password is refused", (await page.locator(".chat .warnmsg").textContent()).includes("password"));
+await page.fill("#chat-password", "demo");
+await page.click(".chat-input button");
+await page.waitForFunction(() => document.querySelector(".bubble.assistant")?.textContent.includes("Sources"));
+const ans = await page.locator(".bubble.assistant").textContent();
+check("streamed answer renders with the ticket ID", /IN\d+/.test(ans), ans.slice(0, 80));
+await page.screenshot({ path: `${out}/chat-on.png` });
+await page.selectOption("#chat-expert", "orchestrator");
+check("switching expert starts a fresh chat", (await page.locator(".bubble").count()) === 0);
+check("no console errors", errors.length === 0, errors.slice(0, 2).join(" | ").slice(0, 200));
+check("browser only talks to its own site", foreign.length === 0, foreign.slice(0, 2).join(" | "));
+await browser.close();
+console.log(`\n${results.filter(Boolean).length}/${results.length} checks passed`);
+process.exit(results.every(Boolean) ? 0 : 1);

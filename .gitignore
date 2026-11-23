@@ -24,3 +24,6 @@ Thumbs.db
 # Vite / test output
 app/dist/
 app/test-results*/
+
+# Generated at build time from .claude/agents and knowledge/
+app/netlify/functions/experts.generated.mjs

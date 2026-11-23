@@ -47,3 +47,17 @@ How the QA Tester and Security Reviewer will verify this:
 
 No API keys in the repository or the front-end bundle. `.env` files are git-ignored. Netlify environment
 variables hold any key that a function needs.
+
+## Exception: "Ask the expert" chat (optional)
+
+The ticket detail panel has an **Ask the expert** tab where the user can chat with the agent the ticket is routed to
+(Functional → Ray, Technical → Kwame, Security / Administration → Dana; Gloria, Priya and the whole team on request).
+
+- It is **off by default**. It turns on only when the site owner adds `ANTHROPIC_API_KEY` in Netlify.
+- When used, **the ticket being discussed** (title, description, classification) and the titles of its similar tickets
+  are sent to Anthropic's API by the site's own Netlify Function. Nothing else from the file is sent.
+- The user must tick a notice saying exactly that before the first message, and the notice repeats the
+  synthetic-or-approved-data rule.
+- The API key stays in the Netlify Function; the browser only calls `/api/chat` on the same site, so the
+  `connect-src 'self'` policy is unchanged.
+- `APP_PASSWORD` (optional) stops strangers from spending the owner's API credit.

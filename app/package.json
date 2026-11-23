@@ -4,14 +4,16 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/copy-demo.mjs",
+    "predev": "node scripts/copy-demo.mjs && node scripts/build-experts.mjs",
     "dev": "vite",
-    "prebuild": "node scripts/copy-demo.mjs",
+    "prebuild": "node scripts/copy-demo.mjs && node scripts/build-experts.mjs",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "pretest": "node scripts/build-experts.mjs"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "1.12.0",
     "@fontsource/ibm-plex-mono": "^5.2.6",
     "@fontsource/ibm-plex-sans": "^5.2.6",
     "@fontsource/ibm-plex-sans-condensed": "^5.2.6",

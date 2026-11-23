@@ -79,4 +79,11 @@ Ticket analysis is planned to run in the browser so ticket text does not leave t
 ## Links
 
 - Live application: _added at deployment_
+
+## Deploy on Netlify
+
+1. Netlify → **Add new project → Import an existing project → GitHub** → this repository.
+2. Leave the build settings as they are (`netlify.toml` sets them) and click **Deploy**.
+3. Optional: turn on the **Ask the expert** chat by adding `ANTHROPIC_API_KEY` (and optionally `APP_PASSWORD`) under
+   Site configuration → Environment variables, then redeploy. See [`app/README.md`](app/README.md).
 - Repository: https://github.com/saudie72/NLP-Final-PHIRE-Intelligence

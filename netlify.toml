@@ -7,6 +7,13 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# "Ask the expert" chat runs in app/netlify/functions/chat.mjs (path /api/chat).
+# It stays switched off until ANTHROPIC_API_KEY is added under Site configuration > Environment variables.
+# Optional APP_PASSWORD makes every chat request require a password.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # Single-page app: hash routing, so only the root is needed; keep a fallback for direct paths.
 [[redirects]]
   from = "/*"
@@ -15,7 +22,8 @@
 
 # Security headers (reviewed by the Security Reviewer; see docs/security-review.md).
 # connect-src 'self' means the page can only fetch from this site (the model file and demo export):
-# uploaded ticket text cannot be sent anywhere else, even by mistake.
+# uploaded ticket text cannot be sent anywhere else, even by mistake. The expert chat calls /api/chat on this
+# same site; only the Netlify Function talks to Anthropic, with the key kept server-side.
 [[headers]]
   for = "/*"
   [headers.values]

@@ -71,6 +71,8 @@ export function Resources({ model }) {
             Content-Security-Policy only allows connections back to this site, to load the model.</p>
           <p className="muted">This public site is meant for <b>synthetic or approved</b> data. Real PHIRE records can contain names,
             employee IDs, payroll and access details. Evaluate real exports only in an environment approved by your organization.</p>
+          <p className="muted"><b>Ask the expert</b> (in each ticket) is the one exception: when the site owner switches it on, the
+            ticket you chat about is sent to Anthropic's API through this site's server, after you confirm a notice.</p>
           <p className="muted">The demo data is synthetic: fictional county departments, <span className="mono">SYNUSER</span> placeholder IDs,
             and tickets generated from templates.</p>
         </section>

@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { AREAS, MODULE_NAMES, moduleOf, today } from "../lib/stats.js";
+import { ChatPanel, EXPERT_FOR_AREA } from "./Chat.jsx";
 import { Area, ConfidenceBar, Icon, Mod, Prio, areaColor } from "./ui.jsx";
 
 const PAGE = 50;
@@ -93,8 +94,11 @@ export function Tickets({ tickets, filters, setFilters, openTicket }) {
   );
 }
 
+const EXPERT_NAMES = { "erp-functional-analyst": "Ray", "erp-developer": "Kwame", "peoplesoft-admin": "Dana" };
+
 export function TicketDrawer({ ticket: t, byId, onClose, openTicket, go }) {
   const closeRef = useRef(null);
+  const [tab, setTab] = useState("details");
   useEffect(() => {
     closeRef.current?.focus();
     const onKey = (e) => e.key === "Escape" && onClose();
@@ -115,7 +119,14 @@ export function TicketDrawer({ ticket: t, byId, onClose, openTicket, go }) {
             {t.openDate && <span className="faint">· opened {t.openDate}</span>}
           </div>
         </div>
+        <div className="tabs" role="tablist">
+          <button role="tab" aria-selected={tab === "details"} onClick={() => setTab("details")}>Details</button>
+          <button role="tab" aria-selected={tab === "chat"} onClick={() => setTab("chat")} data-testid="chat-tab">
+            Ask the expert <span className="faint">· {EXPERT_NAMES[EXPERT_FOR_AREA[t.issueArea]]}</span>
+          </button>
+        </div>
         {t.description && <div className="desc">{t.description}</div>}
+        {tab === "chat" ? <ChatPanel ticket={t} byId={byId} /> : <>
 
         <section style={{ display: "grid", gap: 10 }}>
           <span className="eyebrow">AI classification</span>
@@ -178,6 +189,7 @@ export function TicketDrawer({ ticket: t, byId, onClose, openTicket, go }) {
           </section>
         )}
         <p className="faint" style={{ fontSize: ".78rem" }}>Suggestions come from an NLP model trained on synthetic tickets. They are observations to review, not a diagnosis.</p>
+        </>}
       </aside>
     </>
   );

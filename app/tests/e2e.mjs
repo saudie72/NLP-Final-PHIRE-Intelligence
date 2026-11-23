@@ -55,6 +55,10 @@ async function run(viewport, scheme, tag, shots) {
   const sims = await page.locator(".drawer .sim").count();
   check(`${tag}: ticket drawer shows classification and 5 similar tickets`, sims === 5, `${sims} similar`);
   if (shots) await page.screenshot({ path: `${out}/${tag}-5-ticket.png` });
+  await page.getByTestId("chat-tab").click();
+  await page.getByTestId("chat-off").waitFor();
+  check(`${tag}: expert chat shows "not switched on" without an API key`, true);
+  if (shots) await page.screenshot({ path: `${out}/${tag}-5b-chat-off.png` });
   await page.keyboard.press("Escape");
   check(`${tag}: Escape closes the drawer`, (await page.locator(".drawer").count()) === 0);
 
