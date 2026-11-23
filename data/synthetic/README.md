@@ -17,7 +17,7 @@ Regenerate: `pip install -r scripts/requirements.txt && python3 scripts/make_syn
 |---|---|---|
 | Modules | TL 140, PY 137, HR 137, GL 88, AP 85, BN 71, PO 66, AM 61, SEC 53, EX 42, PT 36, RC 30, PC 29, EP 25 | HR 39, PY 38, TL 33, AM 22, SEC 18, AP 17, PO 15, GL 15, EX 12, BN 12, PT 8, EP 8, RC 7, PC 6 |
 | Issue area | Functional 440, Technical 261, Administration 159, Security 140 | Functional 102, Technical 76, Administration 39, Security 33 |
-| Priority | M 378, H 358, L 264 | M 96, H 93, L 61 |
+| Priority | M 452, H 326, L 222 | M 120, H 87, L 43 |
 | Issue type | Production Support Item 732, Enhancement Request 268 | 199 / 51 |
 | Recurring-group rows | 114 (24 groups) | 35 (same 24 groups) |
 
@@ -25,6 +25,10 @@ Regenerate: `pip install -r scripts/requirements.txt && python3 scripts/make_syn
 
 - Dates, Status, Closed Date, Aging and Resolution Code are consistent on every row (0 problems).
 - Only tickets with a CR are `11-Migrated to Production`.
+- **Priority follows the ticket text** using the same signals as `docs/ticket-taxonomy.md` (high: "next pay period",
+  "pay confirmation", "separated", "Queued", "timing out", year-end; low: "how to", "who has", cosmetic changes),
+  with about 5–20% noise on purpose. See `priority_weights()`.
+- **User IDs are obvious placeholders** (`SYNUSERnnnn`), so no ID can be mistaken for a real login.
 - Issue numbers are unique across both sets; no test title appears in the training set.
 - Learnability sanity check (TF-IDF + logistic regression, not the final model): module accuracy 0.86,
   issue-area accuracy 0.82 on the test set. Full evaluation comes in the model step.

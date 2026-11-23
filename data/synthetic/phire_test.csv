@@ -1,20 +1,20 @@
 Module,Priority,Issue Type,Issue Num,Title,Description,Status,Assigned To,Opened By,Open Date,Closed Date,Aging,Resolution Code,CR,Due Date,Developer,Issue Area,Recurring Group
-HR,M,Enhancement Request,IN001001,Add recurrence for Org Chart refresh,"Please schedule Org Chart refresh to run every night.
+HR,H,Enhancement Request,IN001001,Add recurrence for Org Chart refresh,"Please schedule Org Chart refresh to run every night.
 
-This is impacting the next pay period.",11-Migrated to Production,Jamie Galloway,Logan Dunmore,2025-01-02,2025-01-15,13,System Administration,CR006580,2025-01-12,Logan Pemberton,Administration,
+This is impacting the next pay period.",11-Migrated to Production,Jamie Galloway,Logan Dunmore,2025-01-02,2025-01-15,13,System Administration,CR006580,2025-01-07,Logan Pemberton,Administration,
 PY,H,Production Support Item,IN001006,Terminate user access,"Hi team,
 
-Disable AKENSINGTO; last day was 11/19/2025.
+Disable SYNUSER0710; last day was 11/19/2025.
 
 See attachment.",10-Closed,Jordan Bellweather,Drew Northcott,2025-01-05,2025-01-23,18,Security Update,,2025-01-10,,Security,
 SEC,H,Production Support Item,IN001007,Short-term access request,"Business Unit = FR
 PPE 08/16/2025
 
-Give CINGRAM access to User Profiles until 08/16/2025.",3-In Development,Alex Abernathy,Hayden Abernathy,2025-01-05,,686,,,2025-01-10,,Security,
-TL,M,Production Support Item,IN001013,How to process pay period end,"Business Unit = FR
+Give SYNUSER0408 access to User Profiles until 08/16/2025.",3-In Development,Alex Abernathy,Hayden Abernathy,2025-01-05,,686,,,2025-01-10,,Security,
+TL,L,Production Support Item,IN001013,How to process pay period end,"Business Unit = FR
 PPE 04/30/2025
 
-Guidance needed: what is the correct way to enter pay period end on Manage Exceptions?",10-Closed,Morgan Dunmore,Morgan Quintero,2025-01-08,2025-03-15,66,Data Fix,,2025-01-18,,Functional,RG-16
+Guidance needed: what is the correct way to enter pay period end on Manage Exceptions?",10-Closed,Morgan Dunmore,Morgan Quintero,2025-01-08,2025-03-15,66,Data Fix,,2025-01-28,,Functional,RG-16
 AM,L,Enhancement Request,IN001016,PS Query for Planning and Zoning,Could a query be created to pull absence request information by Absence Take?,11-Migrated to Production,Quinn Ingram,Taylor Northcott,2025-01-13,2025-04-11,88,Code Fix,CR001836,2025-02-02,Hayden Okafor,Technical,
 PY,H,Enhancement Request,IN001021,Add federal withholding option,"Hi team,
 
@@ -34,12 +34,12 @@ Need a bulk change for job row records in SO, effective 05/13/2026. List attache
 PT,M,Production Support Item,IN001046,Need TST refreshed,"Requested by Parks and Recreation.
 
 Copy production down to TST please.",10-Closed,Casey Ellsworth,Emerson Northcott,2025-01-29,2025-03-10,40,System Administration,,2025-02-08,,Administration,
-HR,M,Production Support Item,IN001051,How to process retroactive job change,"Requested by Code Enforcement.
+HR,L,Production Support Item,IN001051,How to process retroactive job change,"Requested by Code Enforcement.
 
 Guidance needed: what is the correct way to enter retroactive job change on Workforce Job Summary?
 
-Please let us know if more information is needed.",10-Closed,Taylor Castellano,Reese Castellano,2025-02-02,2025-05-01,88,User Training/Procedure,,2025-02-12,,Functional,
-TL,M,Production Support Item,IN001052,System very slow,Assign Work Schedule is timing out for users in Finance.,9-Cancelled,Morgan Dunmore,Skyler Ingram,2025-02-03,2025-03-01,26,Duplicate,,2025-02-13,,Administration,
+Please let us know if more information is needed.",10-Closed,Taylor Castellano,Reese Castellano,2025-02-02,2025-05-01,88,User Training/Procedure,,2025-02-22,,Functional,
+TL,H,Production Support Item,IN001052,System very slow,Assign Work Schedule is timing out for users in Finance.,9-Cancelled,Morgan Dunmore,Skyler Ingram,2025-02-03,2025-03-01,26,Duplicate,,2025-02-08,,Administration,
 PY,M,Enhancement Request,IN001066,Code change - PAYCHECK SQR,"Update the logic in PAYCHECK SQR so that off-cycle check is handled. See spec.
 
 Steps to reproduce:
@@ -54,11 +54,11 @@ Steps to reproduce:
 1. Navigate to Workforce Administration > Job Information > Job Data
 2. Open the affected record
 3. Save",10-Closed,Drew Jarrett,Jordan Dunmore,2025-02-10,2025-03-07,25,No Action Required,,2025-03-02,,Administration,
-PY,L,Enhancement Request,IN001073,Code change - PY_OUT interface Application Engine,"Requested by Planning and Zoning.
+PY,M,Enhancement Request,IN001073,Code change - PY_OUT interface Application Engine,"Requested by Planning and Zoning.
 
 Update the logic in PY_OUT interface Application Engine so that off-cycle check is handled. See spec.
 
-Please let us know if more information is needed.",10-Closed,,Logan Radcliffe,2025-02-12,2025-04-25,72,Code Fix,CR007763,2025-03-04,Reese Kensington,Technical,
+Please let us know if more information is needed.",10-Closed,,Logan Radcliffe,2025-02-12,2025-04-25,72,Code Fix,CR007763,2025-02-22,Reese Kensington,Technical,
 SEC,M,Production Support Item,IN001074,Missing employees in User Profiles,"Hi team,
 
 Security looks wrong. Security Administrator can't see Animal Services data.",10-Closed,Jamie Galloway,Sage Castellano,2025-02-12,2025-05-07,84,User Training/Procedure,,2025-02-22,,Security,
@@ -68,9 +68,9 @@ Following the last budget check, the purchase order data for CE looks wrong.",10
 PY,L,Enhancement Request,IN001085,PS Query for Parks and Recreation,"Hi team,
 
 Could a query be created to pull tax withholding information by federal withholding?",10-Closed,Drew Jarrett,Taylor Northcott,2025-02-20,2025-03-13,21,Data Fix,,2025-03-12,Logan Pemberton,Technical,
-HR,L,Production Support Item,IN001096,Fire Rescue - retroactive job change issue,"Hi team,
+HR,M,Production Support Item,IN001096,Fire Rescue - retroactive job change issue,"Hi team,
 
-We are having trouble with retroactive job change. The job row is not coming out right in Personal Data. Need help.",10-Closed,Avery Hollister,Riley Pemberton,2025-02-27,2025-03-10,11,User Training/Procedure,,2025-03-19,,Functional,
+We are having trouble with retroactive job change. The job row is not coming out right in Personal Data. Need help.",10-Closed,Avery Hollister,Riley Pemberton,2025-02-27,2025-03-10,11,User Training/Procedure,,2025-03-09,,Functional,
 AP,L,Production Support Item,IN001103,Outbound file incomplete,"Business Unit = CE
 PPE 07/18/2026
 
@@ -79,12 +79,12 @@ The positive pay file file sent on 07/18/2026 did not include all voucher record
 See attachment.",10-Closed,Taylor Castellano,Riley Pemberton,2025-03-01,2025-03-31,30,Data Fix,CR003544,2025-03-21,Logan Pemberton,Technical,
 SEC,H,Production Support Item,IN001106,New user setup - Security Administrator,"Hi team,
 
-Please set up TPEMBERTON with Security Administrator access to Row Security.
+Please set up SYNUSER0215 with Security Administrator access to Row Security.
 
 Please let us know if more information is needed.",10-Closed,Morgan Dunmore,Alex Abernathy,2025-03-02,2025-04-10,39,Security Update,,2025-03-07,,Security,
-PY,L,Production Support Item,IN001107,Bulk change of deduction records,"Need a bulk change for deduction records in PZ, effective 05/24/2026. List attached.
+PY,M,Production Support Item,IN001107,Bulk change of deduction records,"Need a bulk change for deduction records in PZ, effective 05/24/2026. List attached.
 
-This is impacting the next pay period.",10-Closed,Jamie Galloway,Avery Abernathy,2025-03-02,2025-05-03,62,Configuration Change,,2025-03-22,,Functional,
+This is impacting the next pay period.",10-Closed,Jamie Galloway,Avery Abernathy,2025-03-02,2025-05-03,62,Configuration Change,,2025-03-12,,Functional,
 TL,M,Production Support Item,IN001111,Bulk change of reported time records,"Need a bulk change for reported time records in TR, effective 09/22/2026. List attached.
 
 See attachment.",10-Closed,Quinn Ingram,Skyler Pemberton,2025-03-06,2025-03-30,24,Configuration Change,,2025-03-16,,Functional,
@@ -120,9 +120,9 @@ PPE 05/31/2026
 Message queue shows errors for Candidate Gateway.
 
 Please let us know if more information is needed.",10-Closed,Taylor Castellano,Avery Abernathy,2025-03-17,2025-06-06,81,Vendor Patch/Bundle,,2025-03-27,,Administration,
-GL,L,Production Support Item,IN001142,Abend in year-end close,"Hi team,
+GL,M,Production Support Item,IN001142,Abend in year-end close,"Hi team,
 
-Getting ""Accounting period is closed"" from GL_JEDIT Application Engine. Instance 5621485. Looks like a code issue.",10-Closed,Jordan Bellweather,Riley Bellweather,2025-03-19,2025-05-04,46,New Rqmt/Approved Enhancement,CR008475,2025-04-08,Emerson Quintero,Technical,
+Getting ""Accounting period is closed"" from GL_JEDIT Application Engine. Instance 5621485. Looks like a code issue.",10-Closed,Jordan Bellweather,Riley Bellweather,2025-03-19,2025-05-04,46,New Rqmt/Approved Enhancement,CR008475,2025-03-29,Emerson Quintero,Technical,
 PY,M,Production Support Item,IN001148,Bulk change of off-cycle check records,"Requested by Planning and Zoning.
 
 Need a bulk change for off-cycle check records in PZ, effective 01/13/2026. List attached.
@@ -140,42 +140,42 @@ PPE 04/10/2026
 Cash Advance is timing out for users in Finance.
 
 Please let us know if more information is needed.",10-Closed,Jamie Galloway,Quinn Radcliffe,2025-03-29,2025-06-06,69,Vendor Patch/Bundle,,2025-04-03,,Administration,
-PO,H,Production Support Item,IN001164,Contract: wrong Ship To showing,"Requested by Information Technology.
+PO,M,Production Support Item,IN001164,Contract: wrong Ship To showing,"Requested by Information Technology.
 
 Users report that Ship To on Contract shows the wrong value since 03/07/2025. This affects Information Technology. Can someone check the setup?
 
-Please let us know if more information is needed.",10-Closed,Taylor Castellano,Sage Jarrett,2025-03-30,2025-05-19,50,Data Fix,,2025-04-04,,Functional,
+Please let us know if more information is needed.",10-Closed,Taylor Castellano,Sage Jarrett,2025-03-30,2025-05-19,50,Data Fix,,2025-04-09,,Functional,
 PY,H,Production Support Item,IN001174,Abend in year-end W-2 processing,"Requested by Planning and Zoning.
 
 Getting ""Pay calculation ended with errors for 14 employees"" from PSPPYRUN COBOL. Instance 7011467. Looks like a code issue.",2-Assigned/In Queue,Jordan Bellweather,Logan Dunmore,2025-04-07,,594,,CR001084,2025-04-12,Emerson Quintero,Technical,RG-15
 TL,H,Production Support Item,IN001175,Discrepancy in payable time report,"Requested by Planning and Zoning.
 
 Reconciliation for 12/10/2025 shows a discrepancy in the payable time report. Numbers for BU PZ are off.",9-Cancelled,Quinn Ingram,Reese Quintero,2025-04-07,2025-06-16,70,Duplicate,,2025-04-12,,Functional,
-HR,H,Enhancement Request,IN001180,Report request - Job Code by Parks and Recreation,"Requested by Parks and Recreation.
+HR,M,Enhancement Request,IN001180,Report request - Job Code by Parks and Recreation,"Requested by Parks and Recreation.
 
 Need a new report showing Job Code for department records in Parks and Recreation. Mockup attached.
 
-Please let us know if more information is needed.",10-Closed,Morgan Dunmore,Avery Hollister,2025-04-08,2025-05-27,49,New Rqmt/Approved Enhancement,CR004202,2025-04-13,Rowan Lockridge,Technical,
-SEC,H,Production Support Item,IN001181,Transfer - update roles,Employee RFAIRBANKS transferred to Transportation and needs roles updated.,10-Closed,Taylor Castellano,Parker Lockridge,2025-04-08,2025-05-10,32,Security Update,,2025-04-13,,Security,
-EX,M,Production Support Item,IN001184,How to process mileage reimbursement,"Guidance needed: what is the correct way to enter mileage reimbursement on Cash Advance?
+Please let us know if more information is needed.",10-Closed,Morgan Dunmore,Avery Hollister,2025-04-08,2025-05-27,49,New Rqmt/Approved Enhancement,CR004202,2025-04-18,Rowan Lockridge,Technical,
+SEC,H,Production Support Item,IN001181,Transfer - update roles,Employee SYNUSER0505 transferred to Transportation and needs roles updated.,10-Closed,Taylor Castellano,Parker Lockridge,2025-04-08,2025-05-10,32,Security Update,,2025-04-13,,Security,
+EX,L,Production Support Item,IN001184,How to process mileage reimbursement,"Guidance needed: what is the correct way to enter mileage reimbursement on Cash Advance?
 
-This has been done before, reference IN001154.",10-Closed,Riley Fairbanks,Hayden Abernathy,2025-04-09,2025-04-18,9,Data Fix,,2025-04-19,,Functional,RG-14
+This has been done before, reference IN001154.",10-Closed,Riley Fairbanks,Hayden Abernathy,2025-04-09,2025-04-18,9,Data Fix,,2025-04-29,,Functional,RG-14
 PC,H,Production Support Item,IN001190,Bulk change of grant project records,"Need a bulk change for grant project records in PR, effective 01/15/2025. List attached.",10-Closed,Jordan Bellweather,Skyler Ingram,2025-04-12,2025-05-25,43,Data Fix,,2025-04-17,,Functional,
 GL,M,Production Support Item,IN001197,Account wrong for BU SO,"Hi team,
 
 Following the last Journal Edit, the account data for SO looks wrong.",9-Cancelled,Riley Fairbanks,Logan Dunmore,2025-04-18,2025-05-12,24,Duplicate,,2025-04-28,,Functional,
 HR,H,Production Support Item,IN001198,Terminate user access,"Hi team,
 
-Disable DKENSINGTO; last day was 04/30/2026.
+Disable SYNUSER0910; last day was 04/30/2026.
 
 Please let us know if more information is needed.",10-Closed,Avery Hollister,Drew Northcott,2025-04-18,2025-06-12,55,Security Update,,2025-04-23,,Security,
-HR,H,Production Support Item,IN001202,Can't find position mass update output,"Hi team,
+HR,M,Production Support Item,IN001202,Can't find position mass update output,"Hi team,
 
-Ran position mass update but the report never posted to Report Manager.",1-New,,Alex Hollister,2025-04-20,,581,,,2025-04-25,,Administration,RG-11
-HR,L,Production Support Item,IN001212,Position Data: wrong Union Code showing,"Hi team,
+Ran position mass update but the report never posted to Report Manager.",1-New,,Alex Hollister,2025-04-20,,581,,,2025-04-30,,Administration,RG-11
+HR,M,Production Support Item,IN001212,Position Data: wrong Union Code showing,"Hi team,
 
-Users report that Union Code on Position Data shows the wrong value since 04/08/2025. This affects Parks and Recreation. Can someone check the setup?",10-Closed,Drew Jarrett,Alex Abernathy,2025-04-24,2025-07-13,80,Data Fix,,2025-05-14,,Functional,
-SEC,M,Production Support Item,IN001229,Disable login ALOCKRIDGE,"Account ALOCKRIDGE should be locked.
+Users report that Union Code on Position Data shows the wrong value since 04/08/2025. This affects Parks and Recreation. Can someone check the setup?",10-Closed,Drew Jarrett,Alex Abernathy,2025-04-24,2025-07-13,80,Data Fix,,2025-05-04,,Functional,
+SEC,M,Production Support Item,IN001229,Disable login SYNUSER0711,"Account SYNUSER0711 should be locked.
 
 Please let us know if more information is needed.",10-Closed,Quinn Ingram,Drew Northcott,2025-05-08,2025-06-17,40,Security Update,,2025-05-18,,Security,
 AP,H,Production Support Item,IN001242,Positive pay file step failure,"Hi team,
@@ -204,12 +204,12 @@ Can we add a new federal withholding option to support shift differential? The b
 PY,M,Production Support Item,IN001258,Patch CFG,"Requested by Parks and Recreation.
 
 CFG needs the latest tools patch.",10-Closed,Morgan Dunmore,Skyler Bellweather,2025-05-24,2025-06-05,12,No Action Required,,2025-06-03,,Administration,
-PY,M,Production Support Item,IN001261,Terminate user access,"Business Unit = BO
+PY,H,Production Support Item,IN001261,Terminate user access,"Business Unit = BO
 PPE 11/20/2026
 
-Disable CABERNATHY; last day was 11/20/2026.
+Disable SYNUSER0400; last day was 11/20/2026.
 
-See attachment.",10-Closed,Casey Ellsworth,Jordan Kensington,2025-05-25,2025-07-20,56,Security Update,,2025-06-04,,Security,
+See attachment.",10-Closed,Casey Ellsworth,Jordan Kensington,2025-05-25,2025-07-20,56,Security Update,,2025-05-30,,Security,
 EX,M,Production Support Item,IN001264,Cash Advance: wrong Expense Type showing,"Requested by Transportation.
 
 Users report that Expense Type on Cash Advance shows the wrong value since 04/26/2026. This affects Transportation. Can someone check the setup?
@@ -232,33 +232,33 @@ Steps to reproduce:
 PO,H,Production Support Item,IN001277,Requisition wrong for BU FN,"Following the last PO dispatch, the requisition data for FN looks wrong.
 
 Please let us know if more information is needed.",10-Closed,,Casey Merriweather,2025-06-02,2025-07-23,51,Configuration Change,,2025-06-07,,Functional,
-SEC,L,Production Support Item,IN001283,Short-term access request,Give MKENSINGTO access to Roles until 03/02/2025.,10-Closed,Alex Abernathy,Logan Dunmore,2025-06-05,2025-07-13,38,User Training/Procedure,,2025-06-25,,Security,
-EP,L,Enhancement Request,IN001289,PS Query for Code Enforcement,"Business Unit = CE
+SEC,L,Production Support Item,IN001283,Short-term access request,Give SYNUSER0310 access to Roles until 03/02/2025.,10-Closed,Alex Abernathy,Logan Dunmore,2025-06-05,2025-07-13,38,User Training/Procedure,,2025-06-25,,Security,
+EP,M,Enhancement Request,IN001289,PS Query for Code Enforcement,"Business Unit = CE
 PPE 09/13/2026
 
 Could a query be created to pull rating information by Review Period?
 
-Please let us know if more information is needed.",10-Closed,Quinn Ingram,Riley Bellweather,2025-06-10,2025-07-11,31,Code Fix,CR007172,2025-06-30,Reese Kensington,Technical,
+Please let us know if more information is needed.",10-Closed,Quinn Ingram,Riley Bellweather,2025-06-10,2025-07-11,31,Code Fix,CR007172,2025-06-20,Reese Kensington,Technical,
 HR,M,Enhancement Request,IN001307,PS Query for Budget Office,"Requested by Budget Office.
 
 Could a query be created to pull employee record information by Reports To?",11-Migrated to Production,Casey Ellsworth,Avery Hollister,2025-06-20,2025-08-20,61,Data Fix,CR008170,2025-06-30,Rowan Lockridge,Technical,
-HR,L,Production Support Item,IN001312,Bulk change of job row records,"Requested by Transportation.
+HR,M,Production Support Item,IN001312,Bulk change of job row records,"Requested by Transportation.
 
 Need a bulk change for job row records in TR, effective 09/17/2026. List attached.
 
 Steps to reproduce:
 1. Navigate to Workforce Administration > Job Information > Job Data
 2. Open the affected record
-3. Save",9-Cancelled,Quinn Ingram,Casey Merriweather,2025-06-24,2025-08-29,66,Duplicate,,2025-07-14,,Functional,
-PY,H,Production Support Item,IN001318,Outbound file incomplete,"Hi team,
+3. Save",9-Cancelled,Quinn Ingram,Casey Merriweather,2025-06-24,2025-08-29,66,Duplicate,,2025-07-04,,Functional,
+PY,M,Production Support Item,IN001318,Outbound file incomplete,"Hi team,
 
 The PY_OUT interface Application Engine file sent on 02/04/2026 did not include all tax withholding records.
 
 Steps to reproduce:
 1. Navigate to Payroll for North America > Payroll Processing USA > Produce Payroll
 2. Open the affected record
-3. Save",10-Closed,Riley Fairbanks,Skyler Pemberton,2025-06-28,2025-08-20,53,Data Fix,CR003901,2025-07-03,Skyler Merriweather,Technical,
-TL,H,Production Support Item,IN001334,Error message when saving Assign Work Schedule,"Business Unit = TR
+3. Save",10-Closed,Riley Fairbanks,Skyler Pemberton,2025-06-28,2025-08-20,53,Data Fix,CR003901,2025-07-08,Skyler Merriweather,Technical,
+TL,M,Production Support Item,IN001334,Error message when saving Assign Work Schedule,"Business Unit = TR
 PPE 02/22/2025
 
 Save fails with an error and the trace points to PeopleCode on Assign Work Schedule.
@@ -266,18 +266,18 @@ Save fails with an error and the trace points to PeopleCode on Assign Work Sched
 Steps to reproduce:
 1. Navigate to Time and Labor > Report Time > Timesheet
 2. Open the affected record
-3. Save",9-Cancelled,Morgan Dunmore,Jamie Lockridge,2025-07-02,2025-09-11,71,Duplicate,CR001692,2025-07-07,Rowan Lockridge,Technical,
-PY,H,Production Support Item,IN001336,Disable login JCASTELLAN,"Requested by Planning and Zoning.
+3. Save",9-Cancelled,Morgan Dunmore,Jamie Lockridge,2025-07-02,2025-09-11,71,Duplicate,CR001692,2025-07-12,Rowan Lockridge,Technical,
+PY,M,Production Support Item,IN001336,Disable login SYNUSER0602,"Requested by Planning and Zoning.
 
-Account JCASTELLAN should be locked.
+Account SYNUSER0602 should be locked.
 
-Please let us know if more information is needed.",4-Migrated to Test,,Skyler Pemberton,2025-07-03,,507,,,2025-07-08,,Security,
+Please let us know if more information is needed.",4-Migrated to Test,,Skyler Pemberton,2025-07-03,,507,,,2025-07-13,,Security,
 AP,H,Production Support Item,IN001348,Patch DEV,"Requested by Sheriff's Office.
 
 DEV needs the latest tools patch.
 
 See attachment.",10-Closed,Avery Hollister,Hayden Okafor,2025-07-09,2025-08-21,43,System Administration,,2025-07-14,,Administration,RG-20
-AP,M,Enhancement Request,IN001349,Who has AP Processor?,Need a list of all user IDs holding AP Processor.,10-Closed,,Jordan Dunmore,2025-07-09,2025-09-29,82,User Training/Procedure,CR004573,2025-07-19,Hayden Okafor,Security,
+AP,L,Enhancement Request,IN001349,Who has AP Processor?,Need a list of all user IDs holding AP Processor.,10-Closed,,Jordan Dunmore,2025-07-09,2025-09-29,82,User Training/Procedure,CR004573,2025-07-29,Hayden Okafor,Security,
 PY,M,Production Support Item,IN001366,Planning and Zoning - longevity pay issue,"Requested by Planning and Zoning.
 
 We are having trouble with longevity pay. The paycheck is not coming out right in Create Additional Pay. Need help.
@@ -291,12 +291,12 @@ TL,H,Production Support Item,IN001372,Missing employees in Timesheet,"Requested 
 Security looks wrong. Timekeeper can't see Finance data.
 
 This is impacting the next pay period.",10-Closed,Taylor Castellano,Drew Galloway,2025-07-20,2025-07-24,4,User Training/Procedure,,2025-07-25,,Security,
-PY,H,Production Support Item,IN001375,Discrepancy in payroll register,"Reconciliation for 07/12/2026 shows a discrepancy in the payroll register. Numbers for BU FR are off.
+PY,M,Production Support Item,IN001375,Discrepancy in payroll register,"Reconciliation for 07/12/2026 shows a discrepancy in the payroll register. Numbers for BU FR are off.
 
 Steps to reproduce:
 1. Navigate to Payroll for North America > Payroll Processing USA > Produce Payroll
 2. Open the affected record
-3. Save",10-Closed,Drew Jarrett,Rowan Merriweather,2025-07-22,2025-09-25,65,Data Fix,,2025-07-27,,Functional,
+3. Save",10-Closed,Drew Jarrett,Rowan Merriweather,2025-07-22,2025-09-25,65,Data Fix,,2025-08-01,,Functional,
 BN,H,Production Support Item,IN001376,Jobs not running,"Business Unit = PZ
 PPE 07/25/2025
 
@@ -313,7 +313,7 @@ AM,M,Enhancement Request,IN001400,Report request - Entitlement by Animal Service
 PO,M,Production Support Item,IN001402,Animal Services - change order issue,"We are having trouble with change order. The receipt is not coming out right in Purchase Order. Need help.
 
 See attachment.",10-Closed,Drew Jarrett,Parker Lockridge,2025-08-08,2025-08-17,9,Data Fix,,2025-08-18,,Functional,
-PY,M,Production Support Item,IN001407,System very slow,Pay Calendar Table is timing out for users in Information Technology.,10-Closed,Morgan Dunmore,Emerson Northcott,2025-08-11,2025-10-14,64,System Administration,,2025-08-21,,Administration,
+PY,H,Production Support Item,IN001407,System very slow,Pay Calendar Table is timing out for users in Information Technology.,10-Closed,Morgan Dunmore,Emerson Northcott,2025-08-11,2025-10-14,64,System Administration,,2025-08-16,,Administration,
 RC,H,Enhancement Request,IN001412,Code change - Candidate Gateway,"Update the logic in Candidate Gateway so that job posting is handled. See spec.
 
 Steps to reproduce:
@@ -321,7 +321,7 @@ Steps to reproduce:
 2. Open the affected record
 3. Save",10-Closed,Alex Abernathy,Riley Ingram,2025-08-12,2025-10-24,73,Code Fix,CR005588,2025-08-17,Hayden Okafor,Technical,RG-03
 TL,M,Production Support Item,IN001415,Timesheet PeopleCode step failure,"Timesheet PeopleCode stopped at a step; the log shows ""Workgroup is not valid for this employee"".",9-Cancelled,Alex Abernathy,Quinn Radcliffe,2025-08-15,2025-09-01,17,Duplicate,CR009992,2025-08-25,Hayden Okafor,Technical,
-GL,M,Enhancement Request,IN001419,Enhancement: Ledger Inquiry,Requesting that Ledger Inquiry be changed to add the supervisor name to the grid.,10-Closed,Taylor Castellano,Logan Dunmore,2025-08-18,2025-11-02,76,Data Fix,CR004429,2025-08-28,Sage Radcliffe,Functional,
+GL,L,Enhancement Request,IN001419,Enhancement: Ledger Inquiry,Requesting that Ledger Inquiry be changed to add the supervisor name to the grid.,10-Closed,Taylor Castellano,Logan Dunmore,2025-08-18,2025-11-02,76,Data Fix,CR004429,2025-09-07,Sage Radcliffe,Functional,
 GL,H,Production Support Item,IN001423,Can't find year-end close output,"Requested by Finance.
 
 Ran year-end close but the report never posted to Report Manager.
@@ -337,23 +337,23 @@ AM,L,Enhancement Request,IN001425,Add Entitlement option,"Hi team,
 Can we add a new Entitlement option to support vacation? The business owner approved it.
 
 This is impacting the next pay period.",11-Migrated to Production,Alex Abernathy,Reese Quintero,2025-08-19,2025-08-23,4,Data Fix,CR003402,2025-09-08,Rowan Lockridge,Functional,
-GL,M,Production Support Item,IN001428,How to process budget check,"Guidance needed: what is the correct way to enter budget check on Create/Update Journal Entries?
+GL,H,Production Support Item,IN001428,How to process budget check,"Guidance needed: what is the correct way to enter budget check on Create/Update Journal Entries?
 
-This is impacting the next pay period.",10-Closed,Riley Fairbanks,Avery Hollister,2025-08-20,2025-10-14,55,Configuration Change,,2025-08-30,,Functional,
-HR,L,Production Support Item,IN001429,Transfer - update roles,"Employee COKAFOR transferred to Water Utilities and needs roles updated.
+This is impacting the next pay period.",10-Closed,Riley Fairbanks,Avery Hollister,2025-08-20,2025-10-14,55,Configuration Change,,2025-08-25,,Functional,
+HR,L,Production Support Item,IN001429,Transfer - update roles,"Employee SYNUSER0414 transferred to Water Utilities and needs roles updated.
 
 Please let us know if more information is needed.",10-Closed,Riley Fairbanks,Hayden Hollister,2025-08-20,2025-09-30,41,Security Update,,2025-09-09,,Security,
-SEC,H,Production Support Item,IN001432,Missing employees in Row Security,Security looks wrong. Security Administrator can't see Parks and Recreation data.,10-Closed,,Taylor Northcott,2025-08-21,2025-10-06,46,User Training/Procedure,,2025-08-26,,Security,RG-13
+SEC,M,Production Support Item,IN001432,Missing employees in Row Security,Security looks wrong. Security Administrator can't see Parks and Recreation data.,10-Closed,,Taylor Northcott,2025-08-21,2025-10-06,46,User Training/Procedure,,2025-08-31,,Security,RG-13
 BN,L,Production Support Item,IN001433,Patch TST,TST needs the latest tools patch.,10-Closed,Quinn Ingram,Jordan Kensington,2025-08-21,2025-10-24,64,System Administration,,2025-09-10,,Administration,
-HR,M,Production Support Item,IN001436,Jobs not running,"Nothing has run on the scheduler since 11/15/2025; Org Chart refresh and everything else sits in Queued.
+HR,H,Production Support Item,IN001436,Jobs not running,"Nothing has run on the scheduler since 11/15/2025; Org Chart refresh and everything else sits in Queued.
 
-Please let us know if more information is needed.",10-Closed,,Parker Ellsworth,2025-08-24,2025-10-14,51,Vendor Patch/Bundle,,2025-09-03,,Administration,
-TL,H,Production Support Item,IN001438,How to process comp time,"Hi team,
+Please let us know if more information is needed.",10-Closed,,Parker Ellsworth,2025-08-24,2025-10-14,51,Vendor Patch/Bundle,,2025-08-29,,Administration,
+TL,M,Production Support Item,IN001438,How to process comp time,"Hi team,
 
-Guidance needed: what is the correct way to enter comp time on Approve Reported Time?",10-Closed,Casey Ellsworth,Quinn Radcliffe,2025-08-26,2025-09-17,22,Configuration Change,,2025-08-31,,Functional,
-PY,L,Production Support Item,IN001442,Customization broken after PUM update,"The PAYCHECK SQR customization no longer works after the PUM update.
+Guidance needed: what is the correct way to enter comp time on Approve Reported Time?",10-Closed,Casey Ellsworth,Quinn Radcliffe,2025-08-26,2025-09-17,22,Configuration Change,,2025-09-05,,Functional,
+PY,M,Production Support Item,IN001442,Customization broken after PUM update,"The PAYCHECK SQR customization no longer works after the PUM update.
 
-See attachment.",10-Closed,,Logan Kensington,2025-08-27,2025-09-05,9,Data Fix,,2025-09-16,Parker Northcott,Technical,
+See attachment.",10-Closed,,Logan Kensington,2025-08-27,2025-09-05,9,Data Fix,,2025-09-06,Parker Northcott,Technical,
 AM,M,Production Support Item,IN001451,Absence request wrong for BU PW,"Following the last Absence Finalize, the absence request data for PW looks wrong.
 
 Please let us know if more information is needed.",10-Closed,Morgan Dunmore,Jordan Kensington,2025-09-02,2025-11-18,77,User Training/Procedure,,2025-09-12,,Functional,
@@ -386,7 +386,7 @@ PPE 12/25/2025
 Following the last Voucher Post, the 1099 data for IT looks wrong.",10-Closed,Jamie Galloway,Morgan Quintero,2025-09-18,2025-10-08,20,Data Fix,,2025-10-08,,Functional,
 SEC,M,Production Support Item,IN001488,Short-term access request,"Hi team,
 
-Give LPEMBERTON access to Roles until 09/08/2026.
+Give SYNUSER1515 access to Roles until 09/08/2026.
 
 Please let us know if more information is needed.",10-Closed,,Logan Dunmore,2025-09-22,2025-10-24,32,User Training/Procedure,,2025-10-02,,Security,
 AM,H,Production Support Item,IN001492,Abend in Absence Finalize,"Getting ""Calendar group is not open"" from Absence Management engine. Instance 9891975. Looks like a code issue.
@@ -396,19 +396,19 @@ BN,H,Production Support Item,IN001494,Dependent Information: wrong Benefit Plan 
 BN,L,Production Support Item,IN001495,Dependent Information: wrong Benefit Plan showing,"Users report that Benefit Plan on Dependent Information shows the wrong value since 04/10/2026. This affects Animal Services. Can someone check the setup?
 
 See attachment.",10-Closed,Jamie Galloway,Logan Dunmore,2025-09-27,2025-11-06,40,User Training/Procedure,,2025-10-17,,Functional,
-TL,M,Production Support Item,IN001497,How to process shift change,Guidance needed: what is the correct way to enter shift change on Approve Reported Time?,10-Closed,Casey Ellsworth,Rowan Fairbanks,2025-09-29,2025-12-21,83,Configuration Change,,2025-10-09,,Functional,
-SEC,L,Enhancement Request,IN001506,Code change - department security tree,"Requested by Public Works.
+TL,L,Production Support Item,IN001497,How to process shift change,Guidance needed: what is the correct way to enter shift change on Approve Reported Time?,10-Closed,Casey Ellsworth,Rowan Fairbanks,2025-09-29,2025-12-21,83,Configuration Change,,2025-10-19,,Functional,
+SEC,M,Enhancement Request,IN001506,Code change - department security tree,"Requested by Public Works.
 
 Update the logic in department security tree so that access request is handled. See spec.
 
-This is impacting the next pay period.",10-Closed,Taylor Castellano,Riley Pemberton,2025-10-02,2025-11-09,38,New Rqmt/Approved Enhancement,CR001746,2025-10-22,Parker Northcott,Technical,
+This is impacting the next pay period.",10-Closed,Taylor Castellano,Riley Pemberton,2025-10-02,2025-11-09,38,New Rqmt/Approved Enhancement,CR001746,2025-10-12,Parker Northcott,Technical,
 PC,H,Production Support Item,IN001511,Customization broken after PUM update,"Business Unit = AS
 PPE 07/16/2026
 
 The PC_INTFEDIT Application Engine customization no longer works after the PUM update.",10-Closed,Drew Jarrett,Riley Pemberton,2025-10-05,2025-10-10,5,New Rqmt/Approved Enhancement,CR001495,2025-10-10,Skyler Merriweather,Technical,
-PY,L,Production Support Item,IN001516,Error message when saving Create Additional Pay,"Hi team,
+PY,M,Production Support Item,IN001516,Error message when saving Create Additional Pay,"Hi team,
 
-Save fails with an error and the trace points to PeopleCode on Create Additional Pay.",10-Closed,Quinn Ingram,Reese Castellano,2025-10-08,2025-11-21,44,Data Fix,CR005924,2025-10-28,Parker Northcott,Technical,
+Save fails with an error and the trace points to PeopleCode on Create Additional Pay.",10-Closed,Quinn Ingram,Reese Castellano,2025-10-08,2025-11-21,44,Data Fix,CR005924,2025-10-18,Parker Northcott,Technical,
 AP,M,Production Support Item,IN001517,Voucher: wrong Payment Method showing,"Hi team,
 
 Users report that Payment Method on Voucher shows the wrong value since 08/27/2026. This affects Community Services. Can someone check the setup?",8-On Hold,Jamie Galloway,Riley Pemberton,2025-10-08,,410,,,2025-10-18,,Functional,
@@ -417,7 +417,7 @@ AM,M,Production Support Item,IN001522,Abend in Absence Calculation,"Hi team,
 Getting ""Calendar group is not open"" from Absence Management engine. Instance 2026454. Looks like a code issue.
 
 This has been done before, reference IN001265.",10-Closed,Alex Abernathy,Hayden Abernathy,2025-10-15,2025-11-09,25,Vendor Patch/Bundle,CR005880,2025-10-25,Logan Pemberton,Technical,RG-17
-EP,L,Production Support Item,IN001528,New user setup - Performance Administrator,Please set up RHOLLISTER with Performance Administrator access to Manager Evaluation.,10-Closed,Casey Ellsworth,Skyler Ingram,2025-10-23,2025-11-01,9,Security Update,,2025-11-12,,Security,
+EP,L,Production Support Item,IN001528,New user setup - Performance Administrator,Please set up SYNUSER1007 with Performance Administrator access to Manager Evaluation.,10-Closed,Casey Ellsworth,Skyler Ingram,2025-10-23,2025-11-01,9,Security Update,,2025-11-12,,Security,
 TL,L,Production Support Item,IN001532,Time reporting code wrong for BU FR,"Following the last Load Time and Labor, the time reporting code data for FR looks wrong.
 
 Steps to reproduce:
@@ -438,39 +438,39 @@ EX,M,Enhancement Request,IN001562,Code change - expense approval workflow,"Reque
 Update the logic in expense approval workflow so that travel is handled. See spec.
 
 Please let us know if more information is needed.",11-Migrated to Production,Taylor Castellano,Jordan Radcliffe,2025-11-06,2026-01-20,75,Vendor Patch/Bundle,CR008178,2025-11-16,Rowan Lockridge,Technical,
-SEC,H,Production Support Item,IN001563,Permission error on User Profiles,Getting a permission error on User Profiles for user JQUINTERO.,10-Closed,Jamie Galloway,Skyler Ingram,2025-11-07,2026-01-07,61,Security Update,,2025-11-12,,Security,
+SEC,H,Production Support Item,IN001563,Permission error on User Profiles,Getting a permission error on User Profiles for user SYNUSER0116.,10-Closed,Jamie Galloway,Skyler Ingram,2025-11-07,2026-01-07,61,Security Update,,2025-11-12,,Security,
 HR,M,Production Support Item,IN001567,Outbound file incomplete,The CI_JOB_DATA component interface file sent on 05/24/2025 did not include all department records.,10-Closed,Quinn Ingram,Parker Ellsworth,2025-11-10,2026-01-11,62,Vendor Patch/Bundle,,2025-11-20,Logan Pemberton,Technical,RG-24
-EP,L,Production Support Item,IN001572,Goal wrong for BU AS,"Following the last document routing, the goal data for AS looks wrong.",10-Closed,Jamie Galloway,Rowan Fairbanks,2025-11-13,2025-12-26,43,New Rqmt/Approved Enhancement,,2025-12-03,,Functional,RG-18
-AP,L,Production Support Item,IN001574,Positive pay file step failure,"positive pay file stopped at a step; the log shows ""Duplicate invoice number"".
+EP,M,Production Support Item,IN001572,Goal wrong for BU AS,"Following the last document routing, the goal data for AS looks wrong.",10-Closed,Jamie Galloway,Rowan Fairbanks,2025-11-13,2025-12-26,43,New Rqmt/Approved Enhancement,,2025-11-23,,Functional,RG-18
+AP,M,Production Support Item,IN001574,Positive pay file step failure,"positive pay file stopped at a step; the log shows ""Duplicate invoice number"".
 
 Steps to reproduce:
 1. Navigate to Accounts Payable > Vouchers > Add/Update > Regular Entry
 2. Open the affected record
-3. Save",11-Migrated to Production,Avery Hollister,Sage Jarrett,2025-11-15,2025-12-20,35,Code Fix,CR009920,2025-12-05,Hayden Okafor,Technical,
-TL,H,Production Support Item,IN001578,Disable login PHOLLISTER,"Account PHOLLISTER should be locked.
+3. Save",11-Migrated to Production,Avery Hollister,Sage Jarrett,2025-11-15,2025-12-20,35,Code Fix,CR009920,2025-11-25,Hayden Okafor,Technical,
+TL,H,Production Support Item,IN001578,Disable login SYNUSER1307,"Account SYNUSER1307 should be locked.
 
 Steps to reproduce:
 1. Navigate to Time and Labor > Report Time > Timesheet
 2. Open the affected record
 3. Save",10-Closed,Jordan Bellweather,Hayden Okafor,2025-11-18,2026-01-29,72,User Training/Procedure,,2025-11-23,,Security,
-HR,M,Production Support Item,IN001585,Budget Office - rehire issue,"Hi team,
+HR,H,Production Support Item,IN001585,Budget Office - rehire issue,"Hi team,
 
 We are having trouble with rehire. The department is not coming out right in Department Table. Need help.
 
-This is impacting the next pay period.",10-Closed,Jamie Galloway,Taylor Northcott,2025-11-21,2026-01-24,64,New Rqmt/Approved Enhancement,,2025-12-01,,Functional,
+This is impacting the next pay period.",10-Closed,Jamie Galloway,Taylor Northcott,2025-11-21,2026-01-24,64,New Rqmt/Approved Enhancement,,2025-11-26,,Functional,
 HR,H,Enhancement Request,IN001587,Code change - HR_JOB component,"Hi team,
 
 Update the logic in HR_JOB component so that promotion is handled. See spec.",10-Closed,Riley Fairbanks,Casey Fairbanks,2025-11-23,2026-02-17,86,Code Fix,,2025-11-28,Hayden Okafor,Technical,
-HR,L,Production Support Item,IN001590,Outbound file incomplete,"The Job Data save PeopleCode file sent on 08/27/2025 did not include all department records.
+HR,M,Production Support Item,IN001590,Outbound file incomplete,"The Job Data save PeopleCode file sent on 08/27/2025 did not include all department records.
 
-Please let us know if more information is needed.",11-Migrated to Production,Casey Ellsworth,Quinn Radcliffe,2025-11-25,2025-12-07,12,Data Fix,CR007229,2025-12-15,Sage Radcliffe,Technical,RG-02
+Please let us know if more information is needed.",11-Migrated to Production,Casey Ellsworth,Quinn Radcliffe,2025-11-25,2025-12-07,12,Data Fix,CR007229,2025-12-05,Sage Radcliffe,Technical,RG-02
 TL,H,Enhancement Request,IN001596,Code change - Time and Labor rules engine,"Business Unit = CE
 PPE 06/17/2025
 
 Update the logic in Time and Labor rules engine so that shift change is handled. See spec.
 
 Please let us know if more information is needed.",10-Closed,Taylor Castellano,Skyler Bellweather,2025-11-28,2025-12-31,33,Data Fix,,2025-12-03,Hayden Okafor,Technical,
-EX,H,Production Support Item,IN001599,Short-term access request,Give LOKAFOR access to Travel Authorization until 03/22/2025.,10-Closed,,Sage Quintero,2025-11-30,2025-12-17,17,Security Update,,2025-12-05,,Security,
+EX,M,Production Support Item,IN001599,Short-term access request,Give SYNUSER1514 access to Travel Authorization until 03/22/2025.,10-Closed,,Sage Quintero,2025-11-30,2025-12-17,17,Security Update,,2025-12-10,,Security,
 AM,M,Production Support Item,IN001611,Absence Management engine step failure,"Hi team,
 
 Absence Management engine stopped at a step; the log shows ""Absence request exceeds available balance"".",10-Closed,Jordan Bellweather,Hayden Abernathy,2025-12-03,2026-02-19,78,Code Fix,CR006707,2025-12-13,Rowan Lockridge,Technical,
@@ -487,10 +487,10 @@ Steps to reproduce:
 PO,M,Production Support Item,IN001632,Code Enforcement - encumbrance issue,"Requested by Code Enforcement.
 
 We are having trouble with encumbrance. The blanket PO is not coming out right in Requisition. Need help.",10-Closed,Morgan Dunmore,Hayden Okafor,2025-12-16,2025-12-24,8,Data Fix,,2025-12-26,,Functional,
-TL,H,Production Support Item,IN001650,Need CFG refreshed,Copy production down to CFG please.,10-Closed,Taylor Castellano,Jordan Dunmore,2026-01-01,2026-03-09,67,System Administration,,2026-01-06,,Administration,
-HR,M,Enhancement Request,IN001654,Enhancement: Job Data,"Requesting that Job Data be changed to default the effective date to today.
+TL,M,Production Support Item,IN001650,Need CFG refreshed,Copy production down to CFG please.,10-Closed,Taylor Castellano,Jordan Dunmore,2026-01-01,2026-03-09,67,System Administration,,2026-01-11,,Administration,
+HR,H,Enhancement Request,IN001654,Enhancement: Job Data,"Requesting that Job Data be changed to default the effective date to today.
 
-This is impacting the next pay period.",10-Closed,Jamie Galloway,Parker Ellsworth,2026-01-04,2026-01-19,15,User Training/Procedure,CR006737,2026-01-14,Reese Kensington,Functional,
+This is impacting the next pay period.",10-Closed,Jamie Galloway,Parker Ellsworth,2026-01-04,2026-01-19,15,User Training/Procedure,CR006737,2026-01-09,Reese Kensington,Functional,
 EX,M,Enhancement Request,IN001655,PS Query for Human Resources,"Hi team,
 
 Could a query be created to pull expense report information by Expense Type?",10-Closed,Morgan Dunmore,Parker Lockridge,2026-01-04,2026-02-21,48,Code Fix,CR001829,2026-01-14,Emerson Quintero,Technical,
@@ -510,12 +510,12 @@ HR,M,Production Support Item,IN001669,Discrepancy in new hire report,"Hi team,
 Reconciliation for 07/21/2026 shows a discrepancy in the new hire report. Numbers for BU PW are off.
 
 Please let us know if more information is needed.",10-Closed,Quinn Ingram,Jordan Dunmore,2026-01-15,2026-03-19,63,Data Fix,,2026-01-25,,Functional,
-TL,M,Production Support Item,IN001670,Timesheet Lockdown: wrong Workgroup showing,"Requested by Parks and Recreation.
+TL,H,Production Support Item,IN001670,Timesheet Lockdown: wrong Workgroup showing,"Requested by Parks and Recreation.
 
 Users report that Workgroup on Timesheet Lockdown shows the wrong value since 06/12/2025. This affects Parks and Recreation. Can someone check the setup?
 
-This is impacting the next pay period.",10-Closed,Jordan Bellweather,Casey Merriweather,2026-01-16,2026-02-21,36,Configuration Change,,2026-01-26,,Functional,
-PY,H,Production Support Item,IN001672,Terminate user access,"Disable QBELLWEATH; last day was 04/05/2025.
+This is impacting the next pay period.",10-Closed,Jordan Bellweather,Casey Merriweather,2026-01-16,2026-02-21,36,Configuration Change,,2026-01-21,,Functional,
+PY,H,Production Support Item,IN001672,Terminate user access,"Disable SYNUSER0801; last day was 04/05/2025.
 
 Please let us know if more information is needed.",10-Closed,Casey Ellsworth,Sage Jarrett,2026-01-18,2026-01-27,9,Security Update,,2026-01-23,,Security,RG-22
 TL,M,Production Support Item,IN001679,Discrepancy in unapproved time report,Reconciliation for 05/26/2025 shows a discrepancy in the unapproved time report. Numbers for BU BO are off.,9-Cancelled,Quinn Ingram,Alex Okafor,2026-01-22,2026-04-22,90,Duplicate,,2026-02-01,,Functional,RG-07
@@ -535,30 +535,30 @@ PPE 11/08/2026
 Save fails with an error and the trace points to PeopleCode on Dependent Information.
 
 See attachment.",10-Closed,Morgan Dunmore,Taylor Galloway,2026-02-06,2026-02-07,1,Data Fix,CR003580,2026-02-16,Sage Radcliffe,Technical,
-PY,M,Production Support Item,IN001697,Patch TRN,"Requested by Animal Services.
+PY,H,Production Support Item,IN001697,Patch TRN,"Requested by Animal Services.
 
 TRN needs the latest tools patch.
 
-This is impacting the next pay period.",10-Closed,Jamie Galloway,Reese Jarrett,2026-02-06,2026-03-18,40,Vendor Patch/Bundle,,2026-02-16,,Administration,
-HR,M,Enhancement Request,IN001704,Enhancement: Position Data,"Business Unit = PW
+This is impacting the next pay period.",10-Closed,Jamie Galloway,Reese Jarrett,2026-02-06,2026-03-18,40,Vendor Patch/Bundle,,2026-02-11,,Administration,
+HR,H,Enhancement Request,IN001704,Enhancement: Position Data,"Business Unit = PW
 PPE 01/18/2026
 
 Requesting that Position Data be changed to make the field display-only for non-administrators.
 
-This is impacting the next pay period.",11-Migrated to Production,Jordan Bellweather,Morgan Jarrett,2026-02-08,2026-04-14,65,User Training/Procedure,CR003769,2026-02-18,Hayden Okafor,Functional,
-EP,L,Production Support Item,IN001710,Goal wrong for BU AS,"Hi team,
+This is impacting the next pay period.",11-Migrated to Production,Jordan Bellweather,Morgan Jarrett,2026-02-08,2026-04-14,65,User Training/Procedure,CR003769,2026-02-13,Hayden Okafor,Functional,
+EP,M,Production Support Item,IN001710,Goal wrong for BU AS,"Hi team,
 
-Following the last document routing, the goal data for AS looks wrong.",10-Closed,Jordan Bellweather,Parker Ellsworth,2026-02-11,2026-05-04,82,Data Fix,,2026-03-03,,Functional,RG-18
+Following the last document routing, the goal data for AS looks wrong.",10-Closed,Jordan Bellweather,Parker Ellsworth,2026-02-11,2026-05-04,82,Data Fix,,2026-02-21,,Functional,RG-18
 AM,M,Production Support Item,IN001717,Outbound file incomplete,"Business Unit = AS
 PPE 12/11/2025
 
 The Absence Management engine file sent on 12/11/2025 did not include all FMLA leave records.",10-Closed,Riley Fairbanks,Riley Bellweather,2026-02-12,2026-03-30,46,New Rqmt/Approved Enhancement,CR003190,2026-02-22,Sage Radcliffe,Technical,
-AP,L,Production Support Item,IN001722,Positive pay file step failure,"Hi team,
+AP,M,Production Support Item,IN001722,Positive pay file step failure,"Hi team,
 
 positive pay file stopped at a step; the log shows ""Voucher is in budget error"".
 
-See attachment.",11-Migrated to Production,Avery Hollister,Jordan Dunmore,2026-02-16,2026-03-02,14,Vendor Patch/Bundle,CR002860,2026-03-08,Skyler Merriweather,Technical,RG-05
-PT,H,Production Support Item,IN001723,Patch UAT,"Business Unit = CE
+See attachment.",11-Migrated to Production,Avery Hollister,Jordan Dunmore,2026-02-16,2026-03-02,14,Vendor Patch/Bundle,CR002860,2026-02-26,Skyler Merriweather,Technical,RG-05
+PT,M,Production Support Item,IN001723,Patch UAT,"Business Unit = CE
 PPE 03/19/2026
 
 UAT needs the latest tools patch.
@@ -566,18 +566,18 @@ UAT needs the latest tools patch.
 Steps to reproduce:
 1. Navigate to PeopleTools > Process Scheduler > Process Monitor
 2. Open the affected record
-3. Save",10-Closed,Alex Abernathy,Skyler Pemberton,2026-02-16,2026-03-13,25,No Action Required,,2026-02-21,,Administration,
+3. Save",10-Closed,Alex Abernathy,Skyler Pemberton,2026-02-16,2026-03-13,25,No Action Required,,2026-02-26,,Administration,
 AM,H,Production Support Item,IN001734,Jobs not running,"Hi team,
 
 Nothing has run on the scheduler since 03/01/2026; accrual process and everything else sits in Queued.",10-Closed,Morgan Dunmore,Jamie Ellsworth,2026-02-23,2026-03-15,20,Vendor Patch/Bundle,,2026-02-28,,Administration,
-TL,L,Enhancement Request,IN001735,PS Query for Sheriff's Office,"Hi team,
+TL,M,Enhancement Request,IN001735,PS Query for Sheriff's Office,"Hi team,
 
 Could a query be created to pull time reporting code information by TRC?
 
-This is impacting the next pay period.",10-Closed,Taylor Castellano,Emerson Galloway,2026-02-24,2026-05-14,79,Code Fix,CR008902,2026-03-16,Logan Pemberton,Technical,
+This is impacting the next pay period.",10-Closed,Taylor Castellano,Emerson Galloway,2026-02-24,2026-05-14,79,Code Fix,CR008902,2026-03-06,Logan Pemberton,Technical,
 HR,H,Production Support Item,IN001748,Transfer - update roles,"Requested by Sheriff's Office.
 
-Employee ERADCLIFFE transferred to Sheriff's Office and needs roles updated.
+Employee SYNUSER1617 transferred to Sheriff's Office and needs roles updated.
 
 This is impacting the next pay period.",10-Closed,,Hayden Okafor,2026-03-03,2026-04-14,42,User Training/Procedure,,2026-03-08,,Security,
 RC,M,Production Support Item,IN001750,Customization broken after PUM update,"Business Unit = CE
@@ -615,8 +615,8 @@ Ran Create Evaluations but the report never posted to Report Manager.
 This is impacting the next pay period.",10-Closed,Casey Ellsworth,Reese Quintero,2026-03-18,2026-04-11,24,Vendor Patch/Bundle,,2026-03-28,,Administration,
 SEC,M,Production Support Item,IN001771,Permission error on Permission Lists,"Hi team,
 
-Getting a permission error on Permission Lists for user JGALLOWAY.",9-Cancelled,Morgan Dunmore,Parker Lockridge,2026-03-19,2026-05-01,43,Duplicate,,2026-03-29,,Security,
-SEC,H,Production Support Item,IN001773,Disable login SCASTELLAN,"Account SCASTELLAN should be locked.
+Getting a permission error on Permission Lists for user SYNUSER0106.",9-Cancelled,Morgan Dunmore,Parker Lockridge,2026-03-19,2026-05-01,43,Duplicate,,2026-03-29,,Security,
+SEC,H,Production Support Item,IN001773,Disable login SYNUSER1702,"Account SYNUSER1702 should be locked.
 
 This is impacting the next pay period.",10-Closed,,Rowan Merriweather,2026-03-20,2026-05-27,68,User Training/Procedure,,2026-03-25,,Security,
 PT,M,Production Support Item,IN001777,IB errors for Integration Broker gateway,"Hi team,
@@ -627,7 +627,7 @@ Steps to reproduce:
 1. Navigate to PeopleTools > Process Scheduler > Process Monitor
 2. Open the affected record
 3. Save",2-Assigned/In Queue,Riley Fairbanks,Casey Fairbanks,2026-03-22,,245,,,2026-04-01,,Administration,
-HR,L,Production Support Item,IN001785,Personal Data: wrong Job Code showing,Users report that Job Code on Personal Data shows the wrong value since 11/04/2025. This affects Community Services. Can someone check the setup?,9-Cancelled,Alex Abernathy,Jordan Dunmore,2026-03-26,2026-04-19,24,Duplicate,,2026-04-15,,Functional,
+HR,M,Production Support Item,IN001785,Personal Data: wrong Job Code showing,Users report that Job Code on Personal Data shows the wrong value since 11/04/2025. This affects Community Services. Can someone check the setup?,9-Cancelled,Alex Abernathy,Jordan Dunmore,2026-03-26,2026-04-19,24,Duplicate,,2026-04-05,,Functional,
 TL,H,Production Support Item,IN001787,TL_TIMEADMIN Application Engine step failure,"Hi team,
 
 TL_TIMEADMIN Application Engine stopped at a step; the log shows ""Workgroup is not valid for this employee"".
@@ -641,16 +641,16 @@ Please let us know if more information is needed.",10-Closed,Morgan Dunmore,Jord
 AM,H,Production Support Item,IN001793,Outbound file incomplete,"Requested by Budget Office.
 
 The Absence Management engine file sent on 02/06/2025 did not include all vacation accrual records.",10-Closed,Jordan Bellweather,Hayden Abernathy,2026-03-30,2026-05-17,48,New Rqmt/Approved Enhancement,CR009923,2026-04-04,Reese Kensington,Technical,
-PY,H,Production Support Item,IN001804,Outbound file incomplete,"Business Unit = FN
+PY,M,Production Support Item,IN001804,Outbound file incomplete,"Business Unit = FN
 PPE 06/02/2025
 
 The PAYCHECK SQR file sent on 06/02/2025 did not include all paycheck records.
 
-Please let us know if more information is needed.",9-Cancelled,,Sage Castellano,2026-04-03,2026-06-26,84,Duplicate,CR004159,2026-04-08,Parker Northcott,Technical,
-PY,L,Production Support Item,IN001805,Error message when saving Pay Calendar Table,Save fails with an error and the trace points to PeopleCode on Pay Calendar Table.,10-Closed,,Avery Abernathy,2026-04-03,2026-04-16,13,New Rqmt/Approved Enhancement,CR004414,2026-04-23,Hayden Okafor,Technical,
-AM,L,Production Support Item,IN001808,Absence request wrong for BU CS,"Requested by Community Services.
+Please let us know if more information is needed.",9-Cancelled,,Sage Castellano,2026-04-03,2026-06-26,84,Duplicate,CR004159,2026-04-13,Parker Northcott,Technical,
+PY,M,Production Support Item,IN001805,Error message when saving Pay Calendar Table,Save fails with an error and the trace points to PeopleCode on Pay Calendar Table.,10-Closed,,Avery Abernathy,2026-04-03,2026-04-16,13,New Rqmt/Approved Enhancement,CR004414,2026-04-13,Hayden Okafor,Technical,
+AM,M,Production Support Item,IN001808,Absence request wrong for BU CS,"Requested by Community Services.
 
-Following the last Absence Calculation, the absence request data for CS looks wrong.",9-Cancelled,Casey Ellsworth,Rowan Merriweather,2026-04-04,2026-06-15,72,Duplicate,,2026-04-24,,Functional,
+Following the last Absence Calculation, the absence request data for CS looks wrong.",9-Cancelled,Casey Ellsworth,Rowan Merriweather,2026-04-04,2026-06-15,72,Duplicate,,2026-04-14,,Functional,
 PC,H,Production Support Item,IN001810,IB errors for PC_INTFEDIT Application Engine,"Business Unit = SO
 PPE 09/26/2026
 
@@ -673,9 +673,9 @@ Need a new report showing Benefit Plan for COBRA notice records in Animal Servic
 AP,H,Production Support Item,IN001832,Match Workbench: wrong Invoice Number showing,"Users report that Invoice Number on Match Workbench shows the wrong value since 10/13/2025. This affects Sheriff's Office. Can someone check the setup?
 
 This is impacting the next pay period.",10-Closed,,Alex Abernathy,2026-04-15,2026-06-01,47,Data Fix,,2026-04-20,,Functional,
-GL,L,Production Support Item,IN001850,Bulk change of ledger records,"Need a bulk change for ledger records in BO, effective 06/24/2026. List attached.
+GL,H,Production Support Item,IN001850,Bulk change of ledger records,"Need a bulk change for ledger records in BO, effective 06/24/2026. List attached.
 
-This is impacting the next pay period.",1-New,Alex Abernathy,Emerson Northcott,2026-04-28,,208,,,2026-05-18,,Functional,
+This is impacting the next pay period.",1-New,Alex Abernathy,Emerson Northcott,2026-04-28,,208,,,2026-05-03,,Functional,
 HR,M,Production Support Item,IN001856,Outbound file incomplete,The CI_JOB_DATA component interface file sent on 10/01/2025 did not include all department records.,10-Closed,,Hayden Okafor,2026-05-02,2026-05-20,18,New Rqmt/Approved Enhancement,CR003296,2026-05-12,Rowan Lockridge,Technical,RG-24
 BN,L,Production Support Item,IN001859,How to process dental coverage,"Guidance needed: what is the correct way to enter dental coverage on Health Benefits?
 
@@ -683,10 +683,10 @@ Please let us know if more information is needed.",9-Cancelled,Morgan Dunmore,Ri
 PY,H,Production Support Item,IN001867,Budget Office - retro pay issue,"We are having trouble with retro pay. The deduction is not coming out right in Review Paycheck. Need help.
 
 See attachment.",9-Cancelled,,Emerson Northcott,2026-05-10,2026-07-23,74,Duplicate,,2026-05-15,,Functional,
-HR,M,Production Support Item,IN001868,How to process termination action,"Business Unit = PZ
+HR,L,Production Support Item,IN001868,How to process termination action,"Business Unit = PZ
 PPE 09/26/2026
 
-Guidance needed: what is the correct way to enter termination action on Position Data?",10-Closed,Taylor Castellano,Jamie Ellsworth,2026-05-10,2026-06-24,45,User Training/Procedure,,2026-05-20,,Functional,
+Guidance needed: what is the correct way to enter termination action on Position Data?",10-Closed,Taylor Castellano,Jamie Ellsworth,2026-05-10,2026-06-24,45,User Training/Procedure,,2026-05-30,,Functional,
 EX,H,Production Support Item,IN001873,Bulk change of expense report records,"Requested by Code Enforcement.
 
 Need a bulk change for expense report records in CE, effective 03/22/2025. List attached.
@@ -697,60 +697,60 @@ This has been done before, reference IN001636.",10-Closed,Taylor Castellano,Rile
 TL,H,Enhancement Request,IN001875,PS Query for Public Works,"Could a query be created to pull time reporting code information by Taskgroup?
 
 Please let us know if more information is needed.",10-Closed,Avery Hollister,Avery Abernathy,2026-05-13,2026-06-04,22,Code Fix,CR003917,2026-05-18,Emerson Quintero,Technical,
-HR,L,Production Support Item,IN001876,Terminate user access,"Disable RJARRETT; last day was 05/24/2026.
+HR,L,Production Support Item,IN001876,Terminate user access,"Disable SYNUSER1009; last day was 05/24/2026.
 
 This is impacting the next pay period.",10-Closed,Morgan Dunmore,Hayden Hollister,2026-05-13,2026-06-05,23,Security Update,,2026-06-02,,Security,
-SEC,H,Production Support Item,IN001882,Missing employees in Permission Lists,"Business Unit = FN
+SEC,M,Production Support Item,IN001882,Missing employees in Permission Lists,"Business Unit = FN
 PPE 01/31/2025
 
 Security looks wrong. Security Administrator can't see Finance data.
 
 See attachment.
 
-This has been done before, reference IN001788.",9-Cancelled,Morgan Dunmore,Rowan Merriweather,2026-05-15,2026-05-19,4,Duplicate,,2026-05-20,,Security,RG-21
-TL,M,Enhancement Request,IN001883,Enhancement: Assign Work Schedule,"Business Unit = BO
+This has been done before, reference IN001788.",9-Cancelled,Morgan Dunmore,Rowan Merriweather,2026-05-15,2026-05-19,4,Duplicate,,2026-05-25,,Security,RG-21
+TL,H,Enhancement Request,IN001883,Enhancement: Assign Work Schedule,"Business Unit = BO
 PPE 01/17/2025
 
 Requesting that Assign Work Schedule be changed to add a search by employee name.
 
-This is impacting the next pay period.",9-Cancelled,Casey Ellsworth,Hayden Okafor,2026-05-15,2026-06-10,26,Duplicate,CR003494,2026-05-25,Emerson Quintero,Functional,
+This is impacting the next pay period.",9-Cancelled,Casey Ellsworth,Hayden Okafor,2026-05-15,2026-06-10,26,Duplicate,CR003494,2026-05-20,Emerson Quintero,Functional,
 AM,L,Production Support Item,IN001885,Manage Absence: wrong Entitlement showing,"Users report that Entitlement on Manage Absence shows the wrong value since 01/02/2025. This affects Budget Office. Can someone check the setup?
 
 See attachment.",10-Closed,,Morgan Quintero,2026-05-16,2026-07-11,56,Data Fix,,2026-06-05,,Functional,
 TL,H,Production Support Item,IN001899,How to process overtime,"Guidance needed: what is the correct way to enter overtime on Timesheet?
 
 See attachment.",10-Closed,Quinn Ingram,Skyler Bellweather,2026-05-21,2026-06-21,31,User Training/Procedure,,2026-05-26,,Functional,
-TL,H,Production Support Item,IN001904,Bulk change of time reporting code records,"Need a bulk change for time reporting code records in HR, effective 12/30/2025. List attached.
+TL,M,Production Support Item,IN001904,Bulk change of time reporting code records,"Need a bulk change for time reporting code records in HR, effective 12/30/2025. List attached.
 
-See attachment.",10-Closed,Jamie Galloway,Skyler Ingram,2026-05-25,2026-05-26,1,New Rqmt/Approved Enhancement,,2026-05-30,,Functional,
-PY,H,Production Support Item,IN001907,Bulk change of garnishment records,"Hi team,
+See attachment.",10-Closed,Jamie Galloway,Skyler Ingram,2026-05-25,2026-05-26,1,New Rqmt/Approved Enhancement,,2026-06-04,,Functional,
+PY,M,Production Support Item,IN001907,Bulk change of garnishment records,"Hi team,
 
-Need a bulk change for garnishment records in PR, effective 01/14/2026. List attached.",9-Cancelled,Avery Hollister,Alex Abernathy,2026-05-26,2026-07-19,54,Duplicate,,2026-05-31,,Functional,
+Need a bulk change for garnishment records in PR, effective 01/14/2026. List attached.",9-Cancelled,Avery Hollister,Alex Abernathy,2026-05-26,2026-07-19,54,Duplicate,,2026-06-05,,Functional,
 AM,H,Production Support Item,IN001912,Sick leave balance wrong for BU CS,"Following the last accrual process, the sick leave balance data for CS looks wrong.",10-Closed,Morgan Dunmore,Jordan Radcliffe,2026-05-28,2026-08-01,65,Data Fix,,2026-06-02,,Functional,
 PY,H,Enhancement Request,IN001914,Add recurrence for year-end W-2 processing,"Requested by Finance.
 
 Please schedule year-end W-2 processing to run every night.",11-Migrated to Production,Drew Jarrett,Avery Hollister,2026-05-30,2026-07-05,36,Vendor Patch/Bundle,CR003062,2026-06-04,Reese Kensington,Administration,RG-09
-GL,H,Enhancement Request,IN001915,Add recurrence for Journal Edit,"Business Unit = FR
+GL,M,Enhancement Request,IN001915,Add recurrence for Journal Edit,"Business Unit = FR
 PPE 06/25/2026
 
-Please schedule Journal Edit to run every night.",11-Migrated to Production,Alex Abernathy,Morgan Quintero,2026-05-30,2026-07-21,52,System Administration,CR004605,2026-06-04,Rowan Lockridge,Administration,
+Please schedule Journal Edit to run every night.",11-Migrated to Production,Alex Abernathy,Morgan Quintero,2026-05-30,2026-07-21,52,System Administration,CR004605,2026-06-09,Rowan Lockridge,Administration,
 PO,H,Enhancement Request,IN001919,Code change - Approval Framework,"Update the logic in Approval Framework so that encumbrance is handled. See spec.
 
 Steps to reproduce:
 1. Navigate to Purchasing > Purchase Orders > Add/Update POs
 2. Open the affected record
 3. Save",9-Cancelled,Casey Ellsworth,Avery Okafor,2026-05-31,2026-07-03,33,Duplicate,,2026-06-05,Sage Radcliffe,Technical,
-GL,M,Production Support Item,IN001923,Need TST refreshed,"Copy production down to TST please.
+GL,H,Production Support Item,IN001923,Need TST refreshed,"Copy production down to TST please.
 
-This is impacting the next pay period.",9-Cancelled,Drew Jarrett,Morgan Quintero,2026-06-01,2026-06-12,11,Duplicate,,2026-06-11,,Administration,
-HR,L,Production Support Item,IN001931,Bulk change of employee record records,"Need a bulk change for employee record records in FN, effective 05/23/2025. List attached.
+This is impacting the next pay period.",9-Cancelled,Drew Jarrett,Morgan Quintero,2026-06-01,2026-06-12,11,Duplicate,,2026-06-06,,Administration,
+HR,H,Production Support Item,IN001931,Bulk change of employee record records,"Need a bulk change for employee record records in FN, effective 05/23/2025. List attached.
 
-This is impacting the next pay period.",9-Cancelled,Taylor Castellano,Morgan Castellano,2026-06-05,2026-07-10,35,Duplicate,,2026-06-25,,Functional,
-PO,M,Production Support Item,IN001936,Blanket PO wrong for BU BO,"Hi team,
+This is impacting the next pay period.",9-Cancelled,Taylor Castellano,Morgan Castellano,2026-06-05,2026-07-10,35,Duplicate,,2026-06-10,,Functional,
+PO,H,Production Support Item,IN001936,Blanket PO wrong for BU BO,"Hi team,
 
 Following the last PO rollover, the blanket PO data for BO looks wrong.
 
-This is impacting the next pay period.",10-Closed,Casey Ellsworth,Sage Jarrett,2026-06-07,2026-07-02,25,New Rqmt/Approved Enhancement,,2026-06-17,,Functional,
+This is impacting the next pay period.",10-Closed,Casey Ellsworth,Sage Jarrett,2026-06-07,2026-07-02,25,New Rqmt/Approved Enhancement,,2026-06-12,,Functional,
 EP,M,Production Support Item,IN001938,EPerformance workflow step failure,"Requested by Code Enforcement.
 
 ePerformance workflow stopped at a step; the log shows ""Document cannot be transferred"".
@@ -766,25 +766,25 @@ HR,M,Enhancement Request,IN001947,PS Query for Information Technology,Could a qu
 PY,M,Enhancement Request,IN001953,Add recurrence for Pay Unconfirm,"Hi team,
 
 Please schedule Pay Unconfirm to run every night.",10-Closed,Riley Fairbanks,Parker Ellsworth,2026-06-14,2026-07-02,18,No Action Required,,2026-06-24,,Administration,
-PO,M,Production Support Item,IN001958,How to process approval workflow,"Business Unit = AS
+PO,L,Production Support Item,IN001958,How to process approval workflow,"Business Unit = AS
 PPE 11/03/2026
 
-Guidance needed: what is the correct way to enter approval workflow on Purchase Order?",10-Closed,Jordan Bellweather,Logan Radcliffe,2026-06-16,2026-07-03,17,Data Fix,,2026-06-26,,Functional,
+Guidance needed: what is the correct way to enter approval workflow on Purchase Order?",10-Closed,Jordan Bellweather,Logan Radcliffe,2026-06-16,2026-07-03,17,Data Fix,,2026-07-06,,Functional,
 TL,H,Production Support Item,IN001961,Discrepancy in unapproved time report,"Business Unit = TR
 PPE 11/12/2025
 
 Reconciliation for 11/12/2025 shows a discrepancy in the unapproved time report. Numbers for BU TR are off.
 
 See attachment.",10-Closed,Casey Ellsworth,Casey Fairbanks,2026-06-18,2026-07-12,24,New Rqmt/Approved Enhancement,,2026-06-23,,Functional,
-PY,M,Production Support Item,IN001962,Abend in Pay Confirmation,"Getting ""Pay calculation ended with errors for 14 employees"" from PAYCHECK SQR. Instance 8152503. Looks like a code issue.
+PY,H,Production Support Item,IN001962,Abend in Pay Confirmation,"Getting ""Pay calculation ended with errors for 14 employees"" from PAYCHECK SQR. Instance 8152503. Looks like a code issue.
 
-Please let us know if more information is needed.",10-Closed,Taylor Castellano,Avery Abernathy,2026-06-19,2026-07-09,20,Vendor Patch/Bundle,CR001420,2026-06-29,Reese Kensington,Technical,
+Please let us know if more information is needed.",10-Closed,Taylor Castellano,Avery Abernathy,2026-06-19,2026-07-09,20,Vendor Patch/Bundle,CR001420,2026-06-24,Reese Kensington,Technical,
 HR,H,Production Support Item,IN001968,Discrepancy in headcount report,"Reconciliation for 11/29/2025 shows a discrepancy in the headcount report. Numbers for BU PR are off.
 
 This is impacting the next pay period.",9-Cancelled,Avery Hollister,Riley Pemberton,2026-06-22,2026-07-30,38,Duplicate,,2026-06-27,,Functional,
 PT,L,Production Support Item,IN001971,Need TST refreshed,Copy production down to TST please.,10-Closed,,Sage Jarrett,2026-06-23,2026-07-15,22,No Action Required,,2026-07-13,,Administration,
-PY,H,Production Support Item,IN001982,Discrepancy in garnishment report,Reconciliation for 01/27/2025 shows a discrepancy in the garnishment report. Numbers for BU PZ are off.,10-Closed,Alex Abernathy,Taylor Galloway,2026-06-28,2026-09-23,87,User Training/Procedure,,2026-07-03,,Functional,
-PY,H,Production Support Item,IN001985,Permission error on Pay Calendar Table,Getting a permission error on Pay Calendar Table for user RBELLWEATH.,10-Closed,Riley Fairbanks,Sage Quintero,2026-06-30,2026-07-29,29,Security Update,,2026-07-05,,Security,
+PY,M,Production Support Item,IN001982,Discrepancy in garnishment report,Reconciliation for 01/27/2025 shows a discrepancy in the garnishment report. Numbers for BU PZ are off.,10-Closed,Alex Abernathy,Taylor Galloway,2026-06-28,2026-09-23,87,User Training/Procedure,,2026-07-08,,Functional,
+PY,M,Production Support Item,IN001985,Permission error on Pay Calendar Table,Getting a permission error on Pay Calendar Table for user SYNUSER0501.,10-Closed,Riley Fairbanks,Sage Quintero,2026-06-30,2026-07-29,29,Security Update,,2026-07-10,,Security,
 AM,M,Enhancement Request,IN001990,PS Query for Planning and Zoning,"Business Unit = PZ
 PPE 03/06/2025
 
@@ -800,9 +800,9 @@ Getting ""Calendar group is not open"" from Absence Management engine. Instance 
 Please let us know if more information is needed.
 
 This has been done before, reference IN001582.",10-Closed,Drew Jarrett,Casey Merriweather,2026-07-03,2026-08-03,31,Data Fix,CR007026,2026-07-13,Reese Kensington,Technical,RG-17
-TL,H,Production Support Item,IN002007,How to process pay period end,"Guidance needed: what is the correct way to enter pay period end on Manage Exceptions?
+TL,M,Production Support Item,IN002007,How to process pay period end,"Guidance needed: what is the correct way to enter pay period end on Manage Exceptions?
 
-Please let us know if more information is needed.",10-Closed,Jordan Bellweather,Drew Northcott,2026-07-10,2026-08-15,36,Configuration Change,,2026-07-15,,Functional,RG-16
+Please let us know if more information is needed.",10-Closed,Jordan Bellweather,Drew Northcott,2026-07-10,2026-08-15,36,Configuration Change,,2026-07-20,,Functional,RG-16
 GL,L,Enhancement Request,IN002009,Add Fund Code option,"Hi team,
 
 Can we add a new Fund Code option to support budget check? The business owner approved it.",11-Migrated to Production,Casey Ellsworth,Rowan Merriweather,2026-07-11,2026-08-07,27,Data Fix,CR002501,2026-07-31,Logan Pemberton,Functional,RG-19
@@ -822,25 +822,25 @@ Can we add a new Taskgroup option to support shift change? The business owner ap
 Please let us know if more information is needed.",11-Migrated to Production,Riley Fairbanks,Riley Pemberton,2026-07-15,2026-08-28,44,User Training/Procedure,CR007199,2026-07-25,Reese Kensington,Functional,
 SEC,H,Production Support Item,IN002018,Permission error on Roles,"Hi team,
 
-Getting a permission error on Roles for user DLOCKRIDGE.",10-Closed,Casey Ellsworth,Drew Northcott,2026-07-16,2026-10-06,82,User Training/Procedure,,2026-07-21,,Security,
+Getting a permission error on Roles for user SYNUSER0911.",10-Closed,Casey Ellsworth,Drew Northcott,2026-07-16,2026-10-06,82,User Training/Procedure,,2026-07-21,,Security,
 PO,H,Production Support Item,IN002019,New user setup - Buyer,"Business Unit = WU
 PPE 08/25/2026
 
-Please set up EHOLLISTER with Buyer access to Receiving.",10-Closed,Jamie Galloway,Rowan Merriweather,2026-07-16,2026-07-20,4,Security Update,,2026-07-21,,Security,
-AP,M,Production Support Item,IN002026,Patch UAT,"Requested by Sheriff's Office.
+Please set up SYNUSER1607 with Buyer access to Receiving.",10-Closed,Jamie Galloway,Rowan Merriweather,2026-07-16,2026-07-20,4,Security Update,,2026-07-21,,Security,
+AP,H,Production Support Item,IN002026,Patch UAT,"Requested by Sheriff's Office.
 
 UAT needs the latest tools patch.
 
-This is impacting the next pay period.",10-Closed,,Drew Galloway,2026-07-21,2026-09-01,42,System Administration,,2026-07-31,,Administration,RG-20
+This is impacting the next pay period.",10-Closed,,Drew Galloway,2026-07-21,2026-09-01,42,System Administration,,2026-07-26,,Administration,RG-20
 AM,L,Production Support Item,IN002031,How to process bereavement leave,"Business Unit = BO
 PPE 07/28/2025
 
 Guidance needed: what is the correct way to enter bereavement leave on Absence Request?",10-Closed,Alex Abernathy,Avery Abernathy,2026-07-22,2026-08-29,38,New Rqmt/Approved Enhancement,,2026-08-11,,Functional,
-EX,L,Production Support Item,IN002033,Discrepancy in outstanding expense report,"Requested by Information Technology.
+EX,M,Production Support Item,IN002033,Discrepancy in outstanding expense report,"Requested by Information Technology.
 
 Reconciliation for 01/12/2025 shows a discrepancy in the outstanding expense report. Numbers for BU IT are off.
 
-This is impacting the next pay period.",10-Closed,,Hayden Okafor,2026-07-23,2026-10-11,80,New Rqmt/Approved Enhancement,,2026-08-12,,Functional,
+This is impacting the next pay period.",10-Closed,,Hayden Okafor,2026-07-23,2026-10-11,80,New Rqmt/Approved Enhancement,,2026-08-02,,Functional,
 SEC,L,Production Support Item,IN002037,Error message when saving Permission Lists,"Hi team,
 
 Save fails with an error and the trace points to PeopleCode on Permission Lists.",3-In Development,Morgan Dunmore,Emerson Northcott,2026-07-27,,118,,CR009648,2026-08-16,Rowan Lockridge,Technical,
@@ -865,11 +865,11 @@ Steps to reproduce:
 1. Navigate to Workforce Administration > Job Information > Job Data
 2. Open the affected record
 3. Save",10-Closed,Jamie Galloway,Jamie Ellsworth,2026-08-11,2026-08-18,7,New Rqmt/Approved Enhancement,,2026-08-31,Hayden Okafor,Technical,RG-02
-TL,L,Production Support Item,IN002074,Manage Exceptions: wrong TRC showing,"Users report that TRC on Manage Exceptions shows the wrong value since 11/06/2026. This affects Budget Office. Can someone check the setup?
+TL,M,Production Support Item,IN002074,Manage Exceptions: wrong TRC showing,"Users report that TRC on Manage Exceptions shows the wrong value since 11/06/2026. This affects Budget Office. Can someone check the setup?
 
 This is impacting the next pay period.
 
-This has been done before, reference IN002038.",10-Closed,Drew Jarrett,Sage Jarrett,2026-08-16,2026-11-06,82,User Training/Procedure,,2026-09-05,,Functional,RG-01
+This has been done before, reference IN002038.",10-Closed,Drew Jarrett,Sage Jarrett,2026-08-16,2026-11-06,82,User Training/Procedure,,2026-08-26,,Functional,RG-01
 AM,L,Production Support Item,IN002082,Need TRN refreshed,"Business Unit = PR
 PPE 01/08/2026
 
@@ -889,63 +889,63 @@ TL,M,Production Support Item,IN002100,Discrepancy in payable time report,Reconci
 AP,M,Production Support Item,IN002106,Abend in matching,"Hi team,
 
 Getting ""Duplicate invoice number"" from positive pay file. Instance 1884800. Looks like a code issue.",10-Closed,Taylor Castellano,Jamie Lockridge,2026-09-01,2026-10-12,41,Data Fix,,2026-09-11,Skyler Merriweather,Technical,
-EX,H,Production Support Item,IN002109,Short-term access request,"Hi team,
+EX,M,Production Support Item,IN002109,Short-term access request,"Hi team,
 
-Give SCASTELLAN access to Travel Authorization until 05/22/2025.",10-Closed,Quinn Ingram,Jamie Ellsworth,2026-09-03,2026-09-11,8,Security Update,,2026-09-08,,Security,
-EP,M,Production Support Item,IN002111,How to process annual review,"Hi team,
+Give SYNUSER1702 access to Travel Authorization until 05/22/2025.",10-Closed,Quinn Ingram,Jamie Ellsworth,2026-09-03,2026-09-11,8,Security Update,,2026-09-13,,Security,
+EP,H,Production Support Item,IN002111,How to process annual review,"Hi team,
 
 Guidance needed: what is the correct way to enter annual review on Performance Document?
 
-This is impacting the next pay period.",10-Closed,Alex Abernathy,Quinn Kensington,2026-09-04,2026-09-16,12,Configuration Change,,2026-09-14,,Functional,
+This is impacting the next pay period.",10-Closed,Alex Abernathy,Quinn Kensington,2026-09-04,2026-09-16,12,Configuration Change,,2026-09-09,,Functional,
 GL,H,Production Support Item,IN002129,IB errors for GL_JEDIT Application Engine,Message queue shows errors for GL_JEDIT Application Engine.,8-On Hold,Riley Fairbanks,Rowan Merriweather,2026-09-19,,64,,,2026-09-24,,Administration,
-HR,L,Production Support Item,IN002131,Discrepancy in position vacancy report,"Reconciliation for 04/07/2026 shows a discrepancy in the position vacancy report. Numbers for BU AS are off.
+HR,M,Production Support Item,IN002131,Discrepancy in position vacancy report,"Reconciliation for 04/07/2026 shows a discrepancy in the position vacancy report. Numbers for BU AS are off.
 
-This is impacting the next pay period.",8-On Hold,Jamie Galloway,Drew Galloway,2026-09-20,,63,,,2026-10-10,,Functional,
+This is impacting the next pay period.",8-On Hold,Jamie Galloway,Drew Galloway,2026-09-20,,63,,,2026-09-30,,Functional,
 PY,M,Enhancement Request,IN002141,Report request - Tax Location by Water Utilities,"Need a new report showing Tax Location for deduction records in Water Utilities. Mockup attached.
 
 See attachment.",10-Closed,Quinn Ingram,Drew Galloway,2026-09-24,2026-10-30,36,Vendor Patch/Bundle,CR002794,2026-10-04,Emerson Quintero,Technical,
 AM,M,Production Support Item,IN002151,Customization broken after PUM update,"The Absence Request PeopleCode customization no longer works after the PUM update.
 
 Please let us know if more information is needed.",7-Approved for Production,,Parker Lockridge,2026-10-02,,51,,,2026-10-12,Parker Northcott,Technical,
-HR,L,Production Support Item,IN002160,Sheriff's Office - rehire issue,"Hi team,
+HR,M,Production Support Item,IN002160,Sheriff's Office - rehire issue,"Hi team,
 
 We are having trouble with rehire. The position is not coming out right in Personal Data. Need help.
 
-This is impacting the next pay period.",7-Approved for Production,,Emerson Galloway,2026-10-07,,46,,,2026-10-27,,Functional,
+This is impacting the next pay period.",7-Approved for Production,,Emerson Galloway,2026-10-07,,46,,,2026-10-17,,Functional,
 AP,L,Enhancement Request,IN002162,Add Supplier ID option,"Business Unit = PR
 PPE 04/09/2026
 
 Can we add a new Supplier ID option to support stale-dated check? The business owner approved it.
 
 See attachment.",8-On Hold,Quinn Ingram,Morgan Quintero,2026-10-08,,45,,,2026-10-28,,Functional,
-GL,M,Production Support Item,IN002167,Abend in Journal Edit,"Getting ""Accounting period is closed"" from GL_JEDIT Application Engine. Instance 8686741. Looks like a code issue.
+GL,H,Production Support Item,IN002167,Abend in Journal Edit,"Getting ""Accounting period is closed"" from GL_JEDIT Application Engine. Instance 8686741. Looks like a code issue.
 
-This is impacting the next pay period.",8-On Hold,Drew Jarrett,Logan Kensington,2026-10-10,,43,,CR002788,2026-10-20,Skyler Merriweather,Technical,
+This is impacting the next pay period.",8-On Hold,Drew Jarrett,Logan Kensington,2026-10-10,,43,,CR002788,2026-10-15,Skyler Merriweather,Technical,
 AM,H,Production Support Item,IN002169,Outbound file incomplete,The Absence Request PeopleCode file sent on 07/25/2026 did not include all sick leave balance records.,10-Closed,Quinn Ingram,Riley Ingram,2026-10-12,2026-10-25,13,Code Fix,CR006934,2026-10-17,Rowan Lockridge,Technical,
-HR,L,Production Support Item,IN002178,Bulk change of department records,"Need a bulk change for department records in HR, effective 04/26/2026. List attached.
+HR,M,Production Support Item,IN002178,Bulk change of department records,"Need a bulk change for department records in HR, effective 04/26/2026. List attached.
 
-Please let us know if more information is needed.",5-Ready for Test,Riley Fairbanks,Jamie Lockridge,2026-10-18,,35,,,2026-11-07,,Functional,
-PO,H,Production Support Item,IN002190,Outbound file incomplete,"Hi team,
+Please let us know if more information is needed.",5-Ready for Test,Riley Fairbanks,Jamie Lockridge,2026-10-18,,35,,,2026-10-28,,Functional,
+PO,M,Production Support Item,IN002190,Outbound file incomplete,"Hi team,
 
-The PO dispatch Application Engine file sent on 02/12/2026 did not include all blanket PO records.",5-Ready for Test,Avery Hollister,Reese Quintero,2026-10-23,,30,,CR007641,2026-10-28,Skyler Merriweather,Technical,RG-04
+The PO dispatch Application Engine file sent on 02/12/2026 did not include all blanket PO records.",5-Ready for Test,Avery Hollister,Reese Quintero,2026-10-23,,30,,CR007641,2026-11-02,Skyler Merriweather,Technical,RG-04
 PY,H,Production Support Item,IN002197,Abend in Pay Calculation,"Getting ""Check number already exists"" from PSPPYRUN COBOL. Instance 1630617. Looks like a code issue.",11-Migrated to Production,Quinn Ingram,Hayden Okafor,2026-10-27,2026-10-31,4,Vendor Patch/Bundle,CR004448,2026-11-01,Logan Pemberton,Technical,
-TL,H,Production Support Item,IN002204,Patch TRN,"TRN needs the latest tools patch.
+TL,M,Production Support Item,IN002204,Patch TRN,"TRN needs the latest tools patch.
 
 Steps to reproduce:
 1. Navigate to Time and Labor > Report Time > Timesheet
 2. Open the affected record
-3. Save",6-In Testing,Avery Hollister,Quinn Kensington,2026-10-29,,24,,,2026-11-03,,Administration,
+3. Save",6-In Testing,Avery Hollister,Quinn Kensington,2026-10-29,,24,,,2026-11-08,,Administration,
 BN,L,Production Support Item,IN002211,Project migration request,"Move PRJ_BN_9401 to CFG.
 
 See attachment.",2-Pending Validation,Morgan Dunmore,Logan Dunmore,2026-11-01,,21,,,2026-11-21,,Administration,
-GL,H,Enhancement Request,IN002212,Enhancement: Ledger Inquiry,"Business Unit = SO
+GL,M,Enhancement Request,IN002212,Enhancement: Ledger Inquiry,"Business Unit = SO
 PPE 06/03/2025
 
-Requesting that Ledger Inquiry be changed to make the field display-only for non-administrators.",10-Closed,Taylor Castellano,Morgan Jarrett,2026-11-02,2026-11-11,9,Data Fix,CR008608,2026-11-07,Reese Kensington,Functional,
-PY,H,Enhancement Request,IN002218,Report request - federal withholding by Community Services,"Hi team,
+Requesting that Ledger Inquiry be changed to make the field display-only for non-administrators.",10-Closed,Taylor Castellano,Morgan Jarrett,2026-11-02,2026-11-11,9,Data Fix,CR008608,2026-11-12,Reese Kensington,Functional,
+PY,M,Enhancement Request,IN002218,Report request - federal withholding by Community Services,"Hi team,
 
-Need a new report showing federal withholding for tax withholding records in Community Services. Mockup attached.",4-Migrated to Test,Jamie Galloway,Skyler Ingram,2026-11-04,,18,,CR006022,2026-11-09,Sage Radcliffe,Technical,
-SEC,H,Production Support Item,IN002228,Short-term access request,Give PHOLLISTER access to Row Security until 07/18/2026.,3-In Development,Drew Jarrett,Taylor Northcott,2026-11-09,,13,,,2026-11-14,,Security,
+Need a new report showing federal withholding for tax withholding records in Community Services. Mockup attached.",4-Migrated to Test,Jamie Galloway,Skyler Ingram,2026-11-04,,18,,CR006022,2026-11-14,Sage Radcliffe,Technical,
+SEC,H,Production Support Item,IN002228,Short-term access request,Give SYNUSER1307 access to Row Security until 07/18/2026.,3-In Development,Drew Jarrett,Taylor Northcott,2026-11-09,,13,,,2026-11-14,,Security,
 TL,L,Production Support Item,IN002229,Discrepancy in payable time report,"Business Unit = IT
 PPE 08/16/2025
 
@@ -962,11 +962,11 @@ Steps to reproduce:
 AP,M,Production Support Item,IN002247,Supplier Information: wrong Supplier ID showing,"Users report that Supplier ID on Supplier Information shows the wrong value since 07/19/2025. This affects Human Resources. Can someone check the setup?
 
 Please let us know if more information is needed.",7-Approved for Production,Casey Ellsworth,Jordan Dunmore,2026-11-20,,2,,,2026-11-30,,Functional,
-AP,H,Production Support Item,IN002248,Payment wrong for BU FN,"Hi team,
+AP,M,Production Support Item,IN002248,Payment wrong for BU FN,"Hi team,
 
 Following the last Pay Cycle, the payment data for FN looks wrong.
 
-Please let us know if more information is needed.",4-Migrated to Test,Avery Hollister,Hayden Abernathy,2026-11-20,,2,,,2026-11-25,,Functional,
+Please let us know if more information is needed.",4-Migrated to Test,Avery Hollister,Hayden Abernathy,2026-11-20,,2,,,2026-11-30,,Functional,
 PO,H,Production Support Item,IN002250,Outbound file incomplete,"Hi team,
 
 The PO dispatch Application Engine file sent on 02/08/2025 did not include all blanket PO records.

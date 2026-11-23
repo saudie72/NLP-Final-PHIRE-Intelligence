@@ -306,6 +306,23 @@ RESOLUTION = {
 DUE_DAYS = {"H": 5, "M": 10, "L": 20}
 
 
+# Cues mirror the priority signals in docs/ticket-taxonomy.md so labels and documented rules agree.
+HIGH_CUES = ("next pay period", "pay confirmation", "separated", "last day", "queued", "nothing has run",
+             "timing out", "two minutes", "year-end", "w-2", "several departments", "multiple departments")
+LOW_CUES = ("question on", "how to", "guidance needed", "who has", "audit listing", "list of all user",
+            "comments field", "display-only", "search by employee", "supervisor name")
+
+
+def priority_weights(text, area):
+    """Priority follows the ticket's own cue words (with some noise), as described in docs/ticket-taxonomy.md."""
+    t = text.lower()
+    if any(c in t for c in HIGH_CUES):
+        return [8, 2, 0.5]
+    if any(c in t for c in LOW_CUES):
+        return [0.5, 2, 8]
+    return [2, 6, 2] if area not in ("Security", "Administration") else [3, 5, 2]
+
+
 def cap(s):
     return s[0].upper() + s[1:] if s else s
 
@@ -325,7 +342,8 @@ class Gen:
                  env=r.choice(ENVS), mod=r.choice(MODS), runctl=f"{mod}_NIGHTLY",
                  pi=str(r.randrange(1_000_000, 9_999_999)),
                  proj=f"PRJ_{mod}_{r.randrange(1000, 9999)}",
-                 uid=(r.choice(FIRST)[0] + r.choice(LAST)).upper()[:10])
+                 # obviously synthetic user IDs (two draws kept so the rest of the data is unchanged)
+                 uid=f"SYNUSER{FIRST.index(r.choice(FIRST)) * 100 + LAST.index(r.choice(LAST)):04d}")
         s["Term"], s["Report"], s["Process"] = cap(s["term"]), cap(s["report"]), cap(s["process"])
         return s
 
@@ -345,7 +363,7 @@ class Gen:
         desc = r.choice(OPENERS) + desc_t + r.choice(CLOSERS)
         title, desc = title_t.format(**s), desc.format(**s)
         title = cap(title)
-        prio = r.choices("HML", weights=[5, 3, 2] if area in ("Security", "Administration") else [3, 4, 3])[0]
+        prio = r.choices("HML", weights=priority_weights(title + " " + desc, area))[0]
         return dict(mod=mod, area=area, itype=itype, title=title, desc=desc, prio=prio, group=group)
 
 
