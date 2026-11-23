@@ -22,6 +22,8 @@ dashboard, and exports an Excel report. It is built by a team of 16 Claude Code 
 | `docs/expert-roster.md` | The 16 agents, their jobs, deliverables and skills |
 | `.claude/agents/` | One subagent file per agent |
 | `.claude/skills/` | 26 shared skills, one folder each with `SKILL.md` |
+| `knowledge/<agent-id>/` | Each agent's own documents, read before every answer (synthetic or public material only) |
+| `docs/agent-brains.md` | Each agent's model, name and personality |
 | `data/synthetic/` | Synthetic PHIRE exports (train, test, demo) — added in a later step |
 | `scripts/`, `nlp/`, `app/` | Data generator, model training, React app — added in later steps |
 

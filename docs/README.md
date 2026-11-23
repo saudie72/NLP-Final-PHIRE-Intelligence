@@ -23,6 +23,7 @@ Conventions used in every file:
 | 9 | [synthetic-dataset-plan.md](synthetic-dataset-plan.md) | How the synthetic train/test/demo data will be generated | Data Engineer, NLP Specialist, ERP QA Developer |
 | 10 | [expert-roster.md](expert-roster.md) | The 16 agents, their jobs, deliverables and shared skills | Orchestrator, Meta Agent, all agents |
 | 11 | [how-to-talk-to-your-experts.md](how-to-talk-to-your-experts.md) | Example prompts: one agent, the whole team, and four team workflows | Project owner, Orchestrator |
+| 12 | [agent-brains.md](agent-brains.md) | Each agent's model, the reason, and its name, voice and working style | Project owner, Meta Agent |
 
 ## Open questions for the project owner
 
