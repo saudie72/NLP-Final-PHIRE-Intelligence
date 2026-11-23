@@ -44,6 +44,9 @@ reports their confusion matrix.
 | `SEC` | Security | Access requests, role changes, row security. Some sites log these under the business module instead. **To confirm.** |
 | `PT` | PeopleTools / Administration | Process Scheduler, Integration Broker, environments, patches. **To confirm.** |
 
+**Rule:** label a ticket with the business module it affects (a Time Administration run stuck in Queued is `TL`,
+issue area Administration). Use `SEC` or `PT` only when no business module can be identified.
+
 ## Scope note
 
 Grants, Contracts, Position Management and other modules mentioned in the project plan are folded into the

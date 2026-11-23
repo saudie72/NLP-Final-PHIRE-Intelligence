@@ -15,7 +15,7 @@ in Queued). The dashboard crosses the two labels in a heat map.
 |---|---|---|---|---|
 | **Functional** | Business process, configuration, data or how-to. No code change needed. | setup, configure, schedule, effective date, incorrect amount, doesn't match, how do I, mass update, procedure, report totals | Configuration change, data fix, user training | ERP Functional Analyst |
 | **Technical** | Code or object change, or a code defect. | PeopleCode, Application Engine, SQR, SQL error, abend, step fails, interface file, query, report layout, retrofit, BI Publisher | Code fix, new or changed object (usually with a CR) | ERP Developer |
-| **Security** | Who can access what. | access, role, permission, not authorized, user ID, row security, lock, disable, separated, remove access | Security update | PeopleSoft Administrator, Security Reviewer |
+| **Security** | Who can access what. | access, role, permission, not authorized, user ID, row security, lock, disable, separated, remove access | Security update | PeopleSoft Administrator |
 | **Administration** | Platform, batch infrastructure, environments, performance. | Process Scheduler, Queued, Report Manager, Integration Broker, environment, refresh, migrate, patch, slow, timeout | System administration, vendor patch | PeopleSoft Administrator |
 
 Tie-break rules (for labeling the synthetic data and for the ERP QA Developer's review):
