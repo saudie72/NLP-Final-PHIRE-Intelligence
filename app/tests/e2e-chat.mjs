@@ -15,7 +15,6 @@ page.on("request", (r) => { const u = new URL(r.url()); if (/^https?:$/.test(u.p
 await page.goto(base);
 await page.waitForFunction(() => !document.querySelector('[data-testid="demo"]').disabled);
 await page.getByTestId("demo").click();
-await page.getByTestId("analyze").click();
 await page.waitForSelector(".kpis", { timeout: 30000 });
 await page.locator(".nav button", { hasText: "Tickets" }).click();
 await page.locator("tbody tr").first().click();

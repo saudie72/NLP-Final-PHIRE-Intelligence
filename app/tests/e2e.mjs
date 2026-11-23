@@ -7,6 +7,7 @@ const { chromium } = createRequire(import.meta.url)("playwright"); // pre-instal
 import { mkdirSync } from "node:fs";
 
 const base = process.argv[2] || "http://localhost:4173";
+const DEMO_XLSX = new URL("../../data/synthetic/phire_demo_export.xlsx", import.meta.url).pathname;
 const out = process.argv[3] || "test-results";
 mkdirSync(out, { recursive: true });
 const origin = new URL(base).origin;
@@ -26,15 +27,22 @@ async function run(viewport, scheme, tag, shots) {
   await page.getByTestId("demo").waitFor();
   await page.waitForFunction(() => !document.querySelector('[data-testid="demo"]').disabled);
   if (shots) await page.screenshot({ path: `${out}/${tag}-1-start.png` });
-  await page.getByTestId("demo").click();
+  // 1) real upload path: .xlsx file -> column mapping -> analysis
+  await page.setInputFiles('input[type="file"]', DEMO_XLSX);
   await page.getByTestId("analyze").waitFor();
   const mapped = await page.locator(".ok").count();
-  check(`${tag}: demo file loads and columns auto-map`, mapped === 16, `${mapped}/16 fields mapped`);
+  check(`${tag}: uploaded .xlsx loads and columns auto-map`, mapped === 16, `${mapped}/16 fields mapped`);
   if (shots) await page.screenshot({ path: `${out}/${tag}-2-mapping.png` });
   await page.getByTestId("analyze").click();
   await page.waitForSelector(".kpis", { timeout: 30000 });
+  check(`${tag}: upload analysis completes`, (await page.locator(".kpi b").first().textContent()) === "250");
+  // 2) demo button: JSON demo straight to the dashboard
+  await page.goto(base);
+  await page.waitForFunction(() => !document.querySelector('[data-testid="demo"]').disabled);
+  await page.getByTestId("demo").click();
+  await page.waitForSelector(".kpis", { timeout: 30000 });
   const total = await page.locator(".kpi b").first().textContent();
-  check(`${tag}: analysis completes and dashboard shows`, total === "250", `tickets tile = ${total}`);
+  check(`${tag}: demo button goes straight to the dashboard`, total === "250", `tickets tile = ${total}`);
   if (shots) await page.screenshot({ path: `${out}/${tag}-3-dashboard.png`, fullPage: true });
 
   await page.getByRole("button", { name: "Payroll · Time · Absence" }).click();
@@ -100,6 +108,26 @@ async function run(viewport, scheme, tag, shots) {
   check(`${tag}: no horizontal page scroll`, !hScroll);
   check(`${tag}: no console errors`, errors.length === 0, errors.slice(0, 3).map((e) => e.slice(0, 160)).join(" | "));
   check(`${tag}: no requests leave the site's origin`, foreign.length === 0, foreign.slice(0, 3).join(" | "));
+  await ctx.close();
+}
+// Worker blocked (as by some browser security settings or extensions): analysis must still complete on the page.
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+  const page = await ctx.newPage();
+  await page.route(/\/assets\/worker[^/]*\.js/, (r) => r.abort());
+  await page.goto(base);
+  await page.waitForFunction(() => !document.querySelector('[data-testid="demo"]').disabled);
+  await page.getByTestId("demo").click();
+  const ok = await page.waitForSelector(".kpis", { timeout: 40000 }).then(() => true).catch(() => false);
+  check("worker blocked: analysis falls back to the page and the dashboard shows", ok);
+  // demo JSON blocked: a clear error appears instead of nothing happening
+  await page.route("**/demo/phire_demo_export.json", (r) => r.abort());
+  await page.goto(base + "#start");
+  await page.reload();
+  await page.waitForFunction(() => !document.querySelector('[data-testid="demo"]').disabled);
+  await page.getByTestId("demo").click();
+  const msg = await page.locator('[role="alert"]').first().textContent({ timeout: 10000 }).catch(() => "");
+  check("demo blocked: a clear error message is shown", /demo data could not be loaded/i.test(msg), msg.slice(0, 80));
   await ctx.close();
 }
 await run({ width: 1440, height: 900 }, "light", "desktop-light", true);

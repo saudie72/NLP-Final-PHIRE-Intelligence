@@ -30,9 +30,18 @@ export default function App() {
   const [focus, setFocus] = useState(null);
   const [openId, setOpenId] = useState(null);
   const worker = useRef(null);
+  const [modelError, setModelError] = useState(false);
+
+  const loadModel = useCallback(() => {
+    setModelError(false);
+    fetch("/model/model.json", { cache: "no-cache" })
+      .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+      .then(setModel)
+      .catch(() => setModelError(true));
+  }, []);
 
   useEffect(() => {
-    fetch("/model/model.json").then((r) => r.json()).then(setModel).catch(() => setError("The NLP model could not be loaded. Refresh the page to try again."));
+    loadModel();
     const onHash = () => setPage(pageFromHash());
     addEventListener("hashchange", onHash);
     return () => removeEventListener("hashchange", onHash);
@@ -65,10 +74,22 @@ export default function App() {
       setError(`Could not read ${name}: ${e.message}`);
     }
   };
+  // Demo: load plain JSON (no .xlsx download, no Excel parsing) and go straight to the analysis.
   const loadDemo = async () => {
-    const r = await fetch("/demo/phire_demo_export.xlsx");
-    if (!r.ok) return setError("The demo file is missing from this build.");
-    loadFile(await r.blob(), "phire_demo_export.xlsx (synthetic)");
+    setError(null);
+    try {
+      const r = await fetch("/demo/phire_demo_export.json", { cache: "no-cache" });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const { headers, rows } = await r.json();
+      const demo = { name: "phire_demo_export.xlsx (synthetic)", wb: null, sheet: "sheet1", headers, rows };
+      const map = autoMap(headers);
+      setFile(demo);
+      setMapping(map);
+      setResult(null);
+      runAnalysis(demo, map);
+    } catch (e) {
+      setError(`The demo data could not be loaded (${e.message}). Check your connection and try again.`);
+    }
   };
   const chooseSheet = (sheet) => {
     const { headers, rows } = file.wb.sheet(sheet);
@@ -76,27 +97,56 @@ export default function App() {
     setMapping(autoMap(headers));
   };
 
-  const analyze = () => {
-    const { tickets } = applyMapping(file.rows, mapping);
+  // Run the analysis in a Web Worker; if the worker can't start, errors, or stays silent, run it on the page instead.
+  const runAnalysis = async (f = file, map = mapping) => {
+    setError(null);
+    const m = model;
+    if (!m) return setError("The NLP model is still loading. Wait a moment and try again.");
+    const { tickets } = applyMapping(f.rows, map);
     if (!tickets.length) return setError("No rows had a title or description to analyze.");
-    store.set(`map:${file.headers.join("|")}`, mapping);
+    store.set(`map:${f.headers.join("|")}`, map);
     setProgress(0.05);
-    worker.current?.terminate();
-    const w = new Worker(new URL("./worker.js", import.meta.url), { type: "module" });
-    worker.current = w;
-    w.onmessage = (e) => {
-      if (e.data.type === "progress") setProgress(e.data.value);
-      if (e.data.type === "error") { setProgress(null); setError(`Analysis failed: ${e.data.message}`); }
-      if (e.data.type === "done") {
-        const rows = e.data.result.tickets.map((t, i) => ({ ...t, _row: tickets[i]._row }));
-        setResult({ tickets: rows, recurring: e.data.result.recurring });
+    go("start");
+    const slim = tickets.map(({ _row, ...t }) => t);
+    const finish = (res) => {
+      const rows = res.tickets.map((t, i) => ({ ...t, _row: tickets[i]._row }));
+      setResult({ tickets: rows, recurring: res.recurring });
+      setProgress(null);
+      go("dashboard");
+    };
+    const onPage = async (reason) => {
+      worker.current?.terminate();
+      worker.current = null;
+      console.info(`Analysis running on the page (${reason}).`);
+      try {
+        const { analyze } = await import("./engine/analyze.js");
+        await new Promise((r) => setTimeout(r, 30)); // let the progress screen paint
+        finish(analyze(m, slim));
+      } catch (e) {
         setProgress(null);
-        w.terminate();
-        go("dashboard");
+        setError(`Analysis failed: ${e.message}`);
       }
     };
-    w.postMessage({ tickets: tickets.map(({ _row, ...t }) => t), model });
+    let w;
+    try {
+      w = new Worker(new URL("./worker.js", import.meta.url), { type: "module" });
+    } catch {
+      return onPage("worker not available");
+    }
+    worker.current?.terminate();
+    worker.current = w;
+    let settled = false;
+    const silent = setTimeout(() => { if (!settled) { settled = true; onPage("worker did not respond"); } }, 15000);
+    w.onerror = (e) => { e.preventDefault?.(); if (!settled) { settled = true; clearTimeout(silent); onPage("worker error"); } };
+    w.onmessage = (e) => {
+      if (settled) return;
+      if (e.data.type === "progress") setProgress(e.data.value);
+      if (e.data.type === "error") { settled = true; clearTimeout(silent); onPage(`worker: ${e.data.message}`); }
+      if (e.data.type === "done") { settled = true; clearTimeout(silent); w.terminate(); finish(e.data.result); }
+    };
+    w.postMessage({ tickets: slim, model: m });
   };
+  const analyze = () => runAnalysis(file, mapping);
 
   const view = useMemo(() => (result ? filterPortfolio(result.tickets, portfolio) : []), [result, portfolio]);
   const byId = useMemo(() => new Map((result?.tickets || []).map((t) => [t.id, t])), [result]);
@@ -138,6 +188,18 @@ export default function App() {
       </nav>
 
       <main className="workspace">
+        {modelError && (
+          <div className="warnmsg row" role="alert" style={{ justifyContent: "space-between" }}>
+            <span>The NLP model could not be downloaded, so analysis can't run yet.</span>
+            <button className="btn" onClick={loadModel}>Try again</button>
+          </div>
+        )}
+        {error && file && (
+          <div className="warnmsg row" role="alert" style={{ justifyContent: "space-between" }}>
+            <span>{error}</span>
+            <button className="btn" onClick={() => setError(null)}>Dismiss</button>
+          </div>
+        )}
         <div className="appbar">
           <div className="theme-switch" role="radiogroup" aria-label="Color theme">
             {[["light", "Light", Icon.sun], ["dark", "Dark", Icon.moon], [null, "System", Icon.monitor]].map(([value, label, I]) => (
@@ -156,9 +218,9 @@ export default function App() {
           </div>
         )}
         {page === "start" && progress == null && (file
-          ? <Mapping fileName={file.name} sheetNames={file.wb.sheetNames} sheet={file.sheet} onSheet={chooseSheet} headers={file.headers}
+          ? <Mapping fileName={file.name} sheetNames={file.wb?.sheetNames || [file.sheet]} sheet={file.sheet} onSheet={chooseSheet} headers={file.headers}
               rows={file.rows} mapping={mapping} setMapping={setMapping} onAnalyze={analyze} onCancel={() => { setFile(null); setError(null); }} />
-          : <Start metrics={model?.metrics} onFile={(f) => loadFile(f, f.name)} onDemo={loadDemo} busy={!model} error={error} />)}
+          : <Start metrics={model?.metrics} onFile={(f) => loadFile(f, f.name)} onDemo={loadDemo} busy={!model} loading={!model && !modelError} error={error} />)}
 
         {needsData && !result && page !== "start" && (
           <div className="panel"><p>Load a PHIRE export or the demo data first.</p><button className="btn primary" style={{ marginTop: 10 }} onClick={() => go("start")}>Go to upload</button></div>

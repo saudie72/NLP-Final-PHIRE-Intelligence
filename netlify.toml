@@ -34,6 +34,13 @@
     X-Frame-Options = "DENY"
     Cross-Origin-Opener-Policy = "same-origin"
 
+# Always revalidate the page itself, so browsers (Edge included) never run an outdated index.html that points at
+# asset files from an earlier deploy.
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+
 [[headers]]
   for = "/assets/*"
   [headers.values]

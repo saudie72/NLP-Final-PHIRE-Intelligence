@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { FIELDS, mappingProblems } from "../lib/columns.js";
 import { Icon } from "./ui.jsx";
 
-export function Start({ metrics, onFile, onDemo, busy, error }) {
+export function Start({ metrics, onFile, onDemo, busy, loading, error }) {
   const input = useRef(null);
   const [over, setOver] = useState(false);
   const drop = (e) => {
@@ -23,7 +23,7 @@ export function Start({ metrics, onFile, onDemo, busy, error }) {
         </p>
         <div className="actions">
           <button className="btn primary" onClick={() => input.current?.click()} disabled={busy}><Icon.upload />Choose an .xlsx file</button>
-          <button className="btn" onClick={onDemo} disabled={busy} data-testid="demo"><Icon.spark />Load demo data (250 synthetic tickets)</button>
+          <button className="btn" onClick={onDemo} disabled={busy} data-testid="demo"><Icon.spark />{loading ? "Loading the model…" : "Load demo data (250 synthetic tickets)"}</button>
         </div>
         <input ref={input} type="file" accept=".xlsx,.xls,.csv" hidden onChange={(e) => e.target.files?.[0] && onFile(e.target.files[0])} />
         {error && <p className="warnmsg" role="alert">{error}</p>}
