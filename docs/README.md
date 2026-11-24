@@ -21,7 +21,7 @@ Conventions used in every file:
 | 7 | [nlp-methods.md](nlp-methods.md) | Classification, keywords, similarity, clustering, priority, evaluation | NLP Specialist, QA Tester |
 | 8 | [data-handling.md](data-handling.md) | Confidentiality, synthetic-only rule, browser-local processing | Security Reviewer, all agents |
 | 9 | [synthetic-dataset-plan.md](synthetic-dataset-plan.md) | How the synthetic train/test/demo data will be generated | Data Engineer, NLP Specialist, ERP QA Developer |
-| 10 | [expert-roster.md](expert-roster.md) | The 20 agents, their jobs, deliverables and shared skills | Orchestrator, Meta Agent, all agents |
+| 10 | [expert-roster.md](expert-roster.md) | The 21 agents, their jobs, deliverables and shared skills | Orchestrator, Meta Agent, all agents |
 | 11 | [how-to-talk-to-your-experts.md](how-to-talk-to-your-experts.md) | Example prompts: one agent, the whole team, and four team workflows | Project owner, Orchestrator |
 | 12 | [agent-brains.md](agent-brains.md) | Each agent's model, the reason, and its name, voice and working style | Project owner, Meta Agent |
 | 13 | [agent-test-results.md](agent-test-results.md) | Knowledge-folder test of the ERP Functional Analyst: questions, rounds, answers | Project owner, QA |
@@ -31,6 +31,10 @@ Conventions used in every file:
 | 17 | [architecture.md](architecture.md) | Stack, data flow, components and key decisions | Software Architect, developers |
 | 18 | [version-2.md](version-2.md) | What version 1 delivers, how it was built, and the version 2 backlog | Project owner, Orchestrator |
 | 19 | [nltk-spacy-netlify.md](nltk-spacy-netlify.md) | NLTK vs spaCy strengths, what Netlify can run (Python at build time, Pyodide in the browser), the chosen architecture | NLTK Expert, spaCy Expert, Pyodide and Netlify Engineers |
+| 20 | [agent-run-v2-round1.md](agent-run-v2-round1.md) | Version 2 round 1: parallel agent work (VADER lexicon, EntityRuler, UX Designer), hand-labelled entity evaluation, Orchestrator summary and round-2 plan | Project owner, Orchestrator |
+| 21 | [agent-run-v2-round2.md](agent-run-v2-round2.md) | Version 2 round 2: labelling guide, ruler fixes, rejected urgency change, usability fixes, unseen gold set | Project owner, Orchestrator |
+| 22 | [entity-labelling-guide.md](entity-labelling-guide.md) | How to hand-label PeopleSoft entities for gold sets | ERP QA Developer, spaCy Expert |
+| 23 | [usability-review-language.md](usability-review-language.md) | Usability and accessibility review of the Language page | UX Designer, Front-End Developer |
 
 ## Open questions for the project owner
 

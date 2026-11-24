@@ -105,3 +105,64 @@ def test_pipeline_outputs():
     for f in ("nltk_core.py", "vader_lexicon.zip", "stopwords.zip"):
         assert (build_nlp.OUT_PYODIDE / f).exists()
     assert build_nlp.OUT_REPORT.exists()
+
+
+def test_peoplesoft_lexicon_neutralises_domain_words():
+    assert nltk_core.sentiment("Security role pay po save effective date")["compound"] == 0
+    assert not nltk_core.vader_drivers("Add security role for pay period")
+
+
+def test_peoplesoft_lexicon_adds_problem_words():
+    for word in ("queued", "abend", "abended"):
+        assert nltk_core.sentiment(f"Process {word} overnight")["compound"] < -0.05
+
+
+# ---------------- spaCy EntityRuler: v2 patterns ----------------
+def _ruler_ents(text):
+    nlp, _ = build_nlp.build_spacy()
+    return {(e.text, e.label_) for e in nlp(text).ents if e.ent_id_ == "ruler"}
+
+
+def test_ruler_fields_roles_and_tools():
+    ents = _ruler_ents("The Timekeeper fixed the Earnings Code and TRC for the Workgroup and PPE Date; PUM image applied.")
+    assert {("Timekeeper", "PS_ROLE"), ("Earnings Code", "PS_FIELD"), ("TRC", "PS_FIELD"),
+            ("Workgroup", "PS_FIELD"), ("PPE Date", "PS_FIELD"), ("PUM image", "PS_TOOL")} <= ents
+
+
+def test_bare_ppe_is_not_an_entity_but_its_date_is():
+    ents = _ruler_ents("Run it for PPE 05/13/2026 and assign Payroll Inquiry.")
+    assert ("05/13/2026", "DATE") in ents and ("Payroll Inquiry", "PS_ROLE") in ents
+    assert not [e for e in ents if e[0] == "PPE"]
+
+
+def test_process_scheduler_is_tool_and_psppyrun_is_program():
+    ents = _ruler_ents("Process Scheduler is down and PSPPYRUN never started.")
+    assert ("Process Scheduler", "PS_TOOL") in ents and ("PSPPYRUN", "PS_PROGRAM") in ents
+    assert not [e for e in ents if e[0] in ("Process Scheduler", "PSPPYRUN") and e[1] not in ("PS_TOOL", "PS_PROGRAM")]
+    labels = [p["label"] for p in patterns() if [t.get("LOWER") for t in p["pattern"]] == ["process", "scheduler"]]
+    assert labels == ["PS_TOOL"]  # no duplicate pattern under another label
+
+
+def test_generic_page_words_need_title_case():
+    assert not [e for e in _ruler_ents("Please assign the roles and check the voucher and requisition.") if e[1] == "PS_PAGE"]
+    ents = _ruler_ents("Open the Roles page, then Voucher and Work Schedule.")
+    assert {("Roles", "PS_PAGE"), ("Voucher", "PS_PAGE"), ("Work Schedule", "PS_PAGE")} <= ents
+
+
+def test_slash_dates_are_labelled_date():
+    ents = _ruler_ents("Opened 09/14/2026 and effective 1/4/2027; not 13/40/2026 or 2026-09-14.")
+    assert ("09/14/2026", "DATE") in ents and ("1/4/2027", "DATE") in ents
+    assert not [e for e in ents if e[0].startswith("13/")]
+
+
+def test_module_codes_only_in_code_context():
+    assert ("HR module", "PS_MODULE") in _ruler_ents("Please route this to the HR module team.")
+    assert not [e for e in _ruler_ents("Numbers for the HR department look wrong.") if e[1] == "PS_MODULE"]
+
+
+def test_urgency_terms_taxonomy_cues():
+    # round 2 tried dropping "error", "errors", "cannot" (higher precision, lower recall); validation F1 fell, so the
+    # list was kept. Taxonomy High cues are matched as single words and phrases.
+    found = nltk_core.urgency_terms("Separated employee still has access; fix before the next pay period and year-end")
+    assert {"separated", "next pay period", "year-end"} <= set(found)
+    assert "production" in nltk_core.urgency_terms("Production is down for payroll")

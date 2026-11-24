@@ -5,6 +5,23 @@ An AI-powered PeopleSoft support ticket analysis platform, built by a team of sp
 Final project for the NLP course: build an AI agent team in Claude Code, have the agents develop an
 application, deploy it to Netlify, and submit the GitHub repository and live application links.
 
+## For the grader
+
+| What | Where |
+|---|---|
+| Live application | https://phire-intelligence.netlify.app (click **Load demo data** for 250 synthetic tickets) |
+| GitHub repository | https://github.com/saudie72/NLP-Final-PHIRE-Intelligence |
+| NLTK in the app | **Language** page: VADER sentiment (with a PeopleSoft lexicon), urgency keywords, FreqDist top words, bigram collocations, and the **Analyze your own ticket** box running NLTK live in the browser (Pyodide) |
+| spaCy in the app | **Language** page: EntityRuler for PeopleSoft objects, model entities, **Entity accuracy** against hand-labelled tickets, noun-chunk aspects; each demo ticket's drawer highlights its entities |
+| NLTK and spaCy expert agents | [`.claude/agents/nltk-expert.md`](.claude/agents/nltk-expert.md), [`.claude/agents/spacy-expert.md`](.claude/agents/spacy-expert.md) |
+| Knowledge folders (notes + sources) | [`knowledge/nltk-expert/`](knowledge/nltk-expert/), [`knowledge/spacy-expert/`](knowledge/spacy-expert/) and one per agent in [`knowledge/`](knowledge/) |
+| Resources page | **Resources** in the app's navigation |
+| The agent team at work | [`docs/agent-run-v2-round1.md`](docs/agent-run-v2-round1.md), [`docs/agent-run-v2-round2.md`](docs/agent-run-v2-round2.md) (parallel specialists, Orchestrator summary, reviews) and [`docs/version-2.md`](docs/version-2.md) |
+| Evaluation | Classifiers: [`nlp/results.md`](nlp/results.md) · NLTK and spaCy: [`reports/nlp-language-evaluation.md`](reports/nlp-language-evaluation.md) |
+| Tests | `pipeline/tests` (pytest), `app/tests` (Vitest unit/parity/chat, Playwright browser suite) |
+
+All data is synthetic (`data/synthetic/`); no real PHIRE tickets are in the repository or the app.
+
 ## Project overview
 
 | Item | Description |
@@ -12,12 +29,12 @@ application, deploy it to Netlify, and submit the GitHub repository and live app
 | Platform | PeopleSoft HCM 9.2 and FSCM 9.2 |
 | Source data | Excel export of PHIRE tickets (synthetic tickets for this project) |
 | Primary purpose | Analyze, classify, prioritize, and identify recurring support issues |
-| AI development platform | Claude Code with 20 specialized agents |
+| AI development platform | Claude Code with 21 specialized agents |
 | Application | React web application |
 | Deployment | GitHub and Netlify |
 | NLP capabilities | Text classification, keyword extraction, semantic similarity, issue clustering; **NLTK** (VADER sentiment, urgency keywords, FreqDist, collocations; also live in the browser via Pyodide) and **spaCy** (named entities, EntityRuler for PeopleSoft objects, noun-chunk aspects, lemmas) |
 
-## What the application will do
+## What the application does
 
 A user uploads an Excel spreadsheet exported from PHIRE. The application maps its columns, analyzes the
 ticket descriptions, and produces:
@@ -73,21 +90,24 @@ What's next: [`docs/version-2.md`](docs/version-2.md).
 Real PHIRE records can contain employee names, IDs, payroll and access details. This project is built,
 tested and deployed with **synthetic PeopleSoft tickets only**. Real exports must not be committed to this
 repository or uploaded to the public deployment; `.gitignore` blocks spreadsheets outside `data/synthetic/`.
-Ticket analysis is planned to run in the browser so ticket text does not leave the user's device.
+Ticket analysis runs in the browser, so ticket text does not leave the user's device.
 
-## Agent team (16)
+## Agent team (21)
 
 | Group | Agents |
 |---|---|
 | Project management and coordination | Orchestrator, Product Manager, ERP Manager, Meta Agent |
 | PeopleSoft ERP specialists | ERP Business Analyst, ERP Functional Analyst, ERP Developer, PeopleSoft Administrator, ERP QA Developer |
 | Application development and NLP | Software Architect, NLP Specialist, Data Engineer, Front-End Developer, Back-End Developer, QA Tester, Security Reviewer |
+| NLP libraries and platform | NLTK Expert, spaCy Expert, Pyodide Engineer, Netlify Engineer, UX Designer |
+
+Roster, skills and personalities: [`docs/expert-roster.md`](docs/expert-roster.md), [`docs/agent-brains.md`](docs/agent-brains.md).
 
 ## Version 1 scope
 
 - [x] Create GitHub repository
 - [x] Research documentation (`docs/`)
-- [x] Build all 20 agents, skills, and knowledge folders
+- [x] Build all agents, skills, and knowledge folders (21 agents, 34 skills after version 2 round 1)
 - [x] PHIRE Excel upload and column mapping
 - [x] Classify tickets by module and issue type
 - [x] Identify similar tickets and recurring issues
@@ -100,6 +120,7 @@ Ticket analysis is planned to run in the browser so ticket text does not leave t
 ## Links
 
 - Live application: https://phire-intelligence.netlify.app
+- Repository: https://github.com/saudie72/NLP-Final-PHIRE-Intelligence
 
 ## Deploy on Netlify
 
@@ -107,4 +128,3 @@ Ticket analysis is planned to run in the browser so ticket text does not leave t
 2. Leave the build settings as they are (`netlify.toml` sets them) and click **Deploy**.
 3. Optional: turn on the **Ask the expert** chat by adding `ANTHROPIC_API_KEY` (and optionally `APP_PASSWORD`) under
    Site configuration → Environment variables, then redeploy. See [`app/README.md`](app/README.md).
-- Repository: https://github.com/saudie72/NLP-Final-PHIRE-Intelligence

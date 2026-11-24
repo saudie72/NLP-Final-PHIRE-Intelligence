@@ -1,5 +1,5 @@
 {
- "seconds": 2.2,
+ "seconds": 3.2,
  "tickets": 250,
  "versions": {
   "nltk": "3.9.1",
@@ -10,5 +10,5 @@
   "app/public/nlp/language.json",
   "reports/nlp-language-evaluation.md"
  ],
- "rulerPatterns": 132
+ "rulerPatterns": 197
 }

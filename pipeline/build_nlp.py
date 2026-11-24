@@ -33,6 +33,7 @@ nltk.data.path.insert(0, str(NLTK_DATA))
 
 import nltk_core  # noqa: E402
 from patterns import RULER_LABELS, patterns  # noqa: E402
+import eval_entities  # noqa: E402
 
 DATA = ROOT / "data" / "synthetic" / "phire_test.csv"   # the 250 tickets in the demo export
 OUT_APP = ROOT / "app" / "public" / "nlp" / "language.json"
@@ -211,6 +212,7 @@ def main():
             "topLemmas": lemma_counts.most_common(15),
         },
         "both": {"aspects": aspects_out},
+        "entityEval": eval_entities.evaluate(nlp, model_only),
         "perTicket": per_ticket,
     }
     OUT_APP.parent.mkdir(parents=True, exist_ok=True)
@@ -230,16 +232,6 @@ def main():
           f"({OUT_APP.stat().st_size // 1024} KB); ruler coverage {result['spacy']['rulerCoverage']:.0%}")
 
 
-PEOPLESOFT_WORDS = {"pay", "po", "security", "save", "effective", "support", "value", "created", "approved", "credit", "balance", "benefit", "benefits"}
-
-
-def DOMAIN_WORDS_IN_VADER(n):
-    """PeopleSoft vocabulary that VADER's lexicon treats as emotional, with the direction of its score."""
-    out = [(w, 1) for w, _ in n["vaderDrivers"]["positive"] if w in PEOPLESOFT_WORDS]
-    out += [(w, -1) for w, _ in n["vaderDrivers"]["negative"] if w in PEOPLESOFT_WORDS]
-    return out
-
-
 def write_report(r, tickets):
     n, s = r["nltk"], r["spacy"]
     errors = [f"| {e} | {c} |" for e, c in s["modelOnlyOnPeopleSoft"]]
@@ -256,15 +248,22 @@ def write_report(r, tickets):
         "Words that drove VADER's scores (lexicon words found in the tickets):", "",
         "- positive: " + ", ".join(f"{w} ({c})" for w, c in n["vaderDrivers"]["positive"]),
         "- negative: " + ", ".join(f"{w} ({c})" for w, c in n["vaderDrivers"]["negative"]), "",
-        "**Domain errors.** Some VADER lexicon words are neutral PeopleSoft vocabulary: "
-        + ", ".join(f"\"{w}\" ({'+' if v > 0 else '−'})" for w, v in DOMAIN_WORDS_IN_VADER(n))
-        + ". \"Pay\" in a payroll ticket is not a complaint, and \"security\" in an access request is not praise, yet both move the score.", "",
-        f"**Finding.** VADER was built for social-media text. On these tickets it labels {n['sentimentCounts'].get('positive', 0)} "
-        f"positive, {n['sentimentCounts'].get('negative', 0)} negative and {n['sentimentCounts'].get('neutral', 0)} neutral: politeness "
-        "and request words (see the positive drivers) push routine requests positive, while problem words push others negative. "
-        "PeopleSoft urgency signals such as \"queued\", \"abend\" or \"pay confirmation\" are not in its lexicon. VADER separates "
-        "low-priority tickets (higher mean) from the rest but is a weak priority signal on its own; the urgency vocabulary below "
-        "is stronger, so the app shows both and keeps the rule-based priority suggestion.", "",
+        "**PeopleSoft lexicon adjustment.** VADER was built for social-media text, and some of its lexicon words are neutral "
+        "PeopleSoft vocabulary (\"pay\" in a payroll ticket is not a complaint, \"security\" in an access request is not praise), "
+        "while PeopleSoft problem words such as \"queued\" and \"abend\" are missing. `nltk_core.PEOPLESOFT_LEXICON` sets "
+        + f"{sum(1 for v in nltk_core.PEOPLESOFT_LEXICON.values() if v == 0)} domain words to 0 ("
+        + ", ".join(w for w, v in nltk_core.PEOPLESOFT_LEXICON.items() if v == 0)
+        + ") and adds or strengthens problem words ("
+        + ", ".join(f"{w} {v:+.1f}" for w, v in nltk_core.PEOPLESOFT_LEXICON.items() if v != 0)
+        + "). Words were chosen from the training set and the docs' urgency vocabulary; this demo set was not used to pick them.", "",
+        "| Measure on these tickets | Stock VADER | With PeopleSoft lexicon |", "|---|---|---|",
+        f"| Labels positive / neutral / negative | 122 / 34 / 94 | {n['sentimentCounts'].get('positive', 0)} / "
+        f"{n['sentimentCounts'].get('neutral', 0)} / {n['sentimentCounts'].get('negative', 0)} |",
+        f"| \"negative\" as an H signal: precision / recall | 0.37 / 0.40 | {n['vaderEval']['precision']:.2f} / {n['vaderEval']['recall']:.2f} |", "",
+        "**Finding.** The adjustment removes most false \"positive\" labels on routine requests, so VADER now describes tone "
+        "more plausibly, but it does not make VADER a better priority signal: recall for H rose slightly and precision fell. "
+        "The app therefore shows VADER as descriptive tone only; the urgency vocabulary below is the stronger signal, and the "
+        "rule-based priority suggestion is unchanged.", "",
         "## NLTK: urgency keywords", "",
         f"A ticket containing at least one urgency term: precision {n['urgencyEval']['precision']:.2f}, recall "
         f"{n['urgencyEval']['recall']:.2f} for H tickets ({n['urgencyEval']['flagged']} flagged, {n['urgencyEval']['highPriority']} H tickets).", "",
@@ -287,6 +286,7 @@ def write_report(r, tickets):
         + ". Capitalised field and page words become PERSON, business-unit and module codes (TR, PO, HR) become GPE, "
         "and some dates become FAC or PRODUCT. This is why entity results in the app show the EntityRuler's PeopleSoft "
         "labels first and mark model labels separately.", "",
+        *eval_entities.markdown(r["entityEval"]),
         "## Both: aspects (spaCy noun chunks) scored with VADER (NLTK)", "",
         "| Aspect (noun chunk, lemmatised) | Mentions | Mean VADER of its sentence | Opinion words (dependency parse) |", "|---|---|---|---|",
         *[f"| {a['aspect']} | {a['n']} | {a['mean']:+.3f} | {', '.join(a['opinions']) or '—'} |" for a in r["both"]["aspects"][:12]], "",

@@ -26,13 +26,50 @@ DOMAIN_STOPWORDS = {
     "steps", "reproduce", "navigate", "affected", "mockup", "spec", "save", "open", "list", "looks",
 }
 
-# Urgency vocabulary for support tickets (single words and two-word phrases), from docs/ticket-taxonomy.md.
+# Urgency vocabulary for support tickets (single words and multi-word phrases, matched on whole tokens), from
+# docs/ticket-taxonomy.md "Priority suggestion signals". v2 round 2 tried removing "error", "errors" and "cannot"
+# (Technical cue words, not High cues): precision rose but recall fell and F1 on a train validation split dropped
+# (0.566 -> 0.553), so the list was kept as is.
 URGENCY_TERMS = [
     "urgent", "asap", "immediately", "critical", "emergency", "deadline", "stuck", "queued", "down", "outage",
     "abend", "abended", "fails", "failed", "error", "errors", "cannot", "can't", "timing", "overpaying",
     "separated", "terminated", "locked", "pay confirmation", "pay confirm", "next pay period", "pay period end",
     "year-end", "w-2", "production", "several departments", "multiple departments", "not running", "nothing has run",
 ]
+
+# PeopleSoft adjustment to VADER's lexicon (word -> valence, VADER range -4..+4). VADER was built for social media, so
+# neutral PeopleSoft vocabulary scores as emotion and real problem words are missing. Derived only from the training
+# tickets (data/synthetic/phire_train.csv) and docs/ticket-taxonomy.md; the test set was not consulted.
+# Valence 0 = "not emotional here". Applied in _resources(); a score is still one signal, not a priority.
+PEOPLESOFT_LEXICON = {
+    # neutral in PeopleSoft tickets (VADER scores them as emotion)
+    "pay": 0.0,        # payroll / "pay period" / "pay confirmation": the subject matter, not a complaint (-0.4)
+    "po": 0.0,         # purchase order (-2.6)
+    "security": 0.0,   # security role / access request, not praise (+1.4)
+    "save": 0.0,       # "Save" button and "save error" (+2.2)
+    "effective": 0.0,  # "effective date" / "effective-dated row" (+2.1)
+    "value": 0.0,      # field value / translate value (+1.4)
+    "values": 0.0,     # same as "value" (+1.7)
+    "support": 0.0,    # "Production Support Item", "support request" (+1.7)
+    "approved": 0.0,   # workflow status (+1.8)
+    "approval": 0.0,   # workflow step (+2.1)
+    "create": 0.0,     # "create a new ..." is a request verb (+1.1)
+    "created": 0.0,    # record or row created (positive in VADER)
+    "attachment": 0.0, # ticket boilerplate "see attachment" (+1.2)
+    "please": 0.0,     # politeness on routine requests (+1.3)
+    "rescue": 0.0,     # "Fire Rescue" department name (+2.3)
+    "fire": 0.0,       # "Fire Rescue" department name (-1.4)
+    # problem words that are missing from, or too weak in, VADER (docs/ticket-taxonomy.md urgency vocabulary)
+    "queued": -1.5,    # process stuck in Queued status
+    "abend": -2.0,     # abnormal end of a process / App Engine run
+    "abended": -2.0,   # past tense of abend
+    "stuck": -2.0,     # process or approval stuck (VADER has -1.0)
+    "outage": -2.0,    # system or process down
+    "cannot": -1.5,    # "users cannot ..." (VADER only knows "can't")
+    "incorrect": -1.5, # wrong data (VADER has "wrong" but not "incorrect")
+    "discrepancy": -1.2,  # balance / amount mismatch
+    "locked": -1.0,    # locked account or row
+}
 
 _sia = None
 _stop = None
@@ -42,6 +79,7 @@ def _resources():
     global _sia, _stop
     if _sia is None:
         _sia = SentimentIntensityAnalyzer()
+        _sia.lexicon.update(PEOPLESOFT_LEXICON)
         _stop = set(stopwords.words("english")) | DOMAIN_STOPWORDS
     return _sia, _stop
 
@@ -64,9 +102,9 @@ def sentiment(text):
 
 
 def vader_drivers(text):
-    """Words in the text that are in VADER's lexicon, with their valence (why VADER scored it that way)."""
+    """Words with a non-zero valence in the (PeopleSoft-adjusted) lexicon: why VADER scored the text that way."""
     sia, _ = _resources()
-    return [[w, sia.lexicon[w]] for w in tokens(text) if w in sia.lexicon]
+    return [[w, sia.lexicon[w]] for w in tokens(text) if sia.lexicon.get(w)]
 
 
 def sentiment_label(compound):

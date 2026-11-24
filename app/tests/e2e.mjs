@@ -98,7 +98,7 @@ async function run(viewport, scheme, tag, shots) {
   // Language page: labelled NLTK and spaCy panels, then NLTK live via Pyodide
   await page.locator(".nav button", { hasText: "Language" }).click();
   await page.waitForSelector('[data-testid="panel-ruler"]');
-  const panels = ["panel-sentiment", "panel-urgency", "panel-topwords", "panel-collocations", "panel-ruler", "panel-model-ents", "panel-aspects"];
+  const panels = ["panel-sentiment", "panel-urgency", "panel-topwords", "panel-collocations", "panel-ruler", "panel-model-ents", "panel-entity-eval", "panel-aspects"];
   const labelled = [];
   for (const id of panels) labelled.push(await page.locator(`[data-testid="${id}"] .lib`).first().textContent());
   check(`${tag}: Language page shows 7 panels labelled NLTK / spaCy / both`,

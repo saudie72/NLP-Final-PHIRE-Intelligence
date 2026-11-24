@@ -1,12 +1,12 @@
 # Expert roster
 
-The 20-agent team for **PeopleSoft PHIRE Ticket Intelligence**: who does what, which research each agent relies on, what it delivers in version 1, and the skills the agents share. Built from the research in this folder. The agent files themselves are created in step 5.
+The 21-agent team for **PeopleSoft PHIRE Ticket Intelligence**: who does what, which research each agent relies on, what it delivers in version 1, and the skills the agents share. Built from the research in this folder. The agent files themselves are created in step 5.
 
 Two analyst roles are deliberately separate too: the **ERP Business Analyst** owns business cases, stakeholder requirements, process maps and scope; the **ERP Functional Analyst** owns functional specifications, user stories and acceptance criteria, configuration and UAT support.
 
 Two QA roles are deliberately separate: the **ERP QA Developer** checks the *PeopleSoft interpretation* of tickets (are the labels and conclusions right?), and the **QA Tester** checks the *application* (does it work?).
 
-At runtime, the application does not call all 20 agents. Ticket analysis uses the trained NLP model and rules in the browser. The agents build and test the application, and a few ERP specialists can be consulted on individual tickets through the Orchestrator.
+At runtime, the application does not call all 21 agents. Ticket analysis uses the trained NLP model and rules in the browser. The agents build and test the application, and a few ERP specialists can be consulted on individual tickets through the Orchestrator.
 
 
 ## Project management and coordination
@@ -48,20 +48,21 @@ At runtime, the application does not call all 20 agents. Ticket analysis uses th
 | 18 | **spaCy Expert** (`spacy-expert`) | spaCy en_core_web_sm entities, EntityRuler for PeopleSoft objects, noun chunks, lemmas, dependency parse (build time). | nltk-spacy-netlify.md, peoplesoft-modules.md, peoplesoft-technical.md | `pipeline/patterns.py`; spaCy panels and entity highlighting; error analysis | `spacy-entity-extraction`, `entity-ruler-patterns`, `noun-chunk-aspects` |
 | 19 | **Pyodide Engineer** (`pyodide-engineer`) | Runs NLTK in the browser with self-hosted Pyodide in a Web Worker. | nltk-spacy-netlify.md, data-handling.md | `copy-pyodide.mjs`, `nltkWorker.js`; live NLTK box | `pyodide-runtime`, `data-handling-review`, `app-testing` |
 | 20 | **Netlify Engineer** (`netlify-engineer`) | Netlify build and deploy: Python pipeline at build time, Node build, functions, headers, failed deploys. | nltk-spacy-netlify.md, architecture.md | `netlify.toml`; clean-clone build checks | `netlify-python-build`, `netlify-deployment`, `data-handling-review` |
+| 21 | **UX Designer** (`ux-designer`) | Usability and accessibility review of the live app's main flows (Nielsen heuristics, WCAG 2.2) and wireframes and flows for version 2 items such as "Ask the expert" buttons on ticket rows. | version-2.md, ticket-taxonomy.md | Usability review findings; version 2 wireframes and flows | `usability-review`, `dashboard-design`, `app-testing` |
 
 ## Skills
 
-33 skills shared across the team.
+34 skills shared across the team.
 
 | Skill | What it does | Used by |
 |---|---|---|
 | `agent-authoring` | Create or improve agent and skill definition files in this project's standard format | Orchestrator, Meta Agent |
-| `app-testing` | Functional, regression and browser tests of upload, column mapping, analysis, dashboard, filters and export | Front-End Developer, Back-End Developer, QA Tester, Pyodide Engineer |
+| `app-testing` | Functional, regression and browser tests of upload, column mapping, analysis, dashboard, filters and export | Front-End Developer, Back-End Developer, QA Tester, Pyodide Engineer, UX Designer |
 | `business-case` | Build a business case for fixing, automating or enhancing something: problem, options, costs, benefits, ROI and recommendation | Product Manager, ERP Manager, ERP Business Analyst |
 | `business-process-mapping` | Map a ticket or feature to the end-to-end business process and organizational workflow it affects: departments, hand-offs, approvals and deadlines | Product Manager, ERP Manager, ERP Business Analyst |
 | `classifier-evaluation` | Evaluate classifiers on the held-out test set: accuracy, precision, recall, F1 (per class and macro), confusion matrix, and error analysis | ERP QA Developer, NLP Specialist, QA Tester, NLTK Expert |
 | `column-mapping` | Map spreadsheet headers to the app's ticket fields, including renamed, missing or extra PHIRE flex-field columns | Data Engineer, Front-End Developer |
-| `dashboard-design` | Choose and lay out dashboard charts and tables for ERP support managers | Product Manager, ERP Manager, Front-End Developer |
+| `dashboard-design` | Choose and lay out dashboard charts and tables for ERP support managers | Product Manager, ERP Manager, Front-End Developer, UX Designer |
 | `data-handling-review` | Check that no real ticket data is committed, sent or stored, and that ticket processing stays in the browser | Software Architect, Data Engineer, Security Reviewer, Pyodide Engineer, Netlify Engineer |
 | `entity-ruler-patterns` | Write spaCy EntityRuler patterns that label PeopleSoft modules, pages, processes, tools, programs, environments and IDs | ERP Functional Analyst, ERP Developer, spaCy Expert |
 | `erp-test-scenarios` | Write PeopleSoft test scenarios that reproduce and validate a reported issue: setup data, steps, expected result | ERP Functional Analyst, ERP Developer, ERP QA Developer |
@@ -87,49 +88,51 @@ At runtime, the application does not call all 20 agents. Ticket analysis uses th
 | `technical-investigation-hints` | Suggest PeopleSoft technical or administration areas to investigate for a ticket (PeopleCode events, AE traces, SQR, IB monitor, Process Monitor), labeled as hypotheses | ERP Developer, PeopleSoft Administrator |
 | `ticket-classification` | Train and run the module and issue-area classifiers: TF-IDF + logistic regression with a multinomial Naive Bayes baseline, exported to JSON for the browser | NLP Specialist, Back-End Developer |
 | `uat-support` | Support user acceptance testing: prepare UAT scripts from acceptance criteria, set up test data, guide business testers and triage UAT defects | ERP Functional Analyst, ERP QA Developer |
+| `usability-review` | Review a screen or flow against Nielsen's 10 usability heuristics and WCAG 2.2 and report findings with severity and a suggested fix | UX Designer |
 | `vader-sentiment` | Score ticket sentiment with NLTK's VADER and judge whether it means anything for priority | ERP Manager, NLP Specialist, NLTK Expert |
 
 ## Skill matrix
 
 Columns are agent numbers from the roster above. ● = uses the skill.
 
-| Skill | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | Agents |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `agent-authoring` | ● |  |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
-| `app-testing` |  |  |  |  |  |  |  |  |  |  |  |  | ● | ● | ● |  |  |  | ● |  | 4 |
-| `business-case` |  | ● | ● |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 3 |
-| `business-process-mapping` |  | ● | ● |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 3 |
-| `classifier-evaluation` |  |  |  |  |  |  |  |  | ● |  | ● |  |  |  | ● |  | ● |  |  |  | 4 |
-| `column-mapping` |  |  |  |  |  |  |  |  |  |  |  | ● | ● |  |  |  |  |  |  |  | 2 |
-| `dashboard-design` |  | ● | ● |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  |  |  | 3 |
-| `data-handling-review` |  |  |  |  |  |  |  |  |  | ● |  | ● |  |  |  | ● |  |  | ● | ● | 5 |
-| `entity-ruler-patterns` |  |  |  |  |  | ● | ● |  |  |  |  |  |  |  |  |  |  | ● |  |  | 3 |
-| `erp-test-scenarios` |  |  |  |  |  | ● | ● |  | ● |  |  |  |  |  |  |  |  |  |  |  | 3 |
-| `excel-report-export` |  |  |  |  |  |  |  |  |  |  |  | ● |  | ● | ● |  |  |  |  |  | 3 |
-| `functional-specification` |  |  |  |  |  | ● | ● |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
-| `issue-area-triage` |  |  |  |  |  | ● | ● | ● | ● |  | ● |  |  |  |  |  |  |  |  |  | 5 |
-| `keyword-extraction` |  |  |  |  |  |  |  |  |  |  | ● |  |  | ● |  |  |  |  |  |  | 2 |
-| `netlify-deployment` |  |  |  |  |  |  |  |  |  | ● |  |  | ● |  |  | ● |  |  |  | ● | 4 |
-| `netlify-python-build` |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  |  |  |  |  | ● | 2 |
-| `nltk-text-analysis` |  |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  | ● |  |  |  | 2 |
-| `noun-chunk-aspects` |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ● |  |  | 1 |
-| `peoplesoft-module-identification` |  |  |  |  |  | ● | ● |  |  |  | ● |  |  |  |  |  |  |  |  |  | 3 |
-| `phire-export-parsing` |  |  |  |  |  |  |  |  |  |  |  | ● |  | ● | ● |  |  |  |  |  | 3 |
-| `priority-suggestion` |  |  | ● |  | ● |  |  |  |  |  | ● |  |  |  |  |  |  |  |  |  | 3 |
-| `pyodide-runtime` |  |  |  |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  | ● |  | 2 |
-| `recurring-issue-clustering` |  |  | ● |  | ● |  |  |  |  |  | ● |  |  |  |  |  |  |  |  |  | 3 |
-| `requirements-and-acceptance` |  | ● |  |  |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
-| `scope-and-stakeholder-requirements` |  | ● |  |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
-| `similar-ticket-search` |  |  |  |  |  |  |  |  |  |  | ● |  |  | ● |  |  |  |  |  |  | 2 |
-| `spacy-entity-extraction` |  |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  |  | ● |  |  | 2 |
-| `synthetic-ticket-generation` |  |  |  |  |  | ● |  |  | ● |  | ● | ● |  |  |  |  |  |  |  |  | 4 |
-| `team-coordination` | ● | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
-| `technical-investigation-hints` |  |  |  |  |  |  | ● | ● |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
-| `ticket-classification` |  |  |  |  |  |  |  |  |  |  | ● |  |  | ● |  |  |  |  |  |  | 2 |
-| `uat-support` |  |  |  |  |  | ● |  |  | ● |  |  |  |  |  |  |  |  |  |  |  | 2 |
-| `vader-sentiment` |  |  | ● |  |  |  |  |  |  |  | ● |  |  |  |  |  | ● |  |  |  | 3 |
+| Skill | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | Agents |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `agent-authoring` | ● |  |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
+| `app-testing` |  |  |  |  |  |  |  |  |  |  |  |  | ● | ● | ● |  |  |  | ● |  | ● | 5 |
+| `business-case` |  | ● | ● |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 3 |
+| `business-process-mapping` |  | ● | ● |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 3 |
+| `classifier-evaluation` |  |  |  |  |  |  |  |  | ● |  | ● |  |  |  | ● |  | ● |  |  |  |  | 4 |
+| `column-mapping` |  |  |  |  |  |  |  |  |  |  |  | ● | ● |  |  |  |  |  |  |  |  | 2 |
+| `dashboard-design` |  | ● | ● |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  |  |  | ● | 4 |
+| `data-handling-review` |  |  |  |  |  |  |  |  |  | ● |  | ● |  |  |  | ● |  |  | ● | ● |  | 5 |
+| `entity-ruler-patterns` |  |  |  |  |  | ● | ● |  |  |  |  |  |  |  |  |  |  | ● |  |  |  | 3 |
+| `erp-test-scenarios` |  |  |  |  |  | ● | ● |  | ● |  |  |  |  |  |  |  |  |  |  |  |  | 3 |
+| `excel-report-export` |  |  |  |  |  |  |  |  |  |  |  | ● |  | ● | ● |  |  |  |  |  |  | 3 |
+| `functional-specification` |  |  |  |  |  | ● | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
+| `issue-area-triage` |  |  |  |  |  | ● | ● | ● | ● |  | ● |  |  |  |  |  |  |  |  |  |  | 5 |
+| `keyword-extraction` |  |  |  |  |  |  |  |  |  |  | ● |  |  | ● |  |  |  |  |  |  |  | 2 |
+| `netlify-deployment` |  |  |  |  |  |  |  |  |  | ● |  |  | ● |  |  | ● |  |  |  | ● |  | 4 |
+| `netlify-python-build` |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  |  |  |  |  | ● |  | 2 |
+| `nltk-text-analysis` |  |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  | ● |  |  |  |  | 2 |
+| `noun-chunk-aspects` |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ● |  |  |  | 1 |
+| `peoplesoft-module-identification` |  |  |  |  |  | ● | ● |  |  |  | ● |  |  |  |  |  |  |  |  |  |  | 3 |
+| `phire-export-parsing` |  |  |  |  |  |  |  |  |  |  |  | ● |  | ● | ● |  |  |  |  |  |  | 3 |
+| `priority-suggestion` |  |  | ● |  | ● |  |  |  |  |  | ● |  |  |  |  |  |  |  |  |  |  | 3 |
+| `pyodide-runtime` |  |  |  |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  | ● |  |  | 2 |
+| `recurring-issue-clustering` |  |  | ● |  | ● |  |  |  |  |  | ● |  |  |  |  |  |  |  |  |  |  | 3 |
+| `requirements-and-acceptance` |  | ● |  |  |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
+| `scope-and-stakeholder-requirements` |  | ● |  |  | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
+| `similar-ticket-search` |  |  |  |  |  |  |  |  |  |  | ● |  |  | ● |  |  |  |  |  |  |  | 2 |
+| `spacy-entity-extraction` |  |  |  |  |  |  |  |  |  |  | ● |  |  |  |  |  |  | ● |  |  |  | 2 |
+| `synthetic-ticket-generation` |  |  |  |  |  | ● |  |  | ● |  | ● | ● |  |  |  |  |  |  |  |  |  | 4 |
+| `team-coordination` | ● | ● |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
+| `technical-investigation-hints` |  |  |  |  |  |  | ● | ● |  |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
+| `ticket-classification` |  |  |  |  |  |  |  |  |  |  | ● |  |  | ● |  |  |  |  |  |  |  | 2 |
+| `uat-support` |  |  |  |  |  | ● |  |  | ● |  |  |  |  |  |  |  |  |  |  |  |  | 2 |
+| `usability-review` |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ● | 1 |
+| `vader-sentiment` |  |  | ● |  |  |  |  |  |  |  | ● |  |  |  |  |  | ● |  |  |  |  | 3 |
 
-**Agent numbers:** 1 Orchestrator, 2 Product Manager, 3 ERP Manager, 4 Meta Agent, 5 ERP Business Analyst, 6 ERP Functional Analyst, 7 ERP Developer, 8 PeopleSoft Administrator, 9 ERP QA Developer, 10 Software Architect, 11 NLP Specialist, 12 Data Engineer, 13 Front-End Developer, 14 Back-End Developer, 15 QA Tester, 16 Security Reviewer, 17 NLTK Expert, 18 spaCy Expert, 19 Pyodide Engineer, 20 Netlify Engineer.
+**Agent numbers:** 1 Orchestrator, 2 Product Manager, 3 ERP Manager, 4 Meta Agent, 5 ERP Business Analyst, 6 ERP Functional Analyst, 7 ERP Developer, 8 PeopleSoft Administrator, 9 ERP QA Developer, 10 Software Architect, 11 NLP Specialist, 12 Data Engineer, 13 Front-End Developer, 14 Back-End Developer, 15 QA Tester, 16 Security Reviewer, 17 NLTK Expert, 18 spaCy Expert, 19 Pyodide Engineer, 20 Netlify Engineer, 21 UX Designer.
 
 
 ## How the team works on a ticket (example)

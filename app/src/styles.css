@@ -7,7 +7,7 @@
   --panel-2: #f6f8fb;
   --ink: #142033;
   --ink-2: #4a5970;
-  --ink-3: #7a879b;
+  --ink-3: #5b677a;
   --line: #dbe1ea;
   --rail: #0f1b2d;
   --rail-ink: #c9d3e2;
@@ -20,7 +20,7 @@
   --technical: #7a4fd6;
   --security: #c2364f;
   --administration: #13836e;
-  --good: #1c8a4a;
+  --good: #17703b;
   --warn: #b7700b;
   --bad: #c2364f;
   --shadow: 0 1px 2px rgba(16, 27, 45, .06), 0 4px 16px rgba(16, 27, 45, .06);
@@ -267,7 +267,7 @@ td.title b { font-weight: 500; display: block; }
 @media (max-width: 560px) { .theme-switch button span { display: none; } .theme-switch button { padding: 6px 8px; } }
 
 /* ---------- NLTK / spaCy ---------- */
-:root { --nltk: #2f8f5b; --spacy: #2f6fdb; }
+:root { --nltk: #23724a; --spacy: #2459b8; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --nltk: #4cc27f; --spacy: #6aa0ff; } }
 :root[data-theme="dark"] { --nltk: #4cc27f; --spacy: #6aa0ff; }
 .lib { display: inline-flex; align-items: center; font: 700 .68rem/1 var(--cond); letter-spacing: .06em; text-transform: uppercase; padding: 4px 7px; border-radius: 5px; vertical-align: middle; margin: 0 4px; }
@@ -295,3 +295,17 @@ mark.ent { border-radius: 4px; padding: 1px 4px; color: var(--ink); }
 mark.ent.ruler { background: var(--accent-soft); box-shadow: inset 0 -2px 0 var(--accent); }
 mark.ent.model { background: color-mix(in srgb, var(--spacy) 14%, transparent); box-shadow: inset 0 -2px 0 var(--spacy); }
 mark.ent small { font: 700 .62rem/1 var(--cond); letter-spacing: .04em; margin-left: 4px; color: var(--ink-2); }
+
+/* ---------- Language page usability (v2 round 2) ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.table-wrap:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.table-wrap.compact th, .table-wrap.compact td { padding: 8px 8px; }
+.table-wrap.compact th { white-space: normal; line-height: 1.15; vertical-align: bottom; }
+.caveat { font-size: .85rem; }
+.plain-reading { font-size: .9rem; color: var(--ink-2); margin: 4px 0 12px; max-width: 80ch; }
+.sent-split { display: block; font-size: .78rem; color: var(--ink-2); margin-top: 2px; }
+.sentbar i + i { border-left: 1px solid var(--panel); }
+.sentbar i.neu { background: color-mix(in srgb, var(--ink-3) 40%, var(--panel)); }
+td.best, td.best b { font-weight: 700; color: var(--ink); }
+.tech { font-size: .78rem; color: var(--ink-2); }
+.ext-icon { width: 12px; height: 12px; margin-left: 6px; vertical-align: -1px; }

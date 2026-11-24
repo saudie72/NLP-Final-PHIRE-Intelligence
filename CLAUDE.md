@@ -4,7 +4,7 @@ An NLP application that analyzes PeopleSoft HCM 9.2 / FSCM 9.2 support tickets e
 it classifies each ticket by **module** and **issue area** (Functional, Technical, Security, Administration),
 extracts keywords, finds similar and duplicate tickets, groups recurring issues, suggests priority, shows a
 dashboard, and exports an Excel report. It also runs NLTK and spaCy over the tickets at build time (and NLTK live in the browser via Pyodide).
-It is built by a team of 20 Claude Code agents and deployed on Netlify.
+It is built by a team of 21 Claude Code agents and deployed on Netlify.
 
 ## Data-handling rules (non-negotiable)
 
@@ -20,9 +20,9 @@ It is built by a team of 20 Claude Code agents and deployed on Netlify.
 | Path | What it holds |
 |---|---|
 | `docs/` | Research the agents rely on; start at [`docs/README.md`](docs/README.md) |
-| `docs/expert-roster.md` | The 20 agents, their jobs, deliverables and skills |
+| `docs/expert-roster.md` | The 21 agents, their jobs, deliverables and skills |
 | `.claude/agents/` | One subagent file per agent |
-| `.claude/skills/` | 33 shared skills, one folder each with `SKILL.md` |
+| `.claude/skills/` | 34 shared skills, one folder each with `SKILL.md` |
 | `knowledge/<agent-id>/` | Each agent's own documents, read before every answer (synthetic or public material only) |
 | `docs/agent-brains.md` | Each agent's model, name and personality |
 | `data/synthetic/` | Synthetic PHIRE exports: train (1,000), test (250), demo (250); see its README |
@@ -41,7 +41,7 @@ It is built by a team of 20 Claude Code agents and deployed on Netlify.
 | Project management and coordination | `orchestrator`, `product-manager`, `erp-manager`, `meta-agent` |
 | PeopleSoft ERP specialists | `erp-business-analyst`, `erp-functional-analyst`, `erp-developer`, `peoplesoft-admin`, `erp-qa-developer` |
 | Application development and NLP | `software-architect`, `nlp-specialist`, `data-engineer`, `frontend-developer`, `backend-developer`, `qa-tester`, `security-reviewer` |
-| NLP libraries and platform | `nltk-expert`, `spacy-expert`, `pyodide-engineer`, `netlify-engineer` |
+| NLP libraries and platform | `nltk-expert`, `spacy-expert`, `pyodide-engineer`, `netlify-engineer`, `ux-designer` |
 
 Two analyst roles are separate on purpose: **erp-business-analyst** owns business cases, stakeholder
 requirements, process maps and scope; **erp-functional-analyst** owns functional specifications, user stories and

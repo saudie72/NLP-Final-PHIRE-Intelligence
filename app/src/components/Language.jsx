@@ -7,9 +7,17 @@ export const Lib = ({ name }) => <span className={`lib ${name === "NLTK" ? "nltk
 const LABEL_NAMES = {
   PS_MODULE: "Modules", PS_PAGE: "Pages", PS_PROCESS: "Processes", PS_TOOL: "PeopleTools", PS_PROGRAM: "Programs",
   PS_ENV: "Environments", TICKET_REF: "Ticket / CR numbers", USER_ID: "User IDs (synthetic)", BUSINESS_UNIT: "Business units",
+  PS_FIELD: "Fields and codes", PS_ROLE: "Business roles",
 };
 const tone = (c) => (c <= -0.05 ? "var(--bad)" : c >= 0.05 ? "var(--good)" : "var(--ink-3)");
 const fmt = (c) => `${c >= 0 ? "+" : "−"}${Math.abs(c).toFixed(2)}`;
+
+const EVAL_URL = "https://github.com/saudie72/NLP-Final-PHIRE-Intelligence/blob/main/reports/nlp-language-evaluation.md";
+const EvalLink = ({ children }) => (
+  <a href={EVAL_URL} target="_blank" rel="noopener noreferrer">{children}<span className="sr-only"> (opens GitHub, new tab)</span></a>
+);
+const pct = (x) => Math.round(x * 100);
+const pct2 = (x) => Math.round(Number(x.toFixed(2)) * 100);   // same rounding as the 2-decimal table cells
 
 const EXAMPLE = "Time Administration has been stuck in Queued since Sunday. Approvers in Public Works and Parks cannot see payable time and pay confirmation is Thursday. Please help, this is urgent.";
 
@@ -53,7 +61,7 @@ export function NltkBox({ initialText }) {
               </div>
               <div className="sentbar" title={`negative ${s.neg} · neutral ${s.neu} · positive ${s.pos}`}>
                 <i style={{ width: `${s.neg * 100}%`, background: "var(--bad)" }} />
-                <i style={{ width: `${s.neu * 100}%`, background: "var(--line)" }} />
+                <i className="neu" style={{ width: `${s.neu * 100}%` }} />
                 <i style={{ width: `${s.pos * 100}%`, background: "var(--good)" }} />
               </div>
               <p className="faint" style={{ fontSize: ".76rem" }}>neg {s.neg} · neu {s.neu} · pos {s.pos}</p>
@@ -97,6 +105,19 @@ export function Language({ data, initialText, go }) {
   if (!data) return <div className="panel"><p className="muted">Loading the build-time NLTK and spaCy results…</p></div>;
   const n = data.nltk, s = data.spacy;
   const areaBars = n.sentimentByArea;
+  const ee = data.entityEval;
+  const bestF1 = ee ? Math.max(ee.model.overall[2], ee.ruler.overall[2]) : 0;
+  // Plain-language reading of the priority table, derived from the data (observation only, no cause claimed).
+  const prio = n.sentimentByPriority;
+  const prioH = prio.find((p) => p.priority === "H"), prioL = prio.find((p) => p.priority === "L");
+  const means = prio.map((p) => p.mean);
+  const prioNote = prioH && prioL
+    ? `Observation: mean sentiment ranges only from ${fmt(Math.min(...means))} to ${fmt(Math.max(...means))} across priorities, `
+      + `while ${pct(prioH.urgentShare)}% of H tickets contain urgency words against ${pct(prioL.urgentShare)}% of L. `
+      + (prioH.urgentShare > prioL.urgentShare && (Math.max(...means) - Math.min(...means)) < 0.15
+        ? "In this sample, urgency words separate H from L better than sentiment does (no cause is claimed)."
+        : "Compare the two columns before relying on either as a priority cue.")
+    : null;
   return (
     <div className="grid" style={{ gap: 16 }}>
       <section className="panel prose" style={{ maxWidth: "none" }}>
@@ -109,7 +130,8 @@ export function Language({ data, initialText, go }) {
         </p>
         <div className="row">
           <button className="btn" onClick={() => go("tickets")}>See NLTK + spaCy per ticket</button>
-          <a className="btn" href="https://github.com/saudie72/NLP-Final-PHIRE-Intelligence/blob/main/reports/nlp-language-evaluation.md" target="_blank" rel="noopener noreferrer">Evaluation and errors</a>
+          <a className="btn" href={EVAL_URL} target="_blank" rel="noopener noreferrer">Evaluation and errors<span className="sr-only"> (opens GitHub, new tab)</span>
+            <svg className="ext-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M9 2h5v5M14 2 7 9M12 10v3.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5H7" /></svg></a>
         </div>
       </section>
 
@@ -119,30 +141,34 @@ export function Language({ data, initialText, go }) {
         <section className="panel" data-testid="panel-sentiment">
           <div className="panel-head"><h2>Sentiment by issue area <Lib name="NLTK" /></h2><span className="faint" style={{ fontSize: ".8rem" }}>VADER</span></div>
           <div className="stack">
-            {areaBars.map((a) => (
+            {areaBars.map((a) => {
+              const split = `${pct(a.negative / a.n)}% negative, ${pct(a.neutral / a.n)}% neutral, ${pct(a.positive / a.n)}% positive`;
+              return (
               <div key={a.area} className="stack-row">
-                <span>{a.area}</span>
-                <div className="sentbar">
+                <span>{a.area}<span className="sent-split">{pct(a.negative / a.n)}% neg / {pct(a.neutral / a.n)}% neu / {pct(a.positive / a.n)}% pos</span></span>
+                <div className="sentbar" role="img" aria-label={`${a.area}: ${split}`}>
                   <i style={{ width: `${(a.negative / a.n) * 100}%`, background: "var(--bad)" }} title={`${a.negative} negative`} />
-                  <i style={{ width: `${(a.neutral / a.n) * 100}%`, background: "var(--line)" }} title={`${a.neutral} neutral`} />
+                  <i className="neu" style={{ width: `${(a.neutral / a.n) * 100}%` }} title={`${a.neutral} neutral`} />
                   <i style={{ width: `${(a.positive / a.n) * 100}%`, background: "var(--good)" }} title={`${a.positive} positive`} />
                 </div>
                 <span className="num mono" style={{ color: tone(a.mean) }}>{fmt(a.mean)}</span>
               </div>
-            ))}
+              );
+            })}
           </div>
-          <div className="legend"><span><i style={{ background: "var(--bad)" }} />negative</span><span><i style={{ background: "var(--line)" }} />neutral</span><span><i style={{ background: "var(--good)" }} />positive</span><span>number = mean compound</span></div>
-          <div className="table-wrap" style={{ marginTop: 14, boxShadow: "none" }}>
+          <div className="legend"><span><i style={{ background: "var(--bad)" }} />negative</span><span><i style={{ background: "color-mix(in srgb, var(--ink-3) 40%, var(--panel))" }} />neutral</span><span><i style={{ background: "var(--good)" }} />positive</span><span>number = mean sentiment (VADER compound)</span></div>
+          <div className="table-wrap compact" style={{ marginTop: 14, boxShadow: "none" }} tabIndex={0} role="region" aria-label="PHIRE priority sentiment table">
             <table>
-              <thead><tr><th>PHIRE priority</th><th className="num">Tickets</th><th className="num">Mean VADER</th><th className="num">Negative</th><th className="num">Urgency words</th></tr></thead>
+              <thead><tr><th scope="col">PHIRE priority</th><th scope="col" className="num">Tickets</th><th scope="col" className="num">Mean sentiment (VADER compound)</th><th scope="col" className="num">% negative</th><th scope="col" className="num">% with urgency words</th></tr></thead>
               <tbody>{n.sentimentByPriority.map((p) => (
                 <tr key={p.priority} style={{ cursor: "default" }}><td>{p.priority}</td><td className="num">{p.n}</td><td className="num mono">{fmt(p.mean)}</td>
                   <td className="num">{Math.round(p.negativeShare * 100)}%</td><td className="num">{Math.round(p.urgentShare * 100)}%</td></tr>))}</tbody>
             </table>
           </div>
-          <p className="faint" style={{ fontSize: ".8rem", marginTop: 10 }}>
+          {prioNote && <p className="muted" style={{ fontSize: ".85rem", marginTop: 10 }}>{prioNote}</p>}
+          <p className="faint caveat" style={{ marginTop: 10 }}>
             Words driving VADER here: <b>+</b> {n.vaderDrivers.positive.slice(0, 5).map(([w]) => w).join(", ")} · <b>−</b> {n.vaderDrivers.negative.slice(0, 5).map(([w]) => w).join(", ")}.
-            “Pay” and “security” are everyday PeopleSoft words, not feelings: a known VADER domain error discussed in the evaluation.
+            Everyday PeopleSoft words such as “pay” and “security” are set to neutral, and problem words such as “queued” and “abend” added, by a PeopleSoft lexicon adjustment (<EvalLink>see the evaluation</EvalLink>).
           </p>
         </section>
 
@@ -191,14 +217,40 @@ export function Language({ data, initialText, go }) {
           </div>
           <p className="faint" style={{ fontSize: ".8rem", marginTop: 12 }}>
             Without the EntityRuler, the model calls PeopleSoft pages and processes: {s.modelOnlyOnPeopleSoft.slice(0, 4).map(([l, c]) => `${l} ${c}`).join(" · ")}.
-            Errors such as “Parks” as PERSON or “PO” as GPE are listed in the evaluation.
+            Errors such as “Parks” as PERSON or “TR” as GPE are listed in <EvalLink>the evaluation</EvalLink>.
           </p>
         </section>
       </div>
 
+      {data.entityEval && (
+        <section className="panel" data-testid="panel-entity-eval">
+          <div className="panel-head"><h2>Entity accuracy <Lib name="spaCy" /></h2><span className="faint caveat">{ee.goldEntities} hand-labelled entities in {ee.tickets} tickets</span></div>
+          <p className="faint caveat">Exact text and label must match. One labeller, synthetic text: indicative only.</p>
+          <p className="plain-reading" data-testid="entity-plain">
+            Out of every 100 entities the PeopleSoft EntityRuler + spaCy model pipeline tagged, about {pct2(ee.ruler.overall[0])} were right (precision);
+            it found about {pct2(ee.ruler.overall[1])} of every 100 that a person labelled (recall). The spaCy model alone: {pct2(ee.model.overall[0])} right, {pct2(ee.model.overall[1])} found.
+          </p>
+          <div className="table-wrap" tabIndex={0} role="region" aria-label="Entity accuracy table">
+            <table>
+              <caption className="sr-only">Precision, recall and F1 for the model alone and for the EntityRuler plus model, on hand-labelled synthetic tickets</caption>
+              <thead><tr><th scope="col">Pipeline</th><th scope="col" className="num">Precision</th><th scope="col" className="num">Recall</th><th scope="col" className="num">F1</th></tr></thead>
+              <tbody>
+                {[["spaCy model only", "en_core_web_sm alone", ee.model], ["PeopleSoft EntityRuler + spaCy model", "EntityRuler + en_core_web_sm", ee.ruler]].map(([name, tech, r]) => (
+                  <tr key={name} style={{ cursor: "default" }}><td>{name}<br /><span className="tech mono">{tech}</span></td>
+                    {r.overall.map((v, i) => <td key={i} className={`num${i === 2 && r.overall[2] === bestF1 ? " best" : ""}`}>{v.toFixed(2)}</td>)}</tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="faint caveat" style={{ marginTop: 12 }}>
+            The model alone has no PeopleSoft labels, so it can only score on dates and departments.
+          </p>
+        </section>
+      )}
+
       <section className="panel" data-testid="panel-aspects">
         <div className="panel-head"><h2>Aspects and opinions <Lib name="NLTK + spaCy" /></h2><span className="faint" style={{ fontSize: ".8rem" }}>spaCy noun chunks + dependency parse · NLTK VADER on the sentence</span></div>
-        <div className="table-wrap" style={{ boxShadow: "none" }}>
+        <div className="table-wrap" style={{ boxShadow: "none" }} tabIndex={0} role="region" aria-label="Aspects and opinions table">
           <table>
             <thead><tr><th>Aspect (noun chunk)</th><th className="num">Mentions</th><th className="num">Mean VADER</th><th>Opinion words (parse)</th></tr></thead>
             <tbody>{data.both.aspects.slice(0, 12).map((a) => (

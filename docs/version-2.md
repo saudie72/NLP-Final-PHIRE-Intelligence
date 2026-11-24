@@ -11,7 +11,7 @@
 - NLTK (VADER, urgency keywords, FreqDist, collocations; live in the browser via Pyodide) and spaCy (EntityRuler for
   PeopleSoft objects, entities, noun-chunk aspects, lemmas), computed at build time on Netlify
   (`reports/nlp-language-evaluation.md`).
-- Tests: parity 4/4, unit 34/34, pipeline 14/14, chat function 6/6, chat UI 7/7, browser 68/68.
+- Tests: parity 4/4, unit 34/34, pipeline 23/23, chat function 6/6, chat UI 7/7, browser 68/68.
 - Requirements (`docs/requirements.md`), architecture (`docs/architecture.md`), ERP QA review
   (`docs/erp-qa-review.md`) and security review (`docs/security-review.md`).
 
@@ -29,6 +29,13 @@ The ERP QA Developer's background review run stopped when the account reached it
 security review were completed in the main session using the same agent instructions (both documents say so). The
 guide's "run the experts in parallel through the Orchestrator" was therefore **not** how version 1 was built; version
 2 should use it (see process improvements below).
+
+## Version 2 progress
+
+- **Round 1 (2026-11-24):** items 4a, 4b and 12 done by the agent team in parallel, plus a hand-labelled spaCy entity
+  evaluation. Report and Orchestrator's round-2 plan: [`agent-run-v2-round1.md`](agent-run-v2-round1.md).
+- **Round 2 (2026-11-24):** labelling guide, ruler fixes, urgency-cue experiment (rejected), usability review and fixes,
+  and a second, unseen gold set (entity F1 0.83). Report and round-3 candidates: [`agent-run-v2-round2.md`](agent-run-v2-round2.md).
 
 ## Version 2 backlog
 

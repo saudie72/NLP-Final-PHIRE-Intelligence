@@ -1,0 +1,499 @@
+{
+ "about": "Gold set v2: hand-labelled entities for 30 different synthetic demo tickets (data/synthetic/phire_test.csv, excluding the v1 tickets), sampled with random.Random(2027): 9 Functional, 9 Technical, 6 Security, 6 Administration. Labelled by the coordinating session on 2026-11-24 following docs/entity-labelling-guide.md, from the ticket text only and before running spaCy on these tickets. Written after the round-1 errors were analysed on gold set v1, so it is the unseen set for round 2.",
+ "guide": "docs/entity-labelling-guide.md",
+ "labels": {
+  "PS_MODULE": "PeopleSoft product area or menu root (Time and Labor, Workforce Administration, PeopleTools, ePerformance ...)",
+  "PS_PAGE": "page or component a user opens (Job Data, Timesheet, Process Monitor, Report Manager, Expense Report ...)",
+  "PS_PROCESS": "batch or business process (Pay Calculation, Load Time and Labor, budget check, billing interface ...)",
+  "PS_FIELD": "field or setup value type (Workgroup, Expense Type, time reporting code, federal withholding, Balance)",
+  "PS_TOOL": "PeopleTools technology or infrastructure (PeopleCode, COBOL, PUM, PS Query, Process Scheduler, Candidate Gateway, IB, department security tree)",
+  "PS_PROGRAM": "named program or object in CAPS (HR_JOB, PSPPYRUN)",
+  "PS_ENV": "environment (DEV, TST, UAT, TRN, CFG)",
+  "TICKET_REF": "PHIRE issue / CR number",
+  "USER_ID": "user ID (synthetic SYNUSERnnnn)",
+  "BUSINESS_UNIT": "business unit: 'Business Unit = XX', 'BU XX', or a bare BU code used as one",
+  "DATE": "calendar date, date part only (not 'PPE')",
+  "ORG": "county department",
+  "PS_ROLE": "named security or business role used as a role (assigned, held, missing, needed); never the word 'role(s)'"
+ },
+ "rules": [
+  "Navigation paths: label the module/menu root as PS_MODULE and the final page as PS_PAGE; skip intermediate menu folders.",
+  "Named roles are PS_ROLE only when used as a role (held, assigned, missing); a role name used as the subject of a sentence ('Security Administrator can't see ...') is not labelled (guide decision 2).",
+  "Bare 'PPE' is not an entity; only the date after it is DATE (guide decision 1).",
+  "Lowercase business words (encumbrance, deduction, receipt, change order) are not labelled unless they name a field, code or process (guide decision 4)."
+ ],
+ "tickets": {
+  "IN001197": [
+   [
+    "BU SO",
+    "BUSINESS_UNIT"
+   ],
+   [
+    "Journal Edit",
+    "PS_PROCESS"
+   ],
+   [
+    "SO",
+    "BUSINESS_UNIT"
+   ]
+  ],
+  "IN001867": [
+   [
+    "Budget Office",
+    "ORG"
+   ],
+   [
+    "retro pay",
+    "PS_PROCESS"
+   ],
+   [
+    "retro pay",
+    "PS_PROCESS"
+   ],
+   [
+    "Review Paycheck",
+    "PS_PAGE"
+   ]
+  ],
+  "IN001175": [
+   [
+    "Planning and Zoning",
+    "ORG"
+   ],
+   [
+    "12/10/2025",
+    "DATE"
+   ],
+   [
+    "BU PZ",
+    "BUSINESS_UNIT"
+   ]
+  ],
+  "IN001021": [
+   [
+    "federal withholding",
+    "PS_FIELD"
+   ]
+  ],
+  "IN002111": [
+   [
+    "Performance Document",
+    "PS_PAGE"
+   ]
+  ],
+  "IN001632": [
+   [
+    "Code Enforcement",
+    "ORG"
+   ],
+   [
+    "Code Enforcement",
+    "ORG"
+   ],
+   [
+    "Requisition",
+    "PS_PAGE"
+   ]
+  ],
+  "IN001759": [
+   [
+    "Workforce Job Summary",
+    "PS_PAGE"
+   ],
+   [
+    "Union Code",
+    "PS_FIELD"
+   ],
+   [
+    "Union Code",
+    "PS_FIELD"
+   ],
+   [
+    "Workforce Job Summary",
+    "PS_PAGE"
+   ],
+   [
+    "05/04/2026",
+    "DATE"
+   ],
+   [
+    "Water Utilities",
+    "ORG"
+   ]
+  ],
+  "IN002074": [
+   [
+    "Manage Exceptions",
+    "PS_PAGE"
+   ],
+   [
+    "TRC",
+    "PS_FIELD"
+   ],
+   [
+    "TRC",
+    "PS_FIELD"
+   ],
+   [
+    "Manage Exceptions",
+    "PS_PAGE"
+   ],
+   [
+    "11/06/2026",
+    "DATE"
+   ],
+   [
+    "Budget Office",
+    "ORG"
+   ],
+   [
+    "IN002038",
+    "TICKET_REF"
+   ]
+  ],
+  "IN001402": [
+   [
+    "Animal Services",
+    "ORG"
+   ],
+   [
+    "Purchase Order",
+    "PS_PAGE"
+   ]
+  ],
+  "IN001919": [
+   [
+    "Approval Framework",
+    "PS_TOOL"
+   ],
+   [
+    "Approval Framework",
+    "PS_TOOL"
+   ],
+   [
+    "Purchasing",
+    "PS_MODULE"
+   ],
+   [
+    "Add/Update POs",
+    "PS_PAGE"
+   ]
+  ],
+  "IN001506": [
+   [
+    "department security tree",
+    "PS_TOOL"
+   ],
+   [
+    "Public Works",
+    "ORG"
+   ],
+   [
+    "department security tree",
+    "PS_TOOL"
+   ]
+  ],
+  "IN001792": [
+   [
+    "09/30/2026",
+    "DATE"
+   ]
+  ],
+  "IN001492": [
+   [
+    "Absence Finalize",
+    "PS_PROCESS"
+   ],
+   [
+    "Calendar group",
+    "PS_FIELD"
+   ],
+   [
+    "Absence Management",
+    "PS_MODULE"
+   ]
+  ],
+  "IN001334": [
+   [
+    "Assign Work Schedule",
+    "PS_PAGE"
+   ],
+   [
+    "Business Unit = TR",
+    "BUSINESS_UNIT"
+   ],
+   [
+    "02/22/2025",
+    "DATE"
+   ],
+   [
+    "PeopleCode",
+    "PS_TOOL"
+   ],
+   [
+    "Assign Work Schedule",
+    "PS_PAGE"
+   ],
+   [
+    "Time and Labor",
+    "PS_MODULE"
+   ],
+   [
+    "Timesheet",
+    "PS_PAGE"
+   ]
+  ],
+  "IN001400": [
+   [
+    "Entitlement",
+    "PS_FIELD"
+   ],
+   [
+    "Animal Services",
+    "ORG"
+   ],
+   [
+    "Entitlement",
+    "PS_FIELD"
+   ],
+   [
+    "Animal Services",
+    "ORG"
+   ]
+  ],
+  "IN001787": [
+   [
+    "TL_TIMEADMIN",
+    "PS_PROGRAM"
+   ],
+   [
+    "Application Engine",
+    "PS_TOOL"
+   ],
+   [
+    "TL_TIMEADMIN",
+    "PS_PROGRAM"
+   ],
+   [
+    "Application Engine",
+    "PS_TOOL"
+   ],
+   [
+    "Workgroup",
+    "PS_FIELD"
+   ]
+  ],
+  "IN001735": [
+   [
+    "PS Query",
+    "PS_TOOL"
+   ],
+   [
+    "Sheriff's Office",
+    "ORG"
+   ],
+   [
+    "time reporting code",
+    "PS_FIELD"
+   ],
+   [
+    "TRC",
+    "PS_FIELD"
+   ]
+  ],
+  "IN001103": [
+   [
+    "Business Unit = CE",
+    "BUSINESS_UNIT"
+   ],
+   [
+    "07/18/2026",
+    "DATE"
+   ],
+   [
+    "07/18/2026",
+    "DATE"
+   ]
+  ],
+  "IN001882": [
+   [
+    "Permission Lists",
+    "PS_PAGE"
+   ],
+   [
+    "Business Unit = FN",
+    "BUSINESS_UNIT"
+   ],
+   [
+    "01/31/2025",
+    "DATE"
+   ],
+   [
+    "Finance",
+    "ORG"
+   ],
+   [
+    "IN001788",
+    "TICKET_REF"
+   ]
+  ],
+  "IN001985": [
+   [
+    "Pay Calendar Table",
+    "PS_PAGE"
+   ],
+   [
+    "Pay Calendar Table",
+    "PS_PAGE"
+   ],
+   [
+    "SYNUSER0501",
+    "USER_ID"
+   ]
+  ],
+  "IN001349": [
+   [
+    "AP Processor",
+    "PS_ROLE"
+   ],
+   [
+    "AP Processor",
+    "PS_ROLE"
+   ]
+  ],
+  "IN001336": [
+   [
+    "SYNUSER0602",
+    "USER_ID"
+   ],
+   [
+    "Planning and Zoning",
+    "ORG"
+   ],
+   [
+    "SYNUSER0602",
+    "USER_ID"
+   ]
+  ],
+  "IN001074": [
+   [
+    "User Profiles",
+    "PS_PAGE"
+   ],
+   [
+    "Animal Services",
+    "ORG"
+   ]
+  ],
+  "IN001283": [
+   [
+    "SYNUSER0310",
+    "USER_ID"
+   ],
+   [
+    "Roles",
+    "PS_PAGE"
+   ],
+   [
+    "03/02/2025",
+    "DATE"
+   ]
+  ],
+  "IN001723": [
+   [
+    "UAT",
+    "PS_ENV"
+   ],
+   [
+    "Business Unit = CE",
+    "BUSINESS_UNIT"
+   ],
+   [
+    "03/19/2026",
+    "DATE"
+   ],
+   [
+    "UAT",
+    "PS_ENV"
+   ],
+   [
+    "PeopleTools",
+    "PS_MODULE"
+   ],
+   [
+    "Process Monitor",
+    "PS_PAGE"
+   ]
+  ],
+  "IN001971": [
+   [
+    "TST",
+    "PS_ENV"
+   ],
+   [
+    "TST",
+    "PS_ENV"
+   ]
+  ],
+  "IN002211": [
+   [
+    "PRJ_BN_9401",
+    "PS_PROGRAM"
+   ],
+   [
+    "CFG",
+    "PS_ENV"
+   ]
+  ],
+  "IN001348": [
+   [
+    "DEV",
+    "PS_ENV"
+   ],
+   [
+    "Sheriff's Office",
+    "ORG"
+   ],
+   [
+    "DEV",
+    "PS_ENV"
+   ]
+  ],
+  "IN001162": [
+   [
+    "Business Unit = FN",
+    "BUSINESS_UNIT"
+   ],
+   [
+    "04/10/2026",
+    "DATE"
+   ],
+   [
+    "Cash Advance",
+    "PS_PAGE"
+   ],
+   [
+    "Finance",
+    "ORG"
+   ]
+  ],
+  "IN001915": [
+   [
+    "Business Unit = FR",
+    "BUSINESS_UNIT"
+   ],
+   [
+    "06/25/2026",
+    "DATE"
+   ],
+   [
+    "Journal Edit",
+    "PS_PROCESS"
+   ],
+   [
+    "Journal Edit",
+    "PS_PROCESS"
+   ]
+  ]
+ }
+}
